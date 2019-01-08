@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Vim学习（一） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vim学习"><span class="toc-text">vim学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-1"><span class="toc-text">Part 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-2"><span class="toc-text">Part 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-3"><span class="toc-text">Part 3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-4"><span class="toc-text">Part 4</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Vim学习（一）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-02-05 00:00:00</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#vim" title="vim">vim</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h1 id="vim学习"><a href="#vim学习" class="headerlink" title="vim学习"></a>vim学习</h1><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>i → Insert 模式，按 ESC 回到 ormal 模式.</span><br><span class="line"><span class="bullet">- </span>x → 删当前光标所在的一个字符。</span><br><span class="line"><span class="bullet">- </span>:wq → 存盘 + 退出 (:w 存盘, :q 退出)   （注：:w 后可以跟文件名）</span><br><span class="line"><span class="bullet">- </span>dd → 删除当前行，并把删除的行存到剪贴板里</span><br><span class="line"><span class="bullet">- </span>p → 粘贴剪贴板</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h2><ol>
+<li>插入模式<ul>
+<li>a → 在光标后插入</li>
+<li>o → 在当前行后插入一个新行</li>
+<li>O → 在当前行前插入一个新行</li>
+<li>cw → 替换从光标所在位置后到一个单词结尾的字符</li>
+</ul>
+</li>
+<li>简单的移动光标<ul>
+<li>0 → 数字零，到行头</li>
+<li>^ → 到本行第一个不是blank字符的位置（所谓blank字符就是空格，tab，换行，回车等）</li>
+<li>$ → 到本行行尾</li>
+<li>g_ → 到本行最后一个不是blank字符的位置。</li>
+<li>/pattern → 搜索 pattern 的字符串（陈皓注：如果搜索出多个匹配，可按n键到下一个）</li>
+</ul>
+</li>
+<li>拷贝/粘贴 <ul>
+<li>P → 粘贴;p是表示在当前位置之后，P表示在当前位置之前</li>
+<li>yy → 拷贝当前行当行于 ddP;y -&gt; 拷贝</li>
+</ul>
+</li>
+<li>Undo/Redo<ul>
+<li>u → undo</li>
+<li>C-r → redo</li>
+</ul>
+</li>
+<li>打开/保存/退出/改变文件(Buffer)<ul>
+<li>:e &lt;path/to/file&gt; → 打开一个文件</li>
+<li>:w → 存盘</li>
+<li>:saveas &lt;path/to/file&gt; → 另存为 &lt;path/to/file&gt;</li>
+<li>:x， ZZ 或 :wq → 保存并退出 (:x 表示仅在需要时保存，ZZ不需要输入冒号并回车)</li>
+<li>:q! → 退出不保存 :qa! 强行退出所有的正在编辑的文件，就算别的文件有更改。</li>
+<li>:bn 和 :bp → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="Part-3"><a href="#Part-3" class="headerlink" title="Part 3"></a>Part 3</h2><ol>
+<li>vim的重复<ul>
+<li>. 小数点，重复上一条命令</li>
+<li>N加命令，重复N次</li>
+</ul>
+</li>
+<li>光标移动<ul>
+<li>数字加G，到第N行</li>
+<li>gg，到第一行</li>
+<li>G，到最后一行</li>
+<li>w，到下个词开k移动到与当前光标相匹配的词（×是下一个，#是上一个） </li>
+</ul>
+</li>
+<li>组合命令（开始位置+命令+结束位置）<ul>
+<li>0y$; 拷贝本行，+p粘贴</li>
+<li>能与光标移动联动的还有<ul>
+<li>d，删除</li>
+<li>v，可视化选择</li>
+<li>gU，变大写</li>
+<li>gu，变小写</li>
+<li>其他</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="Part-4"><a href="#Part-4" class="headerlink" title="Part 4"></a>Part 4</h2><ol>
+<li>当前行上移动光标<ul>
+<li>0，到行头</li>
+<li>^，到本行的第一个非blank字符</li>
+<li>$，到行尾</li>
+<li>f字符，到下一个字符处</li>
+<li>t字符，到符号前的第一个字符</li>
+<li>3fa，到本行第三次出现的a处</li>
+<li>F和T，与f和t相似，方向相反 </li>
+<li>dt符号，删除符号前的所有内容</li>
+</ul>
+</li>
+<li>可视化选择v,V<ul>
+<li>J，把所有行连在一起</li>
+<li>&lt;和&gt;,左右缩进</li>
+<li>=，自动缩进</li>
+<li>选中行后，$到最后，a插入字符，Esc为每行添加字符</li>
+</ul>
+</li>
+<li>分屏<ul>
+<li>：split，创建分屏 </li>
+<li>ctrl-w，切屏</li>
+</ul>
+</li>
+</ol>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

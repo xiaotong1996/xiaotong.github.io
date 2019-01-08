@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        2018-7-26-JavaEE-WEB-2 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JAVA-EE-WEB学习（二）"><span class="toc-text">JAVA EE WEB学习（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet作用"><span class="toc-text">Servlet作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承的servlet类"><span class="toc-text">继承的servlet类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单例子"><span class="toc-text">简单例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置可部署的Servlet"><span class="toc-text">配置可部署的Servlet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#了解doGet、doPost和其他方法"><span class="toc-text">了解doGet、doPost和其他方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpServletRequest"><span class="toc-text">HttpServletRequest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpServletResponse"><span class="toc-text">HttpServletResponse</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用初始化参数配置应用程序"><span class="toc-text">使用初始化参数配置应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用上下文初始化参数"><span class="toc-text">使用上下文初始化参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用servlet初始化参数"><span class="toc-text">使用servlet初始化参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过表单上传文件"><span class="toc-text">通过表单上传文件</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        2018-7-26-JavaEE-WEB-2
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-07-26 23:01:27</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#JavaEE" title="JavaEE">JavaEE</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="JAVA-EE-WEB学习（二）"><a href="#JAVA-EE-WEB学习（二）" class="headerlink" title="JAVA EE WEB学习（二）"></a>JAVA EE WEB学习（二）</h1><p><strong>创建第一个Servlet</strong></p>
+<h2 id="Servlet作用"><a href="#Servlet作用" class="headerlink" title="Servlet作用"></a>Servlet作用</h2><ol>
+<li>直接处理和响应用户请求</li>
+<li>将处理工作委托给应用中其他部分的类</li>
+<li>WEB容器会有一个或多个Servlet，用于处理JSP、显示目录列表、访问静态资源</li>
+</ol>
+<h2 id="继承的servlet类"><a href="#继承的servlet类" class="headerlink" title="继承的servlet类"></a>继承的servlet类</h2><ol>
+<li>继承HttpServlet</li>
+<li>接收HttpServletRequest和HttpServletResponse参数</li>
+</ol>
+<h2 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">package servlet;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.PrintWriter;</span><br><span class="line"></span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">public class Demo3 extends HttpServlet &#123;</span><br><span class="line">	private static final String DEFAULT_USER=&quot;Guest&quot;;</span><br><span class="line">	/**</span><br><span class="line">	 * Constructor of the object.</span><br><span class="line">	 */</span><br><span class="line">	public Demo3() &#123;</span><br><span class="line">		super();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * Destruction of the servlet. &lt;br&gt;</span><br><span class="line">	 */</span><br><span class="line">	public void destroy() &#123;</span><br><span class="line">		super.destroy(); // Just puts &quot;destroy&quot; string in log</span><br><span class="line">		// Put your code here</span><br><span class="line">		System.out.println(this.getServletInfo());</span><br><span class="line">		System.out.println(&quot;fin&quot;);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * The doGet method of the servlet. &lt;br&gt;</span><br><span class="line">	 *</span><br><span class="line">	 * This method is called when a form has its tag value method equals to get.</span><br><span class="line">	 * </span><br><span class="line">	 * @param request the request send by the client to the server</span><br><span class="line">	 * @param response the response send by the server to the client</span><br><span class="line">	 * @throws ServletException if an error occurred</span><br><span class="line">	 * @throws IOException if an error occurred</span><br><span class="line">	 */</span><br><span class="line">	public void doGet(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">			throws ServletException, IOException &#123;</span><br><span class="line">		String user =request.getParameter(&quot;user&quot;);</span><br><span class="line">		if(user==null)</span><br><span class="line">		&#123;</span><br><span class="line">			user=Demo3.DEFAULT_USER;</span><br><span class="line">		&#125;</span><br><span class="line">		response.setContentType(&quot;text/html&quot;);</span><br><span class="line">		response.setCharacterEncoding(&quot;UTF-8&quot;);</span><br><span class="line">		</span><br><span class="line">		PrintWriter out = response.getWriter();</span><br><span class="line">		out.append(&quot;&lt;!DOCTYPE HTML&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;&lt;HTML&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;  &lt;HEAD&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;    &lt;TITLE&gt;A Servlet&lt;/TITLE&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;  &lt;/HEAD&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;  &lt;BODY&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;     Hello, &quot;).append(user).append(&quot;!&lt;br/&gt;&lt;br/&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;     &lt;form action=\&quot;demo3\&quot; method=\&quot;POST\&quot;&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;       Enter your name:&lt;br/&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;       &lt;input type=\&quot;text\&quot; name=\&quot;user\&quot;/&gt;&lt;br/&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;       &lt;input type=\&quot;submit\&quot; value=\&quot;Submit\&quot;/&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;       &lt;/form&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;  &lt;/BODY&gt;\r\n&quot;)</span><br><span class="line">		   .append(&quot;&lt;/HTML&gt;\r\n&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * The doPost method of the servlet. &lt;br&gt;</span><br><span class="line">	 *</span><br><span class="line">	 * This method is called when a form has its tag value method equals to post.</span><br><span class="line">	 * </span><br><span class="line">	 * @param request the request send by the client to the server</span><br><span class="line">	 * @param response the response send by the server to the client</span><br><span class="line">	 * @throws ServletException if an error occurred</span><br><span class="line">	 * @throws IOException if an error occurred</span><br><span class="line">	 */</span><br><span class="line">	public void doPost(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">			throws ServletException, IOException &#123;</span><br><span class="line">		this.doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * Initialization of the servlet. &lt;br&gt;</span><br><span class="line">	 *</span><br><span class="line">	 * @throws ServletException if an error occurs</span><br><span class="line">	 */</span><br><span class="line">	public void init() throws ServletException &#123;</span><br><span class="line">		// Put your code here</span><br><span class="line">		System.out.println(&quot;start&quot;);</span><br><span class="line">		System.out.println(this.getServletName());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意点</strong></p>
+<ol>
+<li>init方法在构造完成之后，响应第一个请求之前调用</li>
+<li>调用init方法时，Servlet中所有属性都已设置完，提供了对ServletConfig和SercletContext对象的访问。</li>
+<li>可以使用init方法读取属性文件或使用JDBC连接数据库</li>
+<li>destory方法在Servlet不再接受请求之后立即调用，即web应用程序被停止或卸载，或Web容器关闭时。因此：<strong>应该使用destory方法清理servlet持有的资源</strong></li>
+</ol>
+<h2 id="配置可部署的Servlet"><a href="#配置可部署的Servlet" class="headerlink" title="配置可部署的Servlet"></a>配置可部署的Servlet</h2><ol>
+<li>在web.xml中部署，一般IDE会在创建时自动部署。</li>
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	.....</span><br><span class="line">	.....</span><br><span class="line">	&lt;load-on-startup&gt;x&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+<p>Servlet按照x大小顺序启动，越小优先级越高。</p>
+<ol>
+<li>将Servlet映射到URL<br><code>&lt;servlet-name&gt;</code>对应<code>&lt;url-pattern&gt;</code>一个servlet可以映射到多个url</li>
+</ol>
+<h2 id="了解doGet、doPost和其他方法"><a href="#了解doGet、doPost和其他方法" class="headerlink" title="了解doGet、doPost和其他方法"></a>了解doGet、doPost和其他方法</h2><h3 id="HttpServletRequest"><a href="#HttpServletRequest" class="headerlink" title="HttpServletRequest"></a>HttpServletRequest</h3><ol>
+<li>功能：从客户端发送的请求中获取参数。参数有两种形式：查询参数和请求正文（post请求）。查询参数在HTTP请求的第一行数据中如<code>GET /index.jsp?id=412&amp;category=Books HTTP/1.1</code>中有两个查询参数:id和category  或  作为post变量保存在请求正文中</li>
+<li><strong>获取请求参数：</strong>方法getParameter返回参数单个值，或多个参数第一个值；getParameterValues返回参数值的数组；getParameterMap返回包含所有参数名值对；getparameterNames返回所有可用参数的名字的枚举。后两种方法一般用于遍历所有请求参数。</li>
+<li><strong>确定与请求内容相关的信息：</strong>getContentType返回请求的内容类型；getContentLength返回请求正文长度。</li>
+<li><strong>读取请求的内容：</strong>getInputStream读二进制格式；BufferedReader读基于字符编码。<strong>不要在同一请求上同时使用这两种方法；不要在含post变量的请求上使用这些方法</strong></li>
+<li><strong>获取请求特有的数据</strong>getRequestURL：返回完整URL；getRequestURI：返回服务器路径；getServletPath：只返回Servlet映射的URL;</li>
+</ol>
+<h3 id="HttpServletResponse"><a href="#HttpServletResponse" class="headerlink" title="HttpServletResponse"></a>HttpServletResponse</h3><ol>
+<li>功能：提供了对响应中与HTTP协议相关属性的访问。可用于：设置响应头、编写相应正文、重定向请求、设置HTTP状态码等</li>
+<li><strong>编写响应正文：</strong>将内容输出到响应正文中。getOutputStream和getWritter都可以向响应中输出数据。<strong>不要对同一响应对象同时使用这两种方法。</strong></li>
+<li><strong>设置内容类型或编码格式：</strong>使用setContentType和setCharacterEncoding方法。必须放在getWritter方法之前，否则返回到writer使用容器默认编码。</li>
+<li><strong>设置头和其他响应属性：</strong>暂略</li>
+</ol>
+<h2 id="使用初始化参数配置应用程序"><a href="#使用初始化参数配置应用程序" class="headerlink" title="使用初始化参数配置应用程序"></a>使用初始化参数配置应用程序</h2><h3 id="使用上下文初始化参数"><a href="#使用上下文初始化参数" class="headerlink" title="使用上下文初始化参数"></a>使用上下文初始化参数</h3><ol>
+<li>在web.xml文件中用<code>&lt;context-param&gt;</code>标签声明上下文初始化参数 <em>在<code>&lt;servlet&gt;</code>外部</em></li>
+<li>在Servlet代码中获得和使用这些参数：先获得servletcontext（getServletContext），用这个实例的getInitParameter方法，参数为param-name可得到param-value。</li>
+</ol>
+<h3 id="使用servlet初始化参数"><a href="#使用servlet初始化参数" class="headerlink" title="使用servlet初始化参数"></a>使用servlet初始化参数</h3><ol>
+<li>将<code>&lt;init-param&gt;</code>添加到<em><code>&lt;servlet&gt;</code>内部</em></li>
+<li>在Servlet代码中获得和使用这些参数：先获得ServletConfig（getServletConfig），用这个实例的getInitParameter方法，参数为param-name可得到param-value。</li>
+<li><strong>通常用这种方式改变数据库服务器的IP地址</strong></li>
+</ol>
+<h2 id="通过表单上传文件"><a href="#通过表单上传文件" class="headerlink" title="通过表单上传文件"></a>通过表单上传文件</h2>
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

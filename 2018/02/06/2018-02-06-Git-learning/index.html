@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Git 学习 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SSH秘钥"><span class="toc-text">1. SSH秘钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-创建project并添加合作者"><span class="toc-text">2. 创建project并添加合作者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-克隆project到本地"><span class="toc-text">3. 克隆project到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-查看git状态"><span class="toc-text">4. 查看git状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-创建第一个文件README-md并提交"><span class="toc-text">5. 创建第一个文件README.md并提交</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支操作"><span class="toc-text">分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建分支"><span class="toc-text">1. 创建分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-查看分支"><span class="toc-text">2. 查看分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-在分支上进行操作"><span class="toc-text">3. 在分支上进行操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-查看日志"><span class="toc-text">4. 查看日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-合并（Fusion）分支"><span class="toc-text">5. 合并（Fusion）分支</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#冲突conflict"><span class="toc-text">冲突conflict</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置冲突管理工具"><span class="toc-text">设置冲突管理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冲突前提"><span class="toc-text">冲突前提</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-flow"><span class="toc-text">Git-flow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-flow原则"><span class="toc-text">Git-flow原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-flow例子"><span class="toc-text">Git-flow例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版本控制"><span class="toc-text">版本控制</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Git 学习
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-02-06 00:00:00</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Git" title="Git">Git</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p><em>以在GitLab上创建一个project为例</em></p>
+<h2 id="1-SSH秘钥"><a href="#1-SSH秘钥" class="headerlink" title="1. SSH秘钥"></a>1. SSH秘钥</h2><p>生成SSH秘钥指令：<br><code>$ ssh-keygen -t rsa -C &quot;votre.email@telecom-sudparis.eu&quot; -b 4096</code><br>保存在<code>$HOME/.ssh/id_rsa.pub</code><br>将获得的SSH秘钥填入GitLab网站<br><strong>SSH秘钥用于GitLab网站识别Unix账号</strong></p>
+<h2 id="2-创建project并添加合作者"><a href="#2-创建project并添加合作者" class="headerlink" title="2. 创建project并添加合作者"></a>2. 创建project并添加合作者</h2><p>命名规则：课程+年份+创作者<br><em>给合作者Master权限</em></p>
+<h2 id="3-克隆project到本地"><a href="#3-克隆project到本地" class="headerlink" title="3. 克隆project到本地"></a>3. 克隆project到本地</h2><p><code>git clone git@gitlab.tem-tsp:votreprenom.votrenom/votrenomdeproject.git</code></p>
+<h2 id="4-查看git状态"><a href="#4-查看git状态" class="headerlink" title="4. 查看git状态"></a>4. 查看git状态</h2><p><code>git status</code></p>
+<h2 id="5-创建第一个文件README-md并提交"><a href="#5-创建第一个文件README-md并提交" class="headerlink" title="5. 创建第一个文件README.md并提交"></a>5. 创建第一个文件README.md并提交</h2><ol>
+<li><code>git add README.md</code></li>
+<li><code>git commit -m &quot;注释&quot;</code></li>
+<li><code>git push origin master</code></li>
+<li>其他合作者<code>git pull origin</code></li>
+</ol>
+<ul>
+<li><p>git add：<br>i） <code>git add .</code> 或 <code>git add --all</code> 提交所有修改</p>
+</li>
+<li><p>git commit：<br>i） <code>git commit</code>后会生产一个hash码，用于标记此次commit操作</p>
+</li>
+<li><p>git push：<br>i） <code>git push</code>默认将master上传<br>ii）origin是远程仓库名，master是分支名</p>
+</li>
+<li><p>git pull：<br>i）当有其他人想master分支推送了更新，则服务器上的master向前推进，本地的Master落后服务器版本，需要运行 <code>git fetch</code>来同步本地并用<code>git merge</code>合并，或直接用<code>git pull</code>。<code>git pull</code>=<code>git fetch</code> + <code>git merge</code></p>
+</li>
+</ul>
+<hr>
+<h1 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h1><p><em>branch</em></p>
+<h2 id="1-创建分支"><a href="#1-创建分支" class="headerlink" title="1. 创建分支"></a>1. 创建分支</h2><p><code>git checkout -b module1</code></p>
+<p>i） 创建并转到module1分支<br>ii）<code>git checkout 分支名</code> 转到已存在的分支</p>
+<h2 id="2-查看分支"><a href="#2-查看分支" class="headerlink" title="2. 查看分支"></a>2. 查看分支</h2><p><code>git branch</code></p>
+<p>i）一般而言，Master分支是默认创建的。<br><strong>但若是在项目一开始，即项目为空时，创建分支，会丢失master分支。</strong></p>
+<h2 id="3-在分支上进行操作"><a href="#3-在分支上进行操作" class="headerlink" title="3. 在分支上进行操作"></a>3. 在分支上进行操作</h2><ul>
+<li>与在<a href="# 例子1-基础">基础部分</a>操作相同</li>
+<li>在每个分支上做的add,commit操作是独立的</li>
+</ul>
+<h2 id="4-查看日志"><a href="#4-查看日志" class="headerlink" title="4. 查看日志"></a>4. 查看日志</h2><ul>
+<li><code>git log --graph --oneline --decorate</code></li>
+<li>使用工具gitg/gitk</li>
+</ul>
+<h2 id="5-合并（Fusion）分支"><a href="#5-合并（Fusion）分支" class="headerlink" title="5. 合并（Fusion）分支"></a>5. 合并（Fusion）分支</h2><ol>
+<li>转到Master<code>git checkout master</code></li>
+<li><code>git merge --no-ff moudle1 -m &quot;Merge branch &#39;modele1&#39;&quot;</code></li>
+</ol>
+<p>i)  有<code>--no-ff</code>则moudle1会保留，没有则不保留module1分支</p>
+<hr>
+<h1 id="冲突conflict"><a href="#冲突conflict" class="headerlink" title="冲突conflict"></a>冲突conflict</h1><h2 id="设置冲突管理工具"><a href="#设置冲突管理工具" class="headerlink" title="设置冲突管理工具"></a>设置冲突管理工具</h2><p><code>git config merge.tool meld</code></p>
+<h2 id="冲突前提"><a href="#冲突前提" class="headerlink" title="冲突前提"></a>冲突前提</h2><p>分支module1和Master中有同一个文件，且分别在不同分支修改了文件，并做了<code>add commit</code>操作。做第二次<code>commit</code>时冲突发送。</p>
+<p>解决方法：<br>用<code>git mergetool</code>调用meld，查看修改冲突的地方，修改保存后会生成很多不必要的文件<br>用<code>rm 文件名.文件类型.* 文件名_* *~</code>删除这些文件。</p>
+<hr>
+<h1 id="Git-flow"><a href="#Git-flow" class="headerlink" title="Git-flow"></a>Git-flow</h1><h2 id="Git-flow原则"><a href="#Git-flow原则" class="headerlink" title="Git-flow原则"></a>Git-flow原则</h2><ol>
+<li>两条长期分支<br><strong>master</strong>只保留官方的，实用的代码版本<br><strong>develop</strong>在这个分支进行开发，只有想正式对外发布且经过确认，才会和Master合并。</li>
+</ol>
+<ul>
+<li>新建develop分支：<code>git checkout -b develop master</code></li>
+<li>将develop分支发布到Master分支：<code>git checkout Master</code><pre><code>​    `git merge --no-ff develop `
+</code></pre></li>
+</ul>
+<ol start="2">
+<li><p>创建release(预发布)分支<br>当要进行develop分支和Master合并时，先从develop分支上创建一个release分支，加上标签（tag)用于标记新的版本。<br><em>建议创建一个release分支，这个分支里commit只用于修改bugs。</em></p>
+</li>
+<li><p>在develop的子分支（feature分支）上编码<br>只有子分支状态满足，develop上的合并操作才会执行</p>
+</li>
+<li><p>hotfix<br>当master上发现bug，就在master上引出一个hotfix分支。<br>这个分支有两个作用：</p>
+</li>
+<li>为Master提供一个新版本</li>
+<li>为develop修复整个project的bug</li>
+</ol>
+<p><em>注意：</em>release,feature和hotfix分支都是临时分支，使用完后，应该删除，使代码库的常设分支始终只有Master和Deve。</p>
+<p><img src="/img/git/git-model.png" alt="Git-flow图"></p>
+<h2 id="Git-flow例子"><a href="#Git-flow例子" class="headerlink" title="Git-flow例子"></a>Git-flow例子</h2><ol>
+<li>在本地建立工作文件夹，初始化库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir exercice-git-flow  </span><br><span class="line">cd exercice-git-flow  </span><br><span class="line">git init  </span><br><span class="line">touch README.md  </span><br><span class="line">git add README.md  </span><br><span class="line">git commit -m &quot;commit initial&quot;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>新建develop分支<br><code>git checkout -b develop</code></p>
+</li>
+<li><p>新建feature分支，以功能名命名<br><code>git checkout -b navire1</code></p>
+</li>
+<li><p>在这个分支中写一个文本文档</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gedit navire.txt  </span><br><span class="line">git add navire.txt  </span><br><span class="line">git commit -m &quot;navire version 1`</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改和二次提交<br>为navire.txt中加入新的几行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gedit navire.txt  </span><br><span class="line">git add navire.txt  </span><br><span class="line">git commit -m &quot;navire version 2&quot;</span><br></pre></td></tr></table></figure>
+<p>现在我们已经实现了一定功能，合并这个分支和develop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout develop  </span><br><span class="line">git merge --no-ff navire1 -m &quot;Merge branch &apos;navire1&apos; into develop&quot;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>假设经过多次3-5，我们已经实现了很多功能，想把develop和master合并</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master  </span><br><span class="line">git merge --no-ff develop -m &quot;commit release 1.0&quot;</span><br></pre></td></tr></table></figure>
+<p>因为这是一个正式版本，我们加上标签tag<br><code>git tag -a v1.0 -m &quot;release 1.0&quot;</code></p>
+<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><p>=有待完成=</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C#review补档 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-回顾"><span class="toc-text">C#回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#与java明显不同"><span class="toc-text">与java明显不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意点"><span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#待详细看"><span class="toc-text">待详细看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#委托（delegate"><span class="toc-text">委托（delegate)</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C#review补档
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-08 23:21:25</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="C-回顾"><a href="#C-回顾" class="headerlink" title="C#回顾"></a>C#回顾</h1><h2 id="与java明显不同"><a href="#与java明显不同" class="headerlink" title="与java明显不同"></a>与java明显不同</h2><ol>
+<li>WriteLine()</li>
+<li>文件名可以不同于类的名称</li>
+<li>动态（Dynamic）类型<br>您可以存储任何类型的值在动态数据类型变量中。这些变量的类型检查是在运行时发生的。 声明动态类型的语法：<code>dynamic &lt;variable_name&gt; = value;</code></li>
+<li>指针类型变量存储另一种类型的内存地址。C# 中的指针与 C 或 C++ 中的指针有相同的功能。</li>
+<li>常量是使用 const 关键字来定义的</li>
+<li>? : 运算符<br>我们已经在前面的章节中讲解了 条件运算符 ? :，可以用来替代 if…else 语句。它的一般形式如下：<code>Exp1 ? Exp2 : Exp3;</code></li>
+<li>for(;;) 结构来表示一个无限循环。</li>
+<li>return 语句可用于只从函数中返回一个值。但是，可以使用 输出参数 来从函数中返回两个值。输出参数会把方法输出的数据赋给自己，其他方面与引用参数相似。 关键字 out</li>
+<li>在 C# 中，使用 ref 关键字声明引用参数。</li>
+<li>数组：<code>double[] balance = new double[10];</code></li>
+<li>foreach (int j in n )</li>
+<li>C# 参数数组:params 关键字 当声明一个方法时，您不能确定要传递给函数作为参数的参数数目<br>在使用数组作为形参时，C# 提供了 params 关键字，使调用数组为形参的方法时，既可以传递数组实参，也可以只传递一组数组。params 的使用格式为：<code>public 返回类型 方法名称( params 类型名称[] 数组名称 )</code></li>
+<li>C# 中的析构函数<br>类的 析构函数 是类的一个特殊的成员函数，当类的对象超出范围时执行。<br>析构函数的名称是在类的名称前加上一个波浪形（~）作为前缀，它不返回值，也不带任何参数。<br>析构函数用于在结束程序（比如关闭文件、释放内存等）之前释放资源。析构函数不能继承或重载。</li>
+</ol>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li>C# string 字符串的前面可以加 @（称作”逐字字符串”）将转义字符（\）当作普通字符对待，比如：<code>string str = @&quot;C:\Windows&quot;;</code>等价于：<code>string str = &quot;C:\\Windows&quot;;</code></li>
+<li>Console.ReadLine() 只接受字符串格式的数据。</li>
+<li>可空类型：在处理数据库和其他包含可能未赋值的元素的数据类型时，将 null 赋值给数值类型或布尔型的功能特别有用：<code>&lt; data_type&gt; ? &lt;variable_name&gt; = null;</code></li>
+<li>我们可以使用 static 关键字把类成员定义为静态的。当我们声明一个类成员为静态时，意味着无论有多少个类的对象被创建，只会有一个该静态成员的副本。<br>关键字 static 意味着类中只有一个该成员的实例。</li>
+<li>您也可以把一个成员函数声明为 static。这样的函数只能访问静态变量。静态函数在对象被创建之前就已经存在。</li>
+<li>抽象类在某种程度上与接口类似，但是，它们大多只是用在当只有少数方法由基类声明由派生类实现时。</li>
+</ol>
+<h2 id="待详细看"><a href="#待详细看" class="headerlink" title="待详细看"></a>待详细看</h2><ol>
+<li><a href="https://www.w3cschool.cn/csharp/csharp-namespace.html" target="_blank" rel="noopener">namespace命名空间</a>:using System;命名空间的设计目的是为了提供一种让一组名称与其他名称分隔开的方式。在一个命名空间中声明的类的名称与另一个命名空间中声明的相同的类的名称不冲突。</li>
+<li><a href="https://www.w3cschool.cn/csharp/csharp-nullable.html" target="_blank" rel="noopener">可空类型</a></li>
+<li><a href="https://www.w3cschool.cn/csharp/csharp-multi-dimensional-arrays.html" target="_blank" rel="noopener">多维数组和交错数组</a>:C# 支持多维数组。多维数组又称为矩形数组。交错数组是数组的数组。</li>
+<li><a href="https://www.w3cschool.cn/csharp/csharp-array-class.html" target="_blank" rel="noopener">Array 类</a>是 C# 中所有数组的基类，它是在 System 命名空间中定义。Array 类提供了各种用于数组的属性和方法。<em>直接调用array中的方法能实现数组的逆转和排序等</em></li>
+<li><a href="https://www.w3cschool.cn/csharp/csharp-struct.html" target="_blank" rel="noopener">结构</a>在 C# 中，结构是值类型数据结构。它使得一个单一变量可以存储各种数据类型的相关数据。struct 关键字用于创建结构。</li>
+<li><a href="https://www.w3cschool.cn/csharp/csharp-polymorphism.html" target="_blank" rel="noopener">动态多态性</a></li>
+</ol>
+<h2 id="委托（delegate"><a href="#委托（delegate" class="headerlink" title="委托（delegate)"></a>委托（delegate)</h2><p>C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。委托（Delegate） 是存有对某个方法的引用的一种引用类型变量。引用可在运行时被改变。</p>
+<p>委托（Delegate）特别用于实现事件和回调方法。所有的委托（Delegate）都派生自 System.Delegate 类。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

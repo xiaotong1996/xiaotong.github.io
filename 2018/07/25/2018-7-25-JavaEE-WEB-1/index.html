@@ -11,7 +11,7 @@
 
     <title>
         
-        About - undefined
+        2018-7-25-JavaEE-WEB-1 - undefined
         
     </title>
 
@@ -71,7 +71,7 @@
                     <span>ARCHIVES</span>
                 </a>
             </li>
-            <li class="active">
+            <li>
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
                     <span>ABOUT</span>
@@ -87,6 +87,10 @@
             
         </ul>
     </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JAVA-EE-WEB学习（一）"><span class="toc-text">JAVA EE WEB学习（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet等"><span class="toc-text">Servlet等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录结构和归档文件WAR"><span class="toc-text">目录结构和归档文件WAR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署描述符"><span class="toc-text">部署描述符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类加载器架构（ClassLoader"><span class="toc-text">类加载器架构（ClassLoader)</span></a></li></ol></li></ol>
+</div>
     
 </div>
 
@@ -111,15 +115,63 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-content ">
-    
-    
-    <div id="comment-container">
+
+
+<div class="post-container">
+    <div class="post-title">
+        2018-7-25-JavaEE-WEB-1
     </div>
-    <div id="lv-container">
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-07-25 23:01:27</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#JavaEE" title="JavaEE">JavaEE</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="JAVA-EE-WEB学习（一）"><a href="#JAVA-EE-WEB学习（一）" class="headerlink" title="JAVA EE WEB学习（一）"></a>JAVA EE WEB学习（一）</h1><p><strong>基本结构</strong></p>
+<h2 id="Servlet等"><a href="#Servlet等" class="headerlink" title="Servlet等"></a>Servlet等</h2><ol>
+<li>servlet：接收响应HTTP请求</li>
+<li>过滤器：拦截发送给servlet的请求，用于：数据格式化，对返回的数据压缩、认证和授权</li>
+<li>监听器：通知代码多种事件，如：程序启动、关闭，HTTP会话创建和销毁</li>
+<li>JavaServer Pages/JSP：创建图形用户界面</li>
+</ol>
+<h2 id="目录结构和归档文件WAR"><a href="#目录结构和归档文件WAR" class="headerlink" title="目录结构和归档文件WAR"></a>目录结构和归档文件WAR</h2><ol>
+<li>Java归档文件：JAR  Java EE WEB归档文件：WAR</li>
+<li><img src="/img/post/目录结构.png" alt="目录结构"></li>
+<li><img src="/img/post/目录结构2.png" alt="目录结构2">)</li>
+</ol>
+<h2 id="部署描述符"><a href="#部署描述符" class="headerlink" title="部署描述符"></a>部署描述符</h2><ol>
+<li>用于描述Web应用程序的元数据，为服务器部署和运行Web应用程序提供指令。</li>
+<li>来自于/WEB-INF/web.xml</li>
+<li>包含Servlet、监听器和过滤器的定义+HTTP会话、JSP和应用程序的配置选项。</li>
+<li><em>可用注解配置Web应用程序</em></li>
+</ol>
+<h2 id="类加载器架构（ClassLoader"><a href="#类加载器架构（ClassLoader" class="headerlink" title="类加载器架构（ClassLoader)"></a>类加载器架构（ClassLoader)</h2><ol>
+<li>Java SE 平台中，java.*类加载到根类加载器-&gt;JRE中的扩展JAR加载到扩展类加载器-&gt;其他所有类加载到Class Loader</li>
+<li>双亲优先类加载委托模式：低级别加载器申请加载一个类时，将委托不断向上传递至根加载器，确认成功。未能找到，则从自己的JAR文件和目录中尝试加载。</li>
+<li>Java EE WEb中，使用子女优先类加载委托模式：公共的服务器类加载器给每个WEB应用程序分配一个自由的相互隔离的类加载器。在自己无法加载某个类时，请求它的父类加载器帮助加载。</li>
+</ol>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
     </div>
 </div>
-
     </div>
 </div>
 
@@ -182,7 +234,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

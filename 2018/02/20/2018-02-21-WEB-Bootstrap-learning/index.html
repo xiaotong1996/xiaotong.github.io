@@ -11,7 +11,7 @@
 
     <title>
         
-        hello,world - undefined
+        WEB学习-Bootstrap框架学习 - undefined
         
     </title>
 
@@ -56,32 +56,32 @@
             <li>
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>主页</span>
+                    <span>HOME</span>
                 </a>
             </li>
             <li>
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>标签</span>
+                    <span>TAGS</span>
                 </a>
             </li>
             <li>
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>存档</span>
+                    <span>ARCHIVES</span>
                 </a>
             </li>
             <li>
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>关于</span>
+                    <span>ABOUT</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>搜索</span>
+                    <span>SEARCH</span>
                 </a>
             </li>
             
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Grid-system-网格系统"><span class="toc-text">Grid system(网格系统)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chrome开发者工具"><span class="toc-text">Chrome开发者工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用框架"><span class="toc-text">应用框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#保存修改"><span class="toc-text">保存修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#响应式页面"><span class="toc-text">响应式页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bootstrap排版"><span class="toc-text">Bootstrap排版</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义CSS"><span class="toc-text">自定义CSS</span></a></li></ol>
 </div>
     
 </div>
@@ -100,7 +100,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input">
-            <span id="begin-search">搜索</span>
+            <span id="begin-search">search</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -119,25 +119,40 @@
 
 <div class="post-container">
     <div class="post-title">
-        hello,world
+        WEB学习-Bootstrap框架学习
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2019-01-08 22:10:42</span></span>
+        <span class="attr">Post：<span>2018-02-20 00:00:00</span></span>
         
-        <span class="attr">标签：/
+        <span class="attr">Tags：/
         
-        <a class="tag" href="/tags/#hello" title="hello">hello</a>
+        <a class="tag" href="/tags/#WEB入门" title="WEB入门">WEB入门</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Bootstrap" title="Bootstrap">Bootstrap</a>
         <span>/</span>
         
         
         </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
 </span>
 
     </div>
     <div class="post-content ">
-        
+        <p>[TOC]</p>
+<h1 id="Grid-system-网格系统"><a href="#Grid-system-网格系统" class="headerlink" title="Grid system(网格系统)"></a>Grid system(网格系统)</h1><ul>
+<li>每一行rows应放在.container(fixed-width)或.container-fluid(full-width)中</li>
+<li>使用rows来创建水平列组(groupes of columns)</li>
+<li>内容放在column中，column是rows的子类</li>
+</ul>
+<h1 id="Chrome开发者工具"><a href="#Chrome开发者工具" class="headerlink" title="Chrome开发者工具"></a>Chrome开发者工具</h1><p>ctrl+shift+i</p>
+<h1 id="应用框架"><a href="#应用框架" class="headerlink" title="应用框架"></a>应用框架</h1><p>要将 bootstrap CSS 应用于 bootstrap-prestructure.html 文件，需要：将 bootstrap-prestructure.html 文件移至你的 bootstrap 目录。打开 HTML 文件，在母体元素下方的 head 元素中添加一条指向 bootstrap CSS 文件的链接：<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.min.css&quot;&gt;</code></p>
+<h1 id="保存修改"><a href="#保存修改" class="headerlink" title="保存修改"></a>保存修改</h1><p>要将你在开发者工具中对 HTML 所做的更改保存至你的 HTML 文件，只需右键单击或 ctrl + 单击 <html> 元素，然后选择“复制为 HTML”，然后用复制的文本替换你文件中的 HTML。</html></p>
+<h1 id="响应式页面"><a href="#响应式页面" class="headerlink" title="响应式页面"></a>响应式页面</h1><p>响应式图片加上<code>class=&quot;img-responsive&quot; alt=&quot;Responsive image&quot;</code></p>
+<h1 id="Bootstrap排版"><a href="#Bootstrap排版" class="headerlink" title="Bootstrap排版"></a>Bootstrap排版</h1><p>文字对齐加上<code>class=&quot;text-left&quot;</code>表示左对齐<br>文字装换加上<code>class=&quot;text-uppercase&quot;</code>将文字变为大写<br><em>可添加在文字类型如h1，h3，最好是直接添加在包含他们的div上</em></p>
+<h1 id="自定义CSS"><a href="#自定义CSS" class="headerlink" title="自定义CSS"></a>自定义CSS</h1><p>在/css文件夹下添加style.css文件<br>从大到小对网页中的元素添加定制</p>
+
         
         <br>
         <div id="comment-container">
