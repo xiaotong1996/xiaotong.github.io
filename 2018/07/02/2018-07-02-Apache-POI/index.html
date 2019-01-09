@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Java POI开发小结 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于POI以及一些想法"><span class="toc-text">关于POI以及一些想法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取有效行数"><span class="toc-text">获取有效行数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列编号-ABC…-与数字-123…-的转换"><span class="toc-text">列编号(ABC…)与数字(123…)的转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在不同工作簿-workbook-间，复制一个区域的单元格并保留格式，设置行宽"><span class="toc-text">在不同工作簿(workbook)间，复制一个区域的单元格并保留格式，设置行宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要注意的"><span class="toc-text">需要注意的</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Java POI开发小结
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-07-02 11:38:03</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Java" title="Java">Java</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Apache POI" title="Apache POI">Apache POI</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="关于POI以及一些想法"><a href="#关于POI以及一些想法" class="headerlink" title="关于POI以及一些想法"></a>关于POI以及一些想法</h1><p>Apache POI是Apache软件基金会提供的100％开源库。大多数中小规模的应用程序开发主要依赖于Apache POI（HSSF+ XSSF）。它支持Excel 库的所有基本功能; 然而，呈现和文本提取是它的主要特点。 <a href="http://poi.apache.org/guidelines.html" target="_blank" rel="noopener">官网链接</a></p>
+<p>Java Excelapi有很多，除了Apahce POI，网上教程较多的Jexcel等。虽然没有使用过其他java excelapi，就本人使用Apahce POI开发感受和其他人的提醒，能用VB操作excel就尽量不要用java了。</p>
+<p>Apache   POI提供的基本功能，简单的读写ｅｘｃｅｌ文档没有问题，但是没有实现复制单元格(cell)，复制电子表格(Sheet)等功能（也有可能提供了但我没找到，毕竟没有很详细地完整看完官方Guide）。学习基本功能和了解POI实现机制，可以看上面官网链接或<a href="https://www.yiibai.com/apache_poi/apache_poi_core_classes.html" target="_blank" rel="noopener">易百中文教程</a>。</p>
+<p>我在下面会列出一些我在开发时自己编写的ＰＯＩ工具类中一些常用函数，具体代码可以在我的GitHub <a href="https://github.com/xiaot1996/ApachePOI" target="_blank" rel="noopener">ApachePOI</a>项目中找到。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><h2 id="获取有效行数"><a href="#获取有效行数" class="headerlink" title="获取有效行数"></a>获取有效行数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/********************************************************</span></span><br><span class="line"><span class="comment">	 * function : count the number of valid rows in a given sheet </span></span><br><span class="line"><span class="comment">	 * *******************************************************</span></span><br><span class="line"><span class="comment">	 * parameters:</span></span><br><span class="line"><span class="comment">	 * wb : workbook which contains the sheet we want</span></span><br><span class="line"><span class="comment">	 * indexSheet : the index of the sheet in the xb (start from 0)</span></span><br><span class="line"><span class="comment">	 *************************************************************** */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSheetRowNumber</span><span class="params">(XSSFWorkbook wb,<span class="keyword">int</span> indexSheet)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		XSSFSheet sheet=wb.getSheetAt(indexSheet);</span><br><span class="line">		<span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> begin = sheet.getFirstRowNum();  </span><br><span class="line">		  </span><br><span class="line">	    <span class="keyword">int</span> end = sheet.getLastRowNum();  </span><br><span class="line">	  </span><br><span class="line">	    <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt;= end; i++) &#123;  </span><br><span class="line">	        <span class="keyword">if</span> (<span class="keyword">null</span> == sheet.getRow(i)|| getCellValue(sheet.getRow(i).getCell(<span class="number">0</span>)) == <span class="string">""</span> || <span class="keyword">null</span>==sheet.getRow(i).getCell(<span class="number">0</span>)) &#123;  </span><br><span class="line">	            <span class="keyword">continue</span>;  </span><br><span class="line">	        &#125;  </span><br><span class="line">	        <span class="keyword">else</span> count++;</span><br><span class="line">	    &#125;</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="列编号-ABC…-与数字-123…-的转换"><a href="#列编号-ABC…-与数字-123…-的转换" class="headerlink" title="列编号(ABC…)与数字(123…)的转换"></a>列编号(ABC…)与数字(123…)的转换</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**********************************************************</span></span><br><span class="line"><span class="comment">     * Excel column index begin 1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> colStr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> length</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     **********************************************************/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">excelColStrToNum</span><span class="params">(String colStr, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> ch = colStr.charAt(length - i - <span class="number">1</span>);</span><br><span class="line">            num = (<span class="keyword">int</span>)(ch - <span class="string">'A'</span> + <span class="number">1</span>) ;</span><br><span class="line">            num *= Math.pow(<span class="number">26</span>, i);</span><br><span class="line">            result += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Excel column index begin 1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> columnIndex</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">excelColIndexToStr</span><span class="params">(<span class="keyword">int</span> columnIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (columnIndex &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String columnStr = <span class="string">""</span>;</span><br><span class="line">        columnIndex--;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (columnStr.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                columnIndex--;</span><br><span class="line">            &#125;</span><br><span class="line">            columnStr = ((<span class="keyword">char</span>) (columnIndex % <span class="number">26</span> + (<span class="keyword">int</span>) <span class="string">'A'</span>)) + columnStr;</span><br><span class="line">            columnIndex = (<span class="keyword">int</span>) ((columnIndex - columnIndex % <span class="number">26</span>) / <span class="number">26</span>);</span><br><span class="line">        &#125; <span class="keyword">while</span> (columnIndex &gt; <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> columnStr;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在不同工作簿-workbook-间，复制一个区域的单元格并保留格式，设置行宽"><a href="#在不同工作簿-workbook-间，复制一个区域的单元格并保留格式，设置行宽" class="headerlink" title="在不同工作簿(workbook)间，复制一个区域的单元格并保留格式，设置行宽"></a>在不同工作簿(workbook)间，复制一个区域的单元格并保留格式，设置行宽</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">/********************************************************</span><br><span class="line">	 * function : copy a part of cells in different workbooks</span><br><span class="line">	 * *******************************************************</span><br><span class="line">	 * @param:</span><br><span class="line">	 * xbIn : the resource workbook</span><br><span class="line">	 * xbOut : the destination workbook</span><br><span class="line">	 * indexSheetIn : the index of the sheet in the xbIn (start from 0)</span><br><span class="line">	 * indexSheetOut : the index of the sheet in the xbOut (start from 0)</span><br><span class="line">	 * rowInStart : the number of the first row that we need in the indexSheetIn ( start from 1 )</span><br><span class="line">	 * rowInEnd : the number of the last row that we need in the indexSheetIn ( start from 1 )</span><br><span class="line">	 * colInStart : the number of the first column that we need in the indexSheetIn ( start from 1, represent A in the sheet )</span><br><span class="line">	 * colInEnd : the number of the last column that we need in the indexSheetIn ( start from 1, represent A in the sheet )</span><br><span class="line">	 * rowOutStart : the number of the first row that we want to put cells in the indexSheetOut ( start from 1 )</span><br><span class="line">	 * colOutStart : the number of the first column that we want to put cells in the indexSheetOut ( start from 1, represent A in the sheet )</span><br><span class="line">	 * *******************************************************/</span><br><span class="line">	public static boolean copyCells(XSSFWorkbook wbIn,XSSFWorkbook wbOut,int indexSheetIn,int indexSheetOut, </span><br><span class="line">			int rowInStart,int colInStart,int rowInEnd,int colINEnd,int rowOutStart,int colOutStart )</span><br><span class="line">	&#123;</span><br><span class="line">		XSSFSheet sheetIn=wbIn.getSheetAt(indexSheetIn);</span><br><span class="line">		XSSFRow rowIn;</span><br><span class="line">		XSSFCell cellIn;</span><br><span class="line">		XSSFCellStyle cellStyleIn;</span><br><span class="line">		String cellInValue;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		XSSFSheet sheetOut=wbOut.getSheetAt(indexSheetOut);</span><br><span class="line">		XSSFRow rowOut;</span><br><span class="line">		XSSFCell cellOut;</span><br><span class="line">		XSSFCellStyle cellStyleOut;</span><br><span class="line">		</span><br><span class="line">		int rowNum=rowInEnd-rowInStart;</span><br><span class="line">		int colNum=colINEnd-colInStart;</span><br><span class="line">		for(int i=0;i&lt;rowNum+1;i++)</span><br><span class="line">	    &#123;  	    	</span><br><span class="line">	    	</span><br><span class="line">	    	rowIn=sheetIn.getRow(rowInStart+i-1); 		    		</span><br><span class="line">	    	rowOut = sheetOut.createRow(rowOutStart+i-1);</span><br><span class="line">			//set the copied row&apos;s height</span><br><span class="line">	    	rowOut.setHeight(rowIn.getHeight());</span><br><span class="line">	    	for(int j=0;j&lt;colNum+1;j++) &#123;</span><br><span class="line">	    		cellIn=rowIn.getCell(colInStart+j-1);</span><br><span class="line">	    		if(cellIn!=null) &#123;</span><br><span class="line">	    		cellInValue=getCellValue(cellIn);</span><br><span class="line">	    	    cellOut=rowOut.createCell(colOutStart+j-1);</span><br><span class="line">	    	    cellStyleIn=cellIn.getCellStyle();</span><br><span class="line">	    	    cellStyleOut=wbOut.createCellStyle();</span><br><span class="line">	    	    cellStyleOut.cloneStyleFrom(cellStyleIn);</span><br><span class="line">	    	    cellOut.setCellStyle(cellStyleOut);</span><br><span class="line">	    	    cellOut.setCellValue(cellInValue);</span><br><span class="line">	    		&#125;</span><br><span class="line">	    	&#125;	</span><br><span class="line">	    &#125;</span><br><span class="line">		</span><br><span class="line">		//in order to deal with merged regions</span><br><span class="line">		java.util.List&lt;CellRangeAddress&gt; regions=sheetIn.getMergedRegions();</span><br><span class="line">		</span><br><span class="line">		for(CellRangeAddress cellRangeAddress : regions)</span><br><span class="line">		&#123;</span><br><span class="line">			if(cellRangeAddress.getFirstColumn()&gt;=colInStart-1&amp;&amp;</span><br><span class="line">					cellRangeAddress.getLastColumn()&lt;=colINEnd-1&amp;&amp;</span><br><span class="line">					cellRangeAddress.getFirstRow()&gt;=rowInStart-1&amp;&amp;</span><br><span class="line">					cellRangeAddress.getLastRow()&lt;=rowInEnd-1)</span><br><span class="line">			&#123;</span><br><span class="line">				int diffrow=rowOutStart-rowInStart;</span><br><span class="line">				int diffcol=colOutStart-colInStart;</span><br><span class="line">			int firstRow=cellRangeAddress.getFirstRow()+diffrow;</span><br><span class="line">			int firstCol=cellRangeAddress.getFirstColumn()+diffcol;</span><br><span class="line">			int lastRow=firstRow+cellRangeAddress.getLastRow()-cellRangeAddress.getFirstRow();</span><br><span class="line">			int lastCol=firstCol+cellRangeAddress.getLastColumn()-cellRangeAddress.getFirstColumn();</span><br><span class="line">			CellRangeAddress cellRangeAddressNew=new CellRangeAddress(firstRow, lastRow, firstCol, lastCol);</span><br><span class="line"></span><br><span class="line">			sheetOut.addMergedRegion(cellRangeAddressNew);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//set the copied column&apos;s width</span><br><span class="line">		for(int columnIndex=colInStart-1;columnIndex&lt;=colINEnd-1;columnIndex++) &#123;</span><br><span class="line">			int width=sheetIn.getColumnWidth(columnIndex);</span><br><span class="line">			sheetOut.setColumnWidth(columnIndex, width);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	    return true;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="需要注意的"><a href="#需要注意的" class="headerlink" title="需要注意的"></a>需要注意的</h2><ul>
+<li>在linux环境下，使用LibreOffice Calc，虽然在给每个电子表格(sheet)命名时，无论代码中还是软件中，名称可以包含空格或特殊字符，但用apahce poi获取sheet名时，只会读到空格或特殊符号之前的部分。我的解决方法是在创建每个sheet时统一用横杠(-)代替空格和特殊字符。</li>
+<li>对于合并单元格(merged region)，好的做法是在<strong>同一个函数</strong>中先把该表中<strong>所有</strong>要合并的单元格存到cellRangeAddress列表中，再进行复制之类的操作，避免在多个函数反复添加合并单元格。</li>
+<li>自动设置列宽方法autoSizeColumn，对于合并单元格不能很好适用，建议还是自己设置。</li>
+<li>在设置格式时，LibreOffice Calc中形如<code>=$表名.单元格编号</code>。但在java POI中形式为<code>cell.setcellformula(表名!单元格编号)</code></li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
