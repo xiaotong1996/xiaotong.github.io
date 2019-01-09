@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（七）：委托 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（七）"><span class="toc-text">深入理解C#（七）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#委托（delegate）"><span class="toc-text">委托（delegate）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-委托的构成"><span class="toc-text">1. 委托的构成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并和删除委托"><span class="toc-text">合并和删除委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件的简单讨论"><span class="toc-text">事件的简单讨论</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（七）：委托
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:47:56</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（七）"><a href="#深入理解C-（七）" class="headerlink" title="深入理解C#（七）"></a>深入理解C#（七）</h1><p>*第二章（C# 1的核心基础）<br><br><strong>委托，类型系统的特征，值/引用类型</strong></p>
+<h2 id="委托（delegate）"><a href="#委托（delegate）" class="headerlink" title="委托（delegate）"></a>委托（delegate）</h2><ol>
+<li>类似于C语言的函数指针</li>
+<li>不指定一个要执行的行为，将这个行为用某种方式“包含在一个对象中”</li>
+</ol>
+<h3 id="1-委托的构成"><a href="#1-委托的构成" class="headerlink" title="1. 委托的构成"></a>1. 委托的构成</h3><ul>
+<li><p>声明委托类型</p>
+</li>
+<li><p>必须有一个方法包含了要执行的代码</p>
+</li>
+<li><p>必须创建一个委托实例</p>
+</li>
+<li><p>必须调用invoke委托实例<br>​<br>namespace Chapter02<br>​    {<br>​    //声明委托类型<br>​    delegate void StringProcessor(string input);<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Person</span><br><span class="line">&#123;</span><br><span class="line">string name;</span><br><span class="line"></span><br><span class="line">public Person(string name)</span><br><span class="line">&#123;</span><br><span class="line">this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//声明兼容的实例方法</span><br><span class="line">public void Say(string message)</span><br><span class="line">&#123;</span><br><span class="line">Console.WriteLine(&quot;&#123;0&#125; says: &#123;1&#125;&quot;, name, message);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Background</span><br><span class="line">&#123;</span><br><span class="line">//声明兼容发静态方法</span><br><span class="line">public static void Note(string note)</span><br><span class="line">&#123;</span><br><span class="line">Console.WriteLine(&quot;(&#123;0&#125;)&quot;, note);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[Description(&quot;Listing 2.1&quot;)]</span><br><span class="line">class SimpleDelegateUse</span><br><span class="line">&#123;</span><br><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">Person jon = new Person(&quot;Jon&quot;);</span><br><span class="line">Person tom = new Person(&quot;Tom&quot;);</span><br><span class="line">//创建三个委托实例</span><br><span class="line">StringProcessor jonsVoice, tomsVoice, background;</span><br><span class="line">jonsVoice = new StringProcessor(jon.Say);</span><br><span class="line">tomsVoice = new StringProcessor(tom.Say);</span><br><span class="line">background = new StringProcessor(Background.Note);</span><br><span class="line">//调用委托实例</span><br><span class="line">jonsVoice(&quot;Hello, son.&quot;);</span><br><span class="line">tomsVoice.Invoke(&quot;Hello, Daddy!&quot;);</span><br><span class="line">background(&quot;An airplane flies past.&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体步骤：<br></p>
+</li>
+</ul>
+<ol>
+<li>声明一个委托类型。</li>
+<li>找到或写一个方法，具有和委托类型相同的签名，并能做我们想做的事情。</li>
+<li>创建委托实例，指定在调用委托实例时，执行该方法。（创建委托实例，取决于操作使用实例方法还是静态方法。具体做法就是new一个我们声明的委托类型，把任意匹配的方法，作为参数传入）</li>
+<li>调用委托实例，可以显示用Invoke方法调用，也可用简化语句直接调用。</li>
+</ol>
+<p>类比：委托就像提前请律师打官司，声明委托类型就像指明要处理那种类型的案件，找到或写一个方法就像找到一个满足要求的律师，创建委托实例就像和律师签订协议，在需要时调用委托实例，就像遇上官司了，就要请律师出门解决。所以实际执行的方法是律师在做，委托只是提前签好协定，这样我们就可以在任何有需求的时候解决问题。</p>
+<h3 id="合并和删除委托"><a href="#合并和删除委托" class="headerlink" title="合并和删除委托"></a>合并和删除委托</h3><p>实际使用时，委托实例往往有一个操作列表（invocation list）与之关联。Combine负责将两个委托实例的调用列表连接到一起，Remove负责从一个委托实例中删除另一个实例的调用列表。一般使用+和+=操作符代替Combine。<br><br>注意： 委托和string一样是不易变的。Combine和String.Concat很像，合并现有实例来形成新的实例。<br><br>可用-和-=简写Remove操作<br><br>注意：若委托的签名有一个非void的返回类型，则Invoke的返回值是最后一个操作的返回值。除非使用GetInvocationList获取操作列表时，都显示调用某个委托，否则只能看到最后一个操作的返回值。<br><br>注意：如果调用列表中断任何操作爆出一个异常，都会组织执行后续操作。</p>
+<h3 id="事件的简单讨论"><a href="#事件的简单讨论" class="headerlink" title="事件的简单讨论"></a>事件的简单讨论</h3><p>基本思想：让代码在发生某事时作出响应。<br><br><strong>注意：事件不是委托类型的字段，但C#允许使用字段风格的时间（field-like event）</strong><br><br>可以将事件看作类似属性的东西。两者都声明具有一种特定的类型，对于事件来说，是一个委托类型。(即：事件之于委托，就像属性之于字段）使用属性，实际是在调用方法。实现属性，可在方法中添加别的功能（校验机制之类）。同样订阅或取消订阅事件，实际是在调用（add和remove方法）<br><br>既然能用委托实现为什么还要事件？<br><br>和属性类似，事件添加了一个封装层，实现发布/订阅模式。<a href="http://csharpindepth.com/Articles/Chapter2/Events.aspx" target="_blank" rel="noopener">Delegates and Events</a></p>
+<p>字段风格的事件，只需要一个声明。编译器将声明转换成一个具有默认add/remove实现的事件和一个私有委托类型的字段。表面上调用一个事件，实际调用存储在字段中的委托实例。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

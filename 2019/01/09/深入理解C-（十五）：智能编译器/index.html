@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（十五）：智能编译器 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（十五）"><span class="toc-text">深入理解C#（十五）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动实现的属性"><span class="toc-text">自动实现的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐式类型的局部变量"><span class="toc-text">隐式类型的局部变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用var声明局部变量"><span class="toc-text">使用var声明局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隐式类型的限制"><span class="toc-text">隐式类型的限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隐式类型的优缺点"><span class="toc-text">隐式类型的优缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简化的初始化"><span class="toc-text">简化的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义示例类型"><span class="toc-text">定义示例类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为嵌入对象设置属性"><span class="toc-text">为嵌入对象设置属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合初始化程序"><span class="toc-text">集合初始化程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐式类型的数组"><span class="toc-text">隐式类型的数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匿名类型"><span class="toc-text">匿名类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#匿名类型的成员"><span class="toc-text">匿名类型的成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#投影初始化程序"><span class="toc-text">投影初始化程序</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（十五）：智能编译器
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:55:42</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（十五）"><a href="#深入理解C-（十五）" class="headerlink" title="深入理解C#（十五）"></a>深入理解C#（十五）</h1><p>*第八章（C# 3：用智能的编译器来防错）<br></p>
+<h2 id="自动实现的属性"><a href="#自动实现的属性" class="headerlink" title="自动实现的属性"></a>自动实现的属性</h2><p>简化普通属性的代码<br><br>普通属性：可读/可写并将值存储到一个非常直观的私有变量中的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public string Name&#123;get;set;&#125;</span><br></pre></td></tr></table></figure>
+<p>仍然可以为取值和赋值方法指定不同的访问权限。</p>
+<p>静态自动属性：取值方法是共有的，赋值方法是私有的，且赋值方法只能在类型初始化程序中使用。</p>
+<p><strong>定义struct时，使用自动属性，需要显式地调用无参构造函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public struct Foo</span><br><span class="line">&#123;</span><br><span class="line">	public int Value&#123;get;private set;&#125;</span><br><span class="line">	public Foo(int value):this()</span><br><span class="line">	&#123;</span><br><span class="line">		this.Value=value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自动属性仍有几个小问题：</p>
+<ol>
+<li>没办法在声明时，设定初始的默认值</li>
+<li>没法把它们设定成真正的只读属性（使用私有赋值方法来解决）</li>
+</ol>
+<h2 id="隐式类型的局部变量"><a href="#隐式类型的局部变量" class="headerlink" title="隐式类型的局部变量"></a>隐式类型的局部变量</h2><h3 id="使用var声明局部变量"><a href="#使用var声明局部变量" class="headerlink" title="使用var声明局部变量"></a>使用var声明局部变量</h3><p><strong>var并没有把C#变成动态类型或者弱类型的语言，只是类型由编译器推断</strong><br><br>编译器获取初始化表达式在编译时的类型，并使变量也具有那种类型。</p>
+<h3 id="隐式类型的限制"><a href="#隐式类型的限制" class="headerlink" title="隐式类型的限制"></a>隐式类型的限制</h3><p>只有在一下情况能使用：</p>
+<ul>
+<li>局部变量，不是静态字段和实例字段</li>
+<li>声明的同时被初始化</li>
+<li>初始化表达式不是方法组和匿名函数</li>
+<li>初始化表达式不是null</li>
+<li>语句中之声明了一个变量</li>
+<li>初始化表达式不包含正在声明的变量</li>
+</ul>
+<p>对于第三点，显示声明变量是可以的，如：<br><code>var starter = (ThreadStart)delegate(){ Console.WriteLine();}</code><br>对于null也可以做强制类型转换，但是无意义。</p>
+<p>最常见应用：用方法调用的结果来初始化一个变量。</p>
+<h3 id="隐式类型的优缺点"><a href="#隐式类型的优缺点" class="headerlink" title="隐式类型的优缺点"></a>隐式类型的优缺点</h3><p>优点：增强可读性，改变代码重心<br>缺点：类型不明确</p>
+<h2 id="简化的初始化"><a href="#简化的初始化" class="headerlink" title="简化的初始化"></a>简化的初始化</h2><h3 id="定义示例类型"><a href="#定义示例类型" class="headerlink" title="定义示例类型"></a>定义示例类型</h3><p><code>new Person{Name=&quot;Jon&quot;,Age=36}</code></p>
+<h3 id="为嵌入对象设置属性"><a href="#为嵌入对象设置属性" class="headerlink" title="为嵌入对象设置属性"></a>为嵌入对象设置属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person tom=new Person(&quot;Tom&quot;)&#123;</span><br><span class="line">Age=9,</span><br><span class="line">Home=&#123;Country=&quot;UK&quot;,Town=&quot;Reading&quot;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="集合初始化程序"><a href="#集合初始化程序" class="headerlink" title="集合初始化程序"></a>集合初始化程序</h3><ol>
+<li>使用集合初始化程序来创建新集合<br><code>List&lt;string&gt; names=new List{ &quot;Holly&quot;,&quot;Jon&quot;,&quot;Tom&quot;};</code><br>任何实现了IEnumerable类型，只要它为初始化列表中出现的每个元素都提供了一个恰当的公共的Add方法，就可以使用这个特性。</li>
+<li>在其他对象初始化程序中填充集合</li>
+</ol>
+<h2 id="隐式类型的数组"><a href="#隐式类型的数组" class="headerlink" title="隐式类型的数组"></a>隐式类型的数组</h2><p>对于<code>void MyMethod(string[] names)</code><br>C#3 这样使用：<br><br><code>MyMethod(new[] {&quot;Holly&quot;,&quot;Jon&quot;,&quot;Tom&quot;});</code></p>
+<h2 id="匿名类型"><a href="#匿名类型" class="headerlink" title="匿名类型"></a>匿名类型</h2><p>实例：使用匿名类型，填充数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var family = new[]</span><br><span class="line">&#123;</span><br><span class="line">    new &#123; Name = &quot;Holly&quot;, Age = 37 &#125;,</span><br><span class="line">    new &#123; Name = &quot;Jon&quot;, Age = 36 &#125;,</span><br><span class="line">    new &#123; Name = &quot;Tom&quot;, Age = 9 &#125;,</span><br><span class="line">    new &#123; Name = &quot;Robin&quot;, Age = 6 &#125;,</span><br><span class="line">    new &#123; Name = &quot;William&quot;, Age = 6 &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int totalAge = 0;</span><br><span class="line">foreach (var person in family)</span><br><span class="line">&#123;</span><br><span class="line">    totalAge += person.Age;</span><br><span class="line">&#125;</span><br><span class="line">Console.WriteLine(&quot;Total age: &#123;0&#125;&quot;, totalAge);</span><br></pre></td></tr></table></figure>
+<p>family中所有人具有相同的类型，否则编译器无法推断出何时类型。</p>
+<h3 id="匿名类型的成员"><a href="#匿名类型的成员" class="headerlink" title="匿名类型的成员"></a>匿名类型的成员</h3><ul>
+<li>一个获取所有初始值的构造函数</li>
+<li>共有的只读属性</li>
+<li>属性的私有只读字段</li>
+<li>重写的Equals、GethashCode和ToString</li>
+</ul>
+<h3 id="投影初始化程序"><a href="#投影初始化程序" class="headerlink" title="投影初始化程序"></a>投影初始化程序</h3><p>实际使用时，往往希望从别的对象复制属性用以新建一个新的对象。 例如：<code>new { Name=person.Name,IsAdult=(person.Age&gt;=18)}</code><br>C# 3支持一种简化的语法：如果不指定属性名称，而只指定用于求指的表达式，它会使用表达式的最后一个部分作为名称，前提是它只是一个简单字段或属性。<br><br>应用：<code>new { person.Name, IsAdult=(Person.Age&gt;=18)}</code></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（五）：大致了解-COM和动态类型 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（五）"><span class="toc-text">深入理解C#（五）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简化COM互操作"><span class="toc-text">简化COM互操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与动态语言互操作"><span class="toc-text">与动态语言互操作</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（五）：大致了解-COM和动态类型
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:44:17</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（五）"><a href="#深入理解C-（五）" class="headerlink" title="深入理解C#（五）"></a>深入理解C#（五）</h1><p>*第一章（大致了解C#各个版本的特性：COM和动态类型）</p>
+<p><strong>C# 4特性：互操作性</strong><br><br>包括：处理旧的COM技术和在DLR（Dynamic Language Runtime，动态语言运行时）上执行全新动态语言。</p>
+<h2 id="简化COM互操作"><a href="#简化COM互操作" class="headerlink" title="简化COM互操作"></a>简化COM互操作</h2><p>用COM控制让数据出现在Excel中<br>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var app = new Application &#123; Visible = false &#125;;</span><br><span class="line">Workbook workbook = app.Workbooks.Add();</span><br><span class="line">Worksheet worksheet = app.ActiveSheet;</span><br><span class="line">int row = 1;</span><br><span class="line">foreach (var product in Product.GetSampleProducts()</span><br><span class="line">.Where(p =&gt; p.Price != null))</span><br><span class="line">&#123;</span><br><span class="line">worksheet.Cells[row, 1].Value = product.Name;</span><br><span class="line">worksheet.Cells[row, 2].Value = product.Price;</span><br><span class="line">row++;</span><br><span class="line">&#125;</span><br><span class="line">workbook.SaveAs(Filename: &quot;demo.xls&quot;,</span><br><span class="line">FileFormat: XlFileFormat.xlWorkbookNormal);</span><br><span class="line">app.Application.Quit();</span><br></pre></td></tr></table></figure>
+<h2 id="与动态语言互操作"><a href="#与动态语言互操作" class="headerlink" title="与动态语言互操作"></a>与动态语言互操作</h2><p>问题：产品能通过WEb服务访问，但只能用Python代码。Web服务使用了Python特性来构建结果，没有声明我们要访问的属性类型。但要我们指定类型，怎么办？</p>
+<p>使用新的类型dynamic<br><br>可以将dynamic类型隐式转换为其他类型</p>
+<p>例子：从IronPython中获取产品列表并打印出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ScriptEngine engine = Python.CreateEngine();</span><br><span class="line">ScriptScope scope = engine.ExecuteFile(@&quot;CSharp4\FindProducts.py&quot;);</span><br><span class="line">dynamic products = scope.GetVariable(&quot;products&quot;);</span><br><span class="line">foreach (dynamic product in products)</span><br><span class="line">&#123;</span><br><span class="line">Console.WriteLine(&quot;&#123;0&#125;: &#123;1&#125;&quot;, product.ProductName, product.Price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>products和product为动态类型，编译器允许我们对产品列表迭代打印，但是它不确保是否能执行成功。如果有错误，只有执行时才会知道失败。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

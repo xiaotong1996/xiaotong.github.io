@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（一）：大致了解-数据类型 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（一）"><span class="toc-text">深入理解C#（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#产品-名称-价格的例子"><span class="toc-text">产品/名称/价格的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-1实现"><span class="toc-text">C# 1实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-2实现"><span class="toc-text">C# 2实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-3实现"><span class="toc-text">C# 3实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-4实现"><span class="toc-text">C# 4实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结一下："><span class="toc-text">小结一下：</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（一）：大致了解-数据类型
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:39:12</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（一）"><a href="#深入理解C-（一）" class="headerlink" title="深入理解C#（一）"></a>深入理解C#（一）</h1><p>*第一章（大致了解C#各个版本的特性：数据类型）</p>
+<h2 id="产品-名称-价格的例子"><a href="#产品-名称-价格的例子" class="headerlink" title="产品/名称/价格的例子"></a><strong>产品/名称/价格</strong>的例子</h2><h3 id="C-1实现"><a href="#C-1实现" class="headerlink" title="C# 1实现"></a>C# 1实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Product</span><br><span class="line">&#123;</span><br><span class="line">string name;</span><br><span class="line">public string Name&#123; get &#123; return name;&#125; &#125;</span><br><span class="line"></span><br><span class="line">decimal price;</span><br><span class="line">public decimal Price &#123; get &#123; return price; &#125;&#125;</span><br><span class="line"></span><br><span class="line">public Product(string name,decimal price)</span><br><span class="line">&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.price = price;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static ArrayList GetSample()</span><br><span class="line">&#123;</span><br><span class="line">	ArrayList list = new ArrayList();</span><br><span class="line">	list.Add(new Prodect(&quot;west side&quot;,9.99m));</span><br><span class="line">	list.Add(new Prodect(&quot;Assassins&quot;,14.99m));</span><br><span class="line">	return list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public override string ToString()</span><br><span class="line">&#123;</span><br><span class="line">	return string.Format(&quot;&#123;0&#125;: &#123;1&#125;&quot;,name,price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>存在以下问题：<br></p>
+<ol>
+<li>ArrayList 没有 提供 与其 内部 内容 有关 的 编译 时 信息。 不慎 在 GetSampleProducts 创建 的 列表 中 添加 一个 字符串 是 完全 有可能 的， 而 编译器 对此 没有 任何 反应。<br>(例如<code>list.Add(&quot;this is a string&quot;);</code>编译器不能发现错误）</li>
+<li>代码 中为 属性 提供 了 公共 的 取值 方法， 这 意味着 如果 添加 对应 的 赋值 方法， 那么 赋值 方法 也 必须 是 公共 的。</li>
+<li>用于 创建 属性 和 变量 的 代码 很复杂—— 封装 一个 字符串 和 一个 十进制 数 应该 是一 个 十分 简单 的 任务， 不该 这么 复杂。</li>
+</ol>
+<h3 id="C-2实现"><a href="#C-2实现" class="headerlink" title="C# 2实现"></a>C# 2实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Product</span><br><span class="line">&#123;</span><br><span class="line">string name;</span><br><span class="line">public string Name&#123;</span><br><span class="line">	 get &#123; return name;&#125;</span><br><span class="line">	private set &#123; name=value;&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>}
+</code></pre><p>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">decimal price;</span><br><span class="line">public decimal Price &#123; get &#123; return price; &#125;&#125;</span><br><span class="line"></span><br><span class="line">public Product(string name,decimal price)</span><br><span class="line">&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.price = price;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static List GetSample()</span><br><span class="line">&#123;</span><br><span class="line">	List&lt;Product&gt; list = new List();</span><br><span class="line">	list.Add(new Prodect(&quot;west side&quot;,9.99m));</span><br><span class="line">	list.Add(new Prodect(&quot;Assassins&quot;,14.99m));</span><br><span class="line">	return list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public override string ToString()</span><br><span class="line">&#123;</span><br><span class="line">	return string.Format(&quot;&#123;0&#125;: &#123;1&#125;&quot;,name,price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C# 2提出泛型<br>List<product> list = new List();<br><br>且属性拥有私有赋值方法 private set { name=value;} <br><br>这样就解决了C# 1中前两个问题</product></p>
+<h3 id="C-3实现"><a href="#C-3实现" class="headerlink" title="C# 3实现"></a>C# 3实现</h3><p>特性1：自动实现的属性和简化的初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class Product</span><br><span class="line">&#123;</span><br><span class="line">public string Name&#123; get; private set;</span><br></pre></td></tr></table></figure>
+<pre><code>}
+</code></pre><p>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public decimal Price &#123; get; private set; &#125;</span><br><span class="line"></span><br><span class="line">public Product(string name,decimal price)</span><br><span class="line">&#123;</span><br><span class="line">	Name=name;</span><br><span class="line">	Price = price;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Product() &#123;&#125;</span><br><span class="line"></span><br><span class="line">public static List GetSample()</span><br><span class="line">&#123;</span><br><span class="line">	return new List&#123;</span><br><span class="line">	new Prodect&#123; Name=”West Side&quot;,Price=9.99m&#125;,</span><br><span class="line">	new Prodect&#123;Name=&quot;Assassins&quot;, Price=14.99m&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public override string ToString()</span><br><span class="line">&#123;</span><br><span class="line">	return string.Format(&quot;&#123;0&#125;: &#123;1&#125;&quot;,Name,Price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用属性代替变量，删除了所有与变量关联的代码，在类中处处使用属性，增强了一致性。<br><br>有一个私有的无参构造函数，用于基于属性的初始化。</p>
+<h3 id="C-4实现"><a href="#C-4实现" class="headerlink" title="C# 4实现"></a>C# 4实现</h3><p>为了移除易变形,使用只读属性<br><br>在调 用 构造 函数 时 指定 实 参 的 名称，<br><strong>关于只读属性</strong></p>
+<ol>
+<li><p>readonly是一个用于以下三种上下文的修饰符：</p>
+</li>
+<li><p>在字段定义中：readonly表示这个字段的实例化只能发生在<1>变量声明时<2>在所属类的构造器中</2></1></p>
+</li>
+<li><p>在只读段落（readonly struct）中：为一个struct加上readonly表示这个struct是不变的（immutable）。</p>
+</li>
+<li><p>在方法返回ref readonly中，表示这个方法返回一个reference，这个ref不可写</p>
+<p>using System.Collections.Generic;<br>​    public class Product<br>​    {<br>​    readonly string name;<br>​    public string Name{ get { return name;}</p>
+<pre><code>}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">readonly decimal price;	</span><br><span class="line">public decimal Price &#123; get&#123;return price;&#125; &#125;</span><br><span class="line"></span><br><span class="line">public Product(string name,decimal price)</span><br><span class="line">&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.price = price;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Product() &#123;&#125;</span><br><span class="line"></span><br><span class="line">public static List GetSample()</span><br><span class="line">&#123;</span><br><span class="line">	return new List&#123;</span><br><span class="line">	new Prodect&#123; name:&quot;West Side&quot;,price:9.99m&#125;,</span><br><span class="line">	new Prodect&#123;name:&quot;Assassins&quot;, price:14.99m&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public override string ToString()</span><br><span class="line">&#123;</span><br><span class="line">	return string.Format(&quot;&#123;0&#125;: &#123;1&#125;&quot;,name,price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>指定实参名称的好处是：在方法或构造函数包含多个参数时，使代码更清楚。另外可以不按顺序添加参数，而按照名称添加。这是C# 4为每个方法或构造函数自动添加的，直接使用。</p>
+<h3 id="小结一下："><a href="#小结一下：" class="headerlink" title="小结一下："></a>小结一下：<br></h3><p>除了用到readonly的时候，大部分时候选用C# 3的属性自动实现的特性，隐藏变量，在方法中始终使用属性，保持一致性。对于拥有多个复杂参数的函数或构造函数，用命名实参来调用方法。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（十）：可空类型 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（十）"><span class="toc-text">深入理解C#（十）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1中表示空值的模式"><span class="toc-text">C# 1中表示空值的模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Nullable-lt-T-gt-和System-Nullable"><span class="toc-text">System.Nullable&lt;T&gt;和System.Nullable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2为可空类型提供的语法糖"><span class="toc-text">C# 2为可空类型提供的语法糖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#？修饰符"><span class="toc-text">？修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用null进行赋值和比较"><span class="toc-text">使用null进行赋值和比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可空转换和操作符"><span class="toc-text">可空转换和操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可空逻辑"><span class="toc-text">可空逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对可空类型使用as操作符"><span class="toc-text">对可空类型使用as操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空合并操作符（？？）"><span class="toc-text">空合并操作符（？？）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可空类型的新奇用法"><span class="toc-text">可空类型的新奇用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试一个不使用输出参数的操作"><span class="toc-text">尝试一个不使用输出参数的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空合并操作符简化比较"><span class="toc-text">空合并操作符简化比较</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（十）：可空类型
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:50:43</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（十）"><a href="#深入理解C-（十）" class="headerlink" title="深入理解C#（十）"></a>深入理解C#（十）</h1><p>*第四章（C# 2：可空类型）<br></p>
+<h2 id="C-1中表示空值的模式"><a href="#C-1中表示空值的模式" class="headerlink" title="C# 1中表示空值的模式"></a>C# 1中表示空值的模式</h2><ol>
+<li>魔值：牺牲一个值来表示空值（DBNull.Value表示数据库返回null的情况，这个魔值表示所有类型的空值）</li>
+<li>引用包装类型：直接用object作为变量类型，并根据需要进行装箱和拆箱</li>
+<li>额外的布尔标志：使用一个普通的值类型的值，同时使用另一个布尔标志来表示值是“真正”存在还是被忽略。要么在代码中维护两个单独的变量，要么将值和标志封装到另一个值类型中。</li>
+</ol>
+<h2 id="System-Nullable-lt-T-gt-和System-Nullable"><a href="#System-Nullable-lt-T-gt-和System-Nullable" class="headerlink" title="System.Nullable&lt;T&gt;和System.Nullable"></a><code>System.Nullable&lt;T&gt;</code>和System.Nullable</h2><p><code>Nullable&lt;T&gt;</code>是一个有着值类型约束的泛型类型。T的类型称为可空类型的基础类型(underlying type)。<br><br><code>Nullable&lt;T&gt;</code>有两个重要属性：HasValue和Value。就是采用上面第三种实现模式。<br><br><strong><code>Nullable&lt;T&gt;</code>仍为值类型，值将直接包含一个bool和一个int，而不是其他对象的引用</strong><br><br><code>Nullable&lt;T&gt;</code>引入一个名为GetValueOrDefault的新方法。存在值就返回值否则返回默认值/自己指定的返回值。<br><br><code>Nullable&lt;T&gt;</code>覆盖了其他方法：GetHashCode,ToString和Equals。GetHashCode在没有值时返回0，ToString在没有值时返回空字符串<br><br><strong>再次强调<code>Nullable&lt;T&gt;</code>是一个结构（值类型),如果把它转换成引用类型，需要对它装箱</strong><br><br>调用first.Equals(second)的具体规则：<br>​    </p>
+<ul>
+<li>first没有值，second为null，相等</li>
+<li>first没有值，second不为null，不相等</li>
+<li>first有值，second为null，不相等</li>
+<li>否则，若first的值等于second，相等</li>
+</ul>
+<p>System.Nullable类是一个静态类，只包含静态方法。<br>提供三个有用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static int Compare&lt;T&gt;(Nullable&lt;T&gt; n1,Nullable&lt;T&gt; n2)</span><br><span class="line">public static bool Equals&lt;T&gt;(Nullable&lt;T&gt; n1,Nullable&lt;T&gt; n2)</span><br><span class="line">public static Type GetUnderlyingType(Type nullableType)</span><br></pre></td></tr></table></figure>
+<p>Compare使用Comparer<t>.Default来比较两个基础值，Equals使用EqualityComparer<t>.Default。空值与空值相等，小于其他所有值。<br><br>第三个方法如果参数是一个可空类型，方法就返回它的基础类型；否则返回null。</t></t></p>
+<h2 id="C-2为可空类型提供的语法糖"><a href="#C-2为可空类型提供的语法糖" class="headerlink" title="C# 2为可空类型提供的语法糖"></a>C# 2为可空类型提供的语法糖</h2><h3 id="？修饰符"><a href="#？修饰符" class="headerlink" title="？修饰符"></a>？修饰符</h3><p><code>Nullable&lt;byte&gt;</code>与<code>byte?</code>可相互转换</p>
+<h3 id="使用null进行赋值和比较"><a href="#使用null进行赋值和比较" class="headerlink" title="使用null进行赋值和比较"></a>使用null进行赋值和比较</h3><h3 id="可空转换和操作符"><a href="#可空转换和操作符" class="headerlink" title="可空转换和操作符"></a>可空转换和操作符</h3><p>如果一个非可空的值类型支持一个操作符或一种转换，且那个操作符或转换只涉及其他非可空的值类型时，那么对应可空的值类型也支持同样的操作符或转换。举例：int=》long，int？=》long？<br><br><em>具体细节待看</em></p>
+<h3 id="可空逻辑"><a href="#可空逻辑" class="headerlink" title="可空逻辑"></a>可空逻辑</h3><h3 id="对可空类型使用as操作符"><a href="#对可空类型使用as操作符" class="headerlink" title="对可空类型使用as操作符"></a>对可空类型使用as操作符</h3><p>在C# 2之前，as只能用于引用类型。在C# 2中，也可以用于可空类型。</p>
+<h3 id="空合并操作符（？？）"><a href="#空合并操作符（？？）" class="headerlink" title="空合并操作符（？？）"></a>空合并操作符（？？）</h3><p>first？？second<br></p>
+<ol>
+<li>对first进行求值；</li>
+<li>如结果非空，该结果就是表达式的结果</li>
+<li>否则求second的值，其结果为整个表达式的结果<br>这个操作符还可用于可空值类型+引用类型<br><br>这个操作符是右结合的<br></li>
+</ol>
+<p>用法案例：<br><br>假设有一个在线订购系统，有billing address（账单寄送地址），contact address（联系地址），以及shipping address（送货地址）等，任何用户都必须有一个billing address，但contact address是可选的。对于一个订单来说，送货地址也是可选的，默认为billing address。遇到送货问题，要找联系人时。<br><br>C# 1实现：<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Address contact=user.ContactAddress;</span><br><span class="line">if(contact==null)</span><br><span class="line">&#123;</span><br><span class="line">	contact=order.ShippingAddress;</span><br><span class="line">	if(contact==null)</span><br><span class="line">	&#123;</span><br><span class="line">		contact=user.BillingAddress;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C# 2改进：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Address contact=user.ContactAddress??</span><br><span class="line">				order.ShippingAddress??</span><br><span class="line">				user.BilllingAddress;</span><br></pre></td></tr></table></figure>
+<h2 id="可空类型的新奇用法"><a href="#可空类型的新奇用法" class="headerlink" title="可空类型的新奇用法"></a>可空类型的新奇用法</h2><h3 id="尝试一个不使用输出参数的操作"><a href="#尝试一个不使用输出参数的操作" class="headerlink" title="尝试一个不使用输出参数的操作"></a>尝试一个不使用输出参数的操作</h3><p>输出参数的常规用法：用一个返回值来判断一个操作是否成功，并用一个输出参数来返回真正的结果。<br><br>返回引用类型的方法经常使用这样一种模式：失败时返回null，成功是返回非空值。但是，假如在方法执行成功的前提下，null也是一个有效的返回值，这样就不行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ArrayList list=hash[key];</span><br><span class="line">if(list==null)</span><br><span class="line">&#123;</span><br><span class="line">	list=new ArrayList();</span><br><span class="line">	hash[key]=list;</span><br><span class="line">&#125;</span><br><span class="line">list.Add(newItem);</span><br></pre></td></tr></table></figure>
+<p><em>假设HashTable和Dictionary&lt;Tkey,TValue&gt;可以获取一个委托，每次查找到一个不存在的键时就调用这个委托来添加一个新值。使用这个模式适用这种情况。</em><br>使用可空类型，能将这种模式扩展至值类型。</p>
+<p>具体实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static bool TryParse(string s, out Int32 result);</span><br></pre></td></tr></table></figure>
+<p>这个int的方法的传统用法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int result; </span><br><span class="line">if (int.TryParse(&quot;Not valid&quot;, out result))</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;Parsed to &#123;0&#125;&quot;, result);</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;Couldn&apos;t parse&quot;);</span><br><span class="line">&#125;</span><br><span class="line">Console.Read();</span><br></pre></td></tr></table></figure>
+<p>如果我们用可空类型：</p>
+<pre><code>class NullableTryParse
+</code></pre><p>​    {<br>​        static int? TryParse(string data)<br>​        {<br>​            int ret;<br>​            if (int.TryParse(data, out ret))<br>​            {<br>​                return ret;<br>​            }<br>​            else<br>​            {<br>​                return null;<br>​            }<br>​        }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">        int? parsed = TryParse(&quot;Not valid&quot;);</span><br><span class="line">        if (parsed != null)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Parsed to &#123;0&#125;&quot;, parsed.Value);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Couldn&apos;t parse&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样做的好处是它将返回值与解析是否成功封装在一个变量中，还把做和测试分离了。<br><br>还有一个好处是可以和空合并操作符配合使用。<br><br><strong>小结一下：</strong><br><br>上述模式的要点在于：先定义并获取方法返回值（做），再判断返回值（测试）。<br><br>如返回值是引用类型，我们可以通过判断是否为null，很容易实现这个模式，但若是值类型，就不好办了（除非我们定义一个特殊值，但这样会导致语义不明，就像魔数一样），所以就用到了可空类型，这样我们也能像使用引用类型一样，使用值类型。<br><br>更好的做法：在.NET 4中包含了Tuple类型，使用元祖可以使返回值含义更明确。</p>
+<h3 id="空合并操作符简化比较"><a href="#空合并操作符简化比较" class="headerlink" title="空合并操作符简化比较"></a>空合并操作符简化比较</h3><p>问题背景：假设要写一个电子商务网站，且有一个产品列表。希望按流行度，价格，名称依次排序。<br><br>C# 1的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public int Compare(Product first,Product second)</span><br><span class="line">&#123;</span><br><span class="line">	int ret=second.Popularity.CompareTo(first.Popularity);</span><br><span class="line">	if( ret !=0)</span><br><span class="line">	&#123;</span><br><span class="line">		return ret;</span><br><span class="line">	&#125;</span><br><span class="line">	ret=first.Price.CompareTo(second.Price);</span><br><span class="line">	if(ret ！=0）</span><br><span class="line">	&#123;</span><br><span class="line">		return ret；</span><br><span class="line">	&#125;</span><br><span class="line">	return first.Name.CompareTo(second.Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们往往这样写Compare方法。但若是属性返回为null，我们在比较前还要先判断非空，这样代码就太复杂了。我们可以用空合并操作符来简化代码。</p>
+<p>C# 2 ？？操作符实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public static class PartialComparer</span><br><span class="line">&#123;</span><br><span class="line">    public static int? Compare&lt;T&gt;(T first, T second)</span><br><span class="line">    &#123;</span><br><span class="line">        return Compare(Comparer&lt;T&gt;.Default, first, second);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int? Compare&lt;T&gt;(IComparer&lt;T&gt; comparer,T first,T second)</span><br><span class="line">    &#123;</span><br><span class="line">        int ret = comparer.Compare(first, second);</span><br><span class="line">        return ret == 0 ? new int?() : ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int? ReferenceCompare&lt;T&gt;(T first, T second)</span><br><span class="line">        where T : class</span><br><span class="line">    &#123;</span><br><span class="line">        return first == second ? 0</span><br><span class="line">             : first == null ? -1</span><br><span class="line">             : second == null ? 1</span><br><span class="line">             : new int?();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static bool? ReferenceEquals&lt;T&gt;(T first, T second)</span><br><span class="line">        where T : class</span><br><span class="line">    &#123;</span><br><span class="line">        return first == second ? true</span><br><span class="line">             : first == null ? false</span><br><span class="line">             : second == null ? false</span><br><span class="line">             : new bool?();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先实现一个用于比较的辅助类。可注意ReferenceCompare方法中的条件操作符用法。<br><br>现在可以重写Compare方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int Compare(Product first, Product second)</span><br><span class="line">    &#123;</span><br><span class="line">		return PartialComparer.ReferenceCompare(first, second) ??</span><br><span class="line">		// Reverse comparison of popularity to sort descending</span><br><span class="line">		PartialComparer.Compare(second.Popularity, first.Popularity) ??</span><br><span class="line">		PartialComparer.Compare(first.Price, second.Price) ??</span><br><span class="line">		PartialComparer.Compare(first.Name, second.Name) ??</span><br><span class="line">		0;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>最后的0指明前面所有比较都通过，这两个Product相等。也可用<code>Comparer&lt;string&gt;.Default.Compare(first.Name,second.Name)</code>作比较。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

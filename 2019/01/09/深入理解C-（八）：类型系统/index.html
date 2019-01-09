@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（八）：类型系统 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（八）"><span class="toc-text">深入理解C#（八）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1的类型系统何时不够用"><span class="toc-text">C# 1的类型系统何时不够用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#值类型和引用类型"><span class="toc-text">值类型和引用类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量存储"><span class="toc-text">变量存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于引用传递和值传递"><span class="toc-text">关于引用传递和值传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于装箱和拆箱"><span class="toc-text">关于装箱和拆箱</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（八）：类型系统
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:49:01</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（八）"><a href="#深入理解C-（八）" class="headerlink" title="深入理解C#（八）"></a>深入理解C#（八）</h1><p>*第二章（C# 类型系统）<br><br><strong>C# 1的类型系统是静态的、显示的和安全的</strong></p>
+<p>静态：描述表达式的编译时类型，使用<strong>不变的</strong>数据来分析哪些操作可用。</p>
+<h2 id="C-1的类型系统何时不够用"><a href="#C-1的类型系统何时不够用" class="headerlink" title="C# 1的类型系统何时不够用"></a>C# 1的类型系统何时不够用</h2><p>.NET 1.1内建了三种集合类型：</p>
+<ul>
+<li>数组–强类型–内建到语言和运行时中</li>
+<li>System.Collections命名空间中的弱类型集合</li>
+<li>System.Collections.Specialized命名空间中的强类型集合</li>
+</ul>
+<p><em>引用类型的数组支持协变（covariance），只要元素的类型之间允许转换，就能隐式将一种数组类型转换成另一种</em></p>
+<p><strong>方法覆盖和接口实现不允许协变性/逆变性</strong><br><br>参数类型的逆变性：使用一个放宽限制的签名如：<code>void Process(object x)</code></p>
+<h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><p>类是引用类型；结构是值类型<br><br>数组是引用类型；枚举是值类型<br><br>委托类型是引用类型；接口类型是引用类型，但可由值类型实现</p>
+<h3 id="变量存储"><a href="#变量存储" class="headerlink" title="变量存储"></a>变量存储</h3><ol>
+<li>变量的值在它声明时的位置存储</li>
+<li>局部变量的值总是存储在栈（stack）中（C# 1中完全成立，高级版本可能存在堆中）</li>
+<li>实例变量的值总是存储在实例本身存储的地方</li>
+<li>引用类型实例总是存储在堆（heap）中，静态变量也是。</li>
+</ol>
+<h3 id="关于引用传递和值传递"><a href="#关于引用传递和值传递" class="headerlink" title="关于引用传递和值传递"></a>关于引用传递和值传递</h3><p>无论是引用传递还是值传递，永远不会传递对象本身。<br>详见<a href="http://jonskeet.uk/csharp/parameters.html" target="_blank" rel="noopener">Parameter passing in C#</a></p>
+<h3 id="关于装箱和拆箱"><a href="#关于装箱和拆箱" class="headerlink" title="关于装箱和拆箱"></a>关于装箱和拆箱</h3><ul>
+<li><p>对于引用类型的变量，它的值永远是一个引用</p>
+</li>
+<li><p>对于值类型的变量，它的值永远是该值类型的一个值</p>
+<p>int i=5;<br>object o=i;<br>int j=(int) o;</p>
+</li>
+</ul>
+<p>第二行，发生了装箱操作：运行时在堆上创建一个包含值（5）的对象，o的值是对该新对象的一个引用。该对象的值是原始值的一个副本，改变i不会改变箱内的值。</p>
+<p>第三行，执行相反操作，拆箱。必须告诉编译器将object拆箱成什么类型。</p>
+<p>装箱什么时候方式？<br><br>为一个类型的值调用ToString、Equals或GetHashCode方法时，如果该类型没有覆盖这些方法，也发生装箱。另外，将值作为接口表达式使用时也会发生装箱。</p>
+<p>太过频繁的装拆箱会增大程序的操作开销，还会创建数量众多的对象，加重垃圾回收器的负担。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

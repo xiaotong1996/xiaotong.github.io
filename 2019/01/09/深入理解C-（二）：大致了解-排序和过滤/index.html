@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（二）：大致了解-排序和过滤 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（二）"><span class="toc-text">深入理解C#（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#按字母顺序打印产品列表"><span class="toc-text">按字母顺序打印产品列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda表达式使用Comparison进行排序"><span class="toc-text">Lambda表达式使用Comparison进行排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用一个扩展方法对List进行排序"><span class="toc-text">使用一个扩展方法对List进行排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询集合"><span class="toc-text">查询集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-1"><span class="toc-text">C# 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-2"><span class="toc-text">C# 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-3"><span class="toc-text">C# 3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（二）：大致了解-排序和过滤
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:41:23</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（二）"><a href="#深入理解C-（二）" class="headerlink" title="深入理解C#（二）"></a>深入理解C#（二）</h1><p>*第一章（大致了解C#各个版本的特性：排序和过滤）</p>
+<h2 id="按字母顺序打印产品列表"><a href="#按字母顺序打印产品列表" class="headerlink" title="按字母顺序打印产品列表"></a>按字母顺序打印产品列表</h2><p><em>按名称排序，找出最贵的产品</em><br><em>这里只摘录C# 3的实现方法</em></p>
+<h3 id="Lambda表达式使用Comparison进行排序"><a href="#Lambda表达式使用Comparison进行排序" class="headerlink" title="Lambda表达式使用Comparison进行排序"></a>Lambda表达式使用Comparison<product>进行排序</product></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; products=Product.GetSampleProducts();	</span><br><span class="line">products.Sort((x,y)=&gt;x.Name.CompareTo(y));</span><br><span class="line">foreach(Product product in products)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(product);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用一个扩展方法对List进行排序"><a href="#使用一个扩展方法对List进行排序" class="headerlink" title="使用一个扩展方法对List进行排序"></a>使用一个扩展方法对List<product>进行排序</product></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; products=Product.GetSampleProducts();</span><br><span class="line">foreach(Product product in products.OrderBy(p=&gt;p.Name))</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(product);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="查询集合"><a href="#查询集合" class="headerlink" title="查询集合"></a>查询集合</h2><h3 id="C-1"><a href="#C-1" class="headerlink" title="C# 1"></a>C# 1</h3><p>需要循环，测试每个元素，操作符合条件的元素（这里是打印元素）</p>
+<h3 id="C-2"><a href="#C-2" class="headerlink" title="C# 2"></a>C# 2</h3><p>测试和打印分开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; products=Product.GetSampleProducts();</span><br><span class="line"></span><br><span class="line">Predicate&lt;Product&gt; test=delegate(Product p) &#123; return p.Price&gt;10m;&#125;;</span><br><span class="line">List&lt;Product&gt; matches=products.FinaAll(test);</span><br><span class="line"></span><br><span class="line">Action&lt;Product&gt; print=Console.WriteLine;</span><br><span class="line">matces.ForEach(print);</span><br></pre></td></tr></table></figure>
+<p>用FinaAll和ForEach分解问题<br>另一个版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; products=Product.GetSampleProducts();</span><br><span class="line">products.FindAll(delegate(Product p)&#123;return p.Price&gt;10;&#125;&#125;.</span><br><span class="line">		.ForEach(Console.WriteLine);</span><br></pre></td></tr></table></figure>
+<h3 id="C-3"><a href="#C-3" class="headerlink" title="C# 3"></a>C# 3</h3><p>用Lambda表达式来测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; products=Product.GetSampleProducts();</span><br><span class="line">foreach(Product product in products.Where(p=&gt;p.Price&gt;10))</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(product);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
+<li>C# 1，传统方法</li>
+<li>C# 2, 匿名方法：有助于问题的分离性（将测试和打印分开）</li>
+<li>C# 3， Lambda表达式：增强了可读性</li>
+</ol>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

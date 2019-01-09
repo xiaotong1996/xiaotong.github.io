@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（十二）：匿名方法 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（十二）"><span class="toc-text">深入理解C#（十二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用匿名方法的内联委托操作"><span class="toc-text">使用匿名方法的内联委托操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的匿名方法实例：处理一个参数"><span class="toc-text">简单的匿名方法实例：处理一个参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#匿名方法的返回值"><span class="toc-text">匿名方法的返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略委托参数"><span class="toc-text">忽略委托参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匿名方法中的捕获变量"><span class="toc-text">匿名方法中的捕获变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#捕获变量的实际用处"><span class="toc-text">捕获变量的实际用处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#捕获变量的延长生存期"><span class="toc-text">捕获变量的延长生存期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局部变量实例化"><span class="toc-text">局部变量实例化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#捕获变量的使用规则和小结"><span class="toc-text">捕获变量的使用规则和小结</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（十二）：匿名方法
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:52:44</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（十二）"><a href="#深入理解C-（十二）" class="headerlink" title="深入理解C#（十二）"></a>深入理解C#（十二）</h1><p>*第五章（C# 2：进入快速通道的委托（下））<br><br><strong>匿名方法</strong></p>
+<h2 id="使用匿名方法的内联委托操作"><a href="#使用匿名方法的内联委托操作" class="headerlink" title="使用匿名方法的内联委托操作"></a>使用匿名方法的内联委托操作</h2><p>C# 1中的问题：用特定签名来实现委托是很常见的情况。有时只需要一个委托来做一件很简单的事，但是必须创建一个完整的新方法。</p>
+<p>匿名方法允许指定一个内联委托实例的操作，作为创建委托实例表达式的一部分。</p>
+<h2 id="简单的匿名方法实例：处理一个参数"><a href="#简单的匿名方法实例：处理一个参数" class="headerlink" title="简单的匿名方法实例：处理一个参数"></a>简单的匿名方法实例：处理一个参数</h2><p>.NET 2.0有一个泛型委托类型Action<t>,它的签名如下：<br><br><code>public delegate void Action&lt;T&gt;(T obj)</code><br><br>Action<t>就是对T的一个实例执行某些操作。如Action<string>可以反转字符串并打印出来，Action<int>可以打印传给它的那个数的平方根，Action&lt;IList<double>&gt;可以计算出传给它的所有数的平均值并打印。<br><br>实例：</double></int></string></t></t></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Action&lt;string&gt; printReverse = delegate (string text)</span><br><span class="line">&#123;</span><br><span class="line">char[] chars = text.ToCharArray();</span><br><span class="line">Array.Reverse(chars);</span><br><span class="line">Console.WriteLine(new string(chars));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>匿名方法的语法：<br><br>delegate关键字，参数，代码块（定义对委托实例的操作）匿名方法的结果是一个委托实例，和调用普通方法一样调用委托。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printReverse(&quot;hello world&quot;);</span><br></pre></td></tr></table></figure>
+<p><strong>逆变性不适用于匿名方法：必须指定和委托类型完全匹配的参数类型</strong></p>
+<p>匿名方法的是实现，是在IL中为源代码中断每个匿名方法创建一个方法</p>
+<p>一个更精简的极端例子：体现匿名方法的一般用法，即作为传给另一个方法的参数使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;int&gt; x = new List&lt;int&gt;();</span><br><span class="line">x.Add(5);</span><br><span class="line">x.Add(10);</span><br><span class="line">x.Add(15);</span><br><span class="line">x.Add(20);</span><br><span class="line">x.Add(25);</span><br><span class="line"></span><br><span class="line">x.ForEach(delegate (int n) &#123; Console.WriteLine(Math.Sqrt(n)); &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="匿名方法的返回值"><a href="#匿名方法的返回值" class="headerlink" title="匿名方法的返回值"></a>匿名方法的返回值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Predicate&lt;int&gt; isEven = delegate (int x)</span><br><span class="line">        &#123; return x % 2 == 0; &#125;;</span><br><span class="line"></span><br><span class="line">Console.WriteLine(isEven(1));</span><br><span class="line">Console.WriteLine(isEven(4));</span><br></pre></td></tr></table></figure>
+<p>没有必要再声明一个返回类型，因为编译器会检查是否所有可能返回值都兼容于委托类型声明的返回类型。</p>
+<h3 id="忽略委托参数"><a href="#忽略委托参数" class="headerlink" title="忽略委托参数"></a>忽略委托参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> class IgnoredParametersAnonymousMethods</span><br><span class="line">&#123;</span><br><span class="line">    static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">        Button button = new Button();</span><br><span class="line">        button.Text = &quot;Click me&quot;;</span><br><span class="line">        button.Click += delegate &#123; Console.WriteLine(&quot;LogPlain&quot;); &#125;;</span><br><span class="line">        button.KeyPress += delegate &#123; Console.WriteLine(&quot;LogKey&quot;); &#125;;</span><br><span class="line">        button.MouseClick += delegate &#123; Console.WriteLine(&quot;LogMouse&quot;); &#125;;</span><br><span class="line"></span><br><span class="line">        Form form = new Form();</span><br><span class="line">        form.AutoSize = true;</span><br><span class="line">        form.Controls.Add(button);</span><br><span class="line">        Application.Run(form);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般写法：<code>button.Click+=delegate(object sender,EventArgs e){...}</code></p>
+<h2 id="匿名方法中的捕获变量"><a href="#匿名方法中的捕获变量" class="headerlink" title="匿名方法中的捕获变量"></a>匿名方法中的捕获变量</h2><p>匿名方法外部对变量的更改在匿名方法内部是可见的，反之亦然。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">string captured = &quot;before x is created&quot;;</span><br><span class="line"></span><br><span class="line">MethodInvoker x = delegate</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(captured);</span><br><span class="line">    captured = &quot;changed by x&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">captured = &quot;directly before x is invoked&quot;;</span><br><span class="line">x();</span><br><span class="line"></span><br><span class="line">Console.WriteLine(captured);</span><br><span class="line"></span><br><span class="line">captured = &quot;before second invocation&quot;;</span><br><span class="line">x();</span><br><span class="line">Console.Read();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>创建委托实例不会导致执行</strong><br><br><strong>在整个方法中，我们使用的始终是同一个captured变量</strong></p>
+<h3 id="捕获变量的实际用处"><a href="#捕获变量的实际用处" class="headerlink" title="捕获变量的实际用处"></a>捕获变量的实际用处</h3><p>能简化避免专门创建一些类来存储一个委托需要处理的信息（除了作为参数传递信息之外）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; FindAllYoungerThan(List&lt;Person&gt; people,int limit)</span><br><span class="line">&#123;</span><br><span class="line">	return people.FinaAll(delegate(Person person)&#123; return person.Age&lt;limit;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们在委托实例内部捕获了limit参数，若不支持捕获变量，就不能使用作为参数传递的limit</p>
+<h3 id="捕获变量的延长生存期"><a href="#捕获变量的延长生存期" class="headerlink" title="捕获变量的延长生存期"></a>捕获变量的延长生存期</h3><p><strong>对于一个捕获变量，只要还有任何委托实例在引用它，它就会一直存在</strong></p>
+<h3 id="局部变量实例化"><a href="#局部变量实例化" class="headerlink" title="局部变量实例化"></a>局部变量实例化</h3><p>每声明一次局部变量，它就被实例化一次。</p>
+<h3 id="捕获变量的使用规则和小结"><a href="#捕获变量的使用规则和小结" class="headerlink" title="捕获变量的使用规则和小结"></a>捕获变量的使用规则和小结</h3><ul>
+<li>只在复杂情况下使用</li>
+<li>捕获有for或foreach语句声明的变量之前，思考委托是否需要在循环迭代结束后延续，不是则在循环内另建一个变量来复制想要的值。</li>
+<li>若创建多个委托实例，且捕获了变量，思考是否希望它们捕捉同一个变量</li>
+<li>如果捕获的变量不发生改变，无需担心</li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

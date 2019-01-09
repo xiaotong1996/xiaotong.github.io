@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C#数据库工具开发（十） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-数据库工具开发（十）"><span class="toc-text">C#数据库工具开发（十）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题（07-24-07-25）"><span class="toc-text">问题（07/24-07/25）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-如何实现一个页面关闭触发上级页面的响应？"><span class="toc-text">1. 如何实现一个页面关闭触发上级页面的响应？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-DataGridViewCheckBox的响应事件"><span class="toc-text">2. DataGridViewCheckBox的响应事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-如何查询某个表中所有设置了索引的字段？"><span class="toc-text">3. 如何查询某个表中所有设置了索引的字段？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-更好的查询表中所有索引以及对应列名的sql查询语句"><span class="toc-text">3.1 更好的查询表中所有索引以及对应列名的sql查询语句</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C#数据库工具开发（十）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 11:14:47</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#实战" title="C#实战">C#实战</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="C-数据库工具开发（十）"><a href="#C-数据库工具开发（十）" class="headerlink" title="C#数据库工具开发（十）"></a>C#数据库工具开发（十）</h1><h2 id="问题（07-24-07-25）"><a href="#问题（07-24-07-25）" class="headerlink" title="问题（07/24-07/25）"></a>问题（07/24-07/25）</h2><h3 id="1-如何实现一个页面关闭触发上级页面的响应？"><a href="#1-如何实现一个页面关闭触发上级页面的响应？" class="headerlink" title="1. 如何实现一个页面关闭触发上级页面的响应？"></a>1. 如何实现一个页面关闭触发上级页面的响应？</h3><p>问题背景：我有一个页面显示某个数据库中所有表名和表结构，在此页面可以打开另一个修改或创建新表的页面，完成后，我想立即在显示页面刷新，让刚刚修改或生成的表也能出现在列表中。<br><br>解决方法：由于修改添加页面是在显示页面生成的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">formxml = new FormXMLExecute(&quot;*Oracle*&quot;, filePath.Text);</span><br><span class="line">formxml.Show();</span><br></pre></td></tr></table></figure>
+<p>我们只需要在创建formxml时添加一个页面关闭事件即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">formxml = new FormXMLExecute(&quot;*Oracle*&quot;, filePath.Text);</span><br><span class="line">formxml.FormClosing += new FormClosingEventHandler(this.FromXMLExecute_FormClosing);</span><br><span class="line">formxml.Show();</span><br></pre></td></tr></table></figure>
+<p>在页面关闭事件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void FromXMLExecute_FormClosing(object sender, FormClosingEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    //Do your stuff here.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现想要完成的功能（如刷新页面等）</p>
+<h3 id="2-DataGridViewCheckBox的响应事件"><a href="#2-DataGridViewCheckBox的响应事件" class="headerlink" title="2. DataGridViewCheckBox的响应事件"></a>2. DataGridViewCheckBox的响应事件</h3><p>问题背景：想要实现点击DataGridViewCheckBox后，刷新页面<br>解决方法：这个的即时响应和DataGridViewTextBox或DataGridViewComboBox相比简单很多，能直接用现有事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void dataXML_CellContentClick(object sender, DataGridViewCellEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    if (e.ColumnIndex == 3 &amp;&amp; e.RowIndex != -1)</span><br><span class="line">    &#123;</span><br><span class="line">        //Do your stuff here.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>唯一需要注意的和之前提到的一样：用单元格<code>EditedFormattedValue</code>属性而不是<code>Value</code>属性。</p>
+<h3 id="3-如何查询某个表中所有设置了索引的字段？"><a href="#3-如何查询某个表中所有设置了索引的字段？" class="headerlink" title="3. 如何查询某个表中所有设置了索引的字段？"></a>3. 如何查询某个表中所有设置了索引的字段？</h3><p>Oracle：<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.column_name from all_ind_columns a, all_indexes b where a.index_name=b.index_name and a.table_name = upper(&apos;&quot;+tableName+&quot;&apos;) order by a.table_name&quot;;</span><br></pre></td></tr></table></figure>
+<p>SQLServer：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;USE &quot; + DBName+&quot; ;SELECT colname=d.name FROM   sysindexes  a  JOIN   sysindexkeys   b   ON   a.id=b.id   AND   a.indid=b.indid  JOIN   sysobjects   c   ON   b.id=c.id  JOIN   syscolumns   d   ON   b.id=d.id   AND   b.colid=d.colid  WHERE   a.indid   NOT IN(0,255)  AND   c.name=&apos;&quot;+tableName+&quot;&apos;&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-更好的查询表中所有索引以及对应列名的sql查询语句"><a href="#3-1-更好的查询表中所有索引以及对应列名的sql查询语句" class="headerlink" title="3.1 更好的查询表中所有索引以及对应列名的sql查询语句"></a>3.1 更好的查询表中所有索引以及对应列名的sql查询语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">use GMP_BF;</span><br><span class="line">SELECT</span><br><span class="line">tab.name AS [表名],</span><br><span class="line">idx.name AS [索引名称],</span><br><span class="line">col.name AS [列名]</span><br><span class="line">FROM</span><br><span class="line">sys.indexes idx</span><br><span class="line">JOIN sys.index_columns idxCol </span><br><span class="line">  ON (idx.object_id = idxCol.object_id </span><br><span class="line">      AND idx.index_id = idxCol.index_id </span><br><span class="line">      )</span><br><span class="line">JOIN sys.tables tab</span><br><span class="line">  ON (idx.object_id = tab.object_id)</span><br><span class="line">JOIN sys.columns col</span><br><span class="line">  ON (idx.object_id = col.object_id</span><br><span class="line">      AND idxCol.column_id = col.column_id)</span><br><span class="line">WHERE tab.name=&apos;TEST2&apos;;</span><br></pre></td></tr></table></figure>
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

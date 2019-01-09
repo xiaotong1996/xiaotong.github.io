@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（九）：泛型 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（九）"><span class="toc-text">深入理解C#（九）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#理解泛型类型和方法"><span class="toc-text">理解泛型类型和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型方法的类型推断"><span class="toc-text">泛型方法的类型推断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型约束"><span class="toc-text">类型约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现泛型"><span class="toc-text">实现泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级泛型"><span class="toc-text">高级泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态字段和静态构造函数"><span class="toc-text">静态字段和静态构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JIT-just-in-time即时-编译器如何处理泛型"><span class="toc-text">JIT(just in time即时)编译器如何处理泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#泛型迭代"><span class="toc-text">泛型迭代</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射和泛型"><span class="toc-text">反射和泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型在C-和其他语言中的一些限制"><span class="toc-text">泛型在C#和其他语言中的一些限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三章小结"><span class="toc-text">第三章小结</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（九）：泛型
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:50:00</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（九）"><a href="#深入理解C-（九）" class="headerlink" title="深入理解C#（九）"></a>深入理解C#（九）</h1><p>*第三章（C# 2：泛型实现参数化类型）<br></p>
+<h2 id="理解泛型类型和方法"><a href="#理解泛型类型和方法" class="headerlink" title="理解泛型类型和方法"></a>理解泛型类型和方法</h2><h2 id="泛型方法的类型推断"><a href="#泛型方法的类型推断" class="headerlink" title="泛型方法的类型推断"></a>泛型方法的类型推断</h2><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static List&lt;T&gt; MakeList&lt;T&gt;(T first,T second)</span><br><span class="line">...</span><br><span class="line">List&lt;string&gt; list=MakeList&lt;string&gt;(&quot;Line 1&quot;,&quot;Line 2&quot;);</span><br></pre></td></tr></table></figure>
+<p>使用编译器的类型推断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;string&gt; list=MakeList(&quot;Line 1&quot;,&quot;Line 2&quot;);</span><br></pre></td></tr></table></figure>
+<h2 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h2><p>如List<int>等，所有类型参数都可以指定为任意类型，它们<strong>未被约束</strong>。我们想制定规则，从而判断哪些是泛型类型或泛型方法呢能接受的有效类型实参。<br><br>用<strong>约束</strong>来实现。约束放在泛型方法或泛型类型声明的末尾，有上下文关键字where引入。</int></p>
+<ol>
+<li>引用类型约束<br><br>确保使用的类型实参是引用类型：必须是第一个约束<br><br><code>struct RefSample&lt;T&gt; where T:class</code><br><br>以这种方式约束一个类型参数后，可以使用==和！=来比较引用（包括null）</li>
+<li>值类型约束<br><br>确保使用的类型实参是值类型:<br><br><code>class ValSample&lt;T&gt; where T:struct</code>br&gt;<br>设定值类型约束后，不允许使用==和！=进行比较。<br><br>以上两种约束比较少用，后两者更有用。</li>
+<li>构造函数类型约束<br><br>检查类型实参是否有一个可用于创建类型实力的无参构造函数。必须是最后一个约束。<br><br><code>public T CreateInstance() where T : new()
+{    return new T();    }</code><br><br>在使用工厂风格的设计模式时，这个约束非常有用。</li>
+<li>转换类型约束<br><br>指定另一个类型，类型实参必须可以通过一致性、引用或装箱隐式地转换为该类型。还可以规定一个类型实参必须可以转换为另一个类型实参。<br><br>这个约束意味着“在类型参数的实例上使用指定类型的成员”</li>
+</ol>
+<h2 id="实现泛型"><a href="#实现泛型" class="headerlink" title="实现泛型"></a>实现泛型</h2><p>假装T是一个真正的类型名称。额外要注意：<br></p>
+<ol>
+<li><p>默认值表达式：<br><br>例子：Dictionary&lt;TKey,TValue&gt;有一个TryGetValue方法：用一个输出参数来接受你打算获取的值，用boolean返回值显示是否成功。这意味着方法必须用TValue类型的值来填充输出参数。<br><br>C# 2提供了默认值表达式(default value expression)。<br><br>例子：以泛型方式将一个给定的值和默认值进行比较</p>
+<p>class DefaultValueComparison<br> {<br>​     static int CompareToDefault<t>(T value)<br>​         where T : IComparable<t><br>​     {<br>​         return value.CompareTo(default(T));<br>​     }</t></t></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(CompareToDefault(&quot;x&quot;));</span><br><span class="line">    Console.WriteLine(CompareToDefault(10));</span><br><span class="line">    Console.WriteLine(CompareToDefault(0));</span><br><span class="line">    Console.WriteLine(CompareToDefault(-10));</span><br><span class="line">    Console.WriteLine(CompareToDefault(DateTime.MinValue));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> }</p>
+</li>
+</ol>
+<p>这个泛型方法规定了只能使用实现了IComparable<t>接口的类型，这样才能为传入的值调用CompareTo（T）</t></p>
+<p>类型推断只能用于泛型方法，有一个泛型类型，其中不包含任何泛型方法，怎么实现类型推断？<br><br><code>Pair&lt;int,string&gt; pair=new Pair&lt;int,string&gt;(10,&quot;value&quot;);</code><br>解决方法是使用包含泛型方法的非泛型辅助类。<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static class Pair</span><br><span class="line">&#123;</span><br><span class="line">	public static Pair&lt;T1,T2&gt; Of&lt;T1,T2&gt;(T1 first,T2 second)</span><br><span class="line">	&#123;</span><br><span class="line">		return new Pair&lt;T1,T2&gt;(first,second);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Pair&lt;int,string&gt; pair=Pair.Of(10,&quot;value&quot;);</span><br></pre></td></tr></table></figure>
+<p>等到第七章再回看</p>
+<ol>
+<li>直接比较<br>如果一个类型参数是未约束的（即没有对其应用约束），那么只能在该类型的值与null比较时才能使用==和！=操作符。不能直接比较两个T类型的值。如果一个类型参数被约束成值类型，就完全不能为它使用==和！=。如果被约束成引用类型，具体比较将完全取决于类型参数被约束成什么类型。</li>
+</ol>
+<h2 id="高级泛型"><a href="#高级泛型" class="headerlink" title="高级泛型"></a>高级泛型</h2><h3 id="静态字段和静态构造函数"><a href="#静态字段和静态构造函数" class="headerlink" title="静态字段和静态构造函数"></a>静态字段和静态构造函数</h3><p><strong>每个封闭类型都有它自己的静态字段集</strong><br><br>同样的规则也适用于静态初始化程序和静态构造函数。</p>
+<h3 id="JIT-just-in-time即时-编译器如何处理泛型"><a href="#JIT-just-in-time即时-编译器如何处理泛型" class="headerlink" title="JIT(just in time即时)编译器如何处理泛型"></a>JIT(just in time即时)编译器如何处理泛型</h3><p>暂略</p>
+<h3 id="泛型迭代"><a href="#泛型迭代" class="headerlink" title="泛型迭代"></a>泛型迭代</h3><p>对集合执行的最常见操作之一是便利（迭代）所有元素。最简单的办法使用foreach语句。<br><br>当需要为自己的某个类型实现迭代时，由于IEnumerable<t>扩展了旧的IEnumerable接口，所以要实现两个不同方法：<br><br>IEnumerator<t> GetEnumerator();<br>IEnumerator GetRnumerator();</t></t></p>
+<h2 id="反射和泛型"><a href="#反射和泛型" class="headerlink" title="反射和泛型"></a>反射和泛型</h2><p>反射的一切都是围绕“检查对象及其类型”展开的。<br><br>typeof可通过两种方式作用于泛型类型。一种方式是获取泛型类型定义，另一种方式是获取特定的已构造类型。<br><br>typeof(Dictionary&lt;,&gt;)或typeof(Dictionary&lt;string,X&gt;)<br></p>
+<p>获取泛型和已构造Type对象的各种方式<br><br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">string listTypeName = &quot;System.Collections.Generic.List`1&quot;;</span><br><span class="line"></span><br><span class="line">Type defByName = Type.GetType(listTypeName);</span><br><span class="line"></span><br><span class="line">Type closedByName = Type.GetType(listTypeName + &quot;[System.String]&quot;);</span><br><span class="line">Type closedByMethod = defByName.MakeGenericType(typeof(string));</span><br><span class="line">Type closedByTypeof = typeof(List&lt;string&gt;);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(closedByMethod == closedByName);</span><br><span class="line">Console.WriteLine(closedByName == closedByTypeof);</span><br><span class="line"></span><br><span class="line">Type defByTypeof = typeof(List&lt;&gt;);</span><br><span class="line">Type defByMethod = closedByName.GetGenericTypeDefinition();</span><br><span class="line"></span><br><span class="line">Console.WriteLine(defByMethod == defByName);</span><br><span class="line">Console.WriteLine(defByName == defByTypeof);</span><br></pre></td></tr></table></figure>
+<p>反射泛型方法<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static void PrintTypeParameter&lt;T&gt;()</span><br><span class="line">&#123;</span><br><span class="line">Console.WriteLine(typeof(T));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">Type type = typeof(GenericMethodReflection);</span><br><span class="line">MethodInfo definition = type.GetMethod(&quot;PrintTypeParameter&quot;);</span><br><span class="line">MethodInfo constructed;</span><br><span class="line">constructed = definition.MakeGenericMethod(typeof(string));</span><br><span class="line">constructed.Invoke(null, null);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取泛型方法定义</li>
+<li>使用MakeGenericMethod返回一个已构造的泛型方法。</li>
+<li>后去已构造的方法后，就可以调用了。</li>
+</ol>
+<h2 id="泛型在C-和其他语言中的一些限制"><a href="#泛型在C-和其他语言中的一些限制" class="headerlink" title="泛型在C#和其他语言中的一些限制"></a>泛型在C#和其他语言中的一些限制</h2><p>为什么不能将List<string>转换成List<object>?<br><br>泛型是不变的，但为什么数组是协变的？<br><br>为了支持从JAVA中编译来的代码，因为Java有协变数组。</object></string></p>
+<p>使用泛型辅助类解决逆变性缺乏问题</p>
+<p>缺乏操作符约束或者数值约束<br><br>解决方法：<br></p>
+<ol>
+<li><a href="http://mng.bz/9m8i" target="_blank" rel="noopener">表达式树，第九章</a></li>
+<li>C# 4的动态特性，14章有例子</li>
+</ol>
+<p>为什么泛型只限于类型（包括类、结构、委托和接口）和方法?</p>
+<ol>
+<li>缺乏泛型属性、索引器和其他成员类型</li>
+</ol>
+<h2 id="第三章小结"><a href="#第三章小结" class="headerlink" title="第三章小结"></a>第三章小结</h2><p>泛型的三个优点：<br></p>
+<ol>
+<li>编译时的类型安全性</li>
+<li>性能</li>
+<li>代码的表现力<br>IDE和编译器能提前验证代码</li>
+</ol>
+<p>值类型性能上获益最大。在强类型的泛型API中，不再需要装箱和拆箱。<br>使用泛型，代码能更清楚地表达其意图。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

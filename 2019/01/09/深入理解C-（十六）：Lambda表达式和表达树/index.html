@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（十六）：Lambda表达式和表达树 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（十六）"><span class="toc-text">深入理解C#（十六）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作为委托的lambda表达式"><span class="toc-text">作为委托的lambda表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Func-lt-…-gt-委托类型简介"><span class="toc-text">Func&lt;…&gt;委托类型简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转换成lambda表达式"><span class="toc-text">转换成lambda表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用单一表达式作为主体"><span class="toc-text">使用单一表达式作为主体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隐式类型的参数列表"><span class="toc-text">隐式类型的参数列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单一参数的快捷语法"><span class="toc-text">单一参数的快捷语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用List和事件的简单例子"><span class="toc-text">使用List和事件的简单例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#列表的过滤、排序和操作"><span class="toc-text">列表的过滤、排序和操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在事件处理程序中进行记录"><span class="toc-text">在事件处理程序中进行记录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表达式树"><span class="toc-text">表达式树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以编程方式构建表达式树，编译并执行"><span class="toc-text">以编程方式构建表达式树，编译并执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将C-Lambda表达式转换成表达式树"><span class="toc-text">将C# Lambda表达式转换成表达式树</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（十六）：Lambda表达式和表达树
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:56:26</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（十六）"><a href="#深入理解C-（十六）" class="headerlink" title="深入理解C#（十六）"></a>深入理解C#（十六）</h1><p>*第九章（C# 3：Lambda表达式和表达树）<br><br>lambda=λ</p>
+<h2 id="作为委托的lambda表达式"><a href="#作为委托的lambda表达式" class="headerlink" title="作为委托的lambda表达式"></a>作为委托的lambda表达式</h2><h3 id="Func-lt-…-gt-委托类型简介"><a href="#Func-lt-…-gt-委托类型简介" class="headerlink" title="Func&lt;…&gt;委托类型简介"></a>Func&lt;…&gt;委托类型简介</h3><p>.NET3.5的System命名空间中，有5个泛型Func委托类型。<br>每个委托签名都获取0~4个参数，其类型使用类型参数来指定。最后一个类型参数用作每种情况下的返回类型。<br><br>例如：Func&lt;string,double,int&gt;等价于<code>public delegate int SomeDelegate(string arg1,double arg2)</code></p>
+<h3 id="转换成lambda表达式"><a href="#转换成lambda表达式" class="headerlink" title="转换成lambda表达式"></a>转换成lambda表达式</h3><p>用匿名方法来创建委托实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;string,int&gt; returnLength;</span><br><span class="line">returnLength=delegate(string text)&#123;return text.Length;&#125;;</span><br><span class="line">Console.WriteLine(returnLength(&quot;Hello&quot;));</span><br></pre></td></tr></table></figure>
+<p>Lambda表达式最冗长的形式是：<br><br><code>(显示类型的参数列表）=》{语句}</code><br>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;string, int&gt; returnLength;</span><br><span class="line">returnLength = (string text) =&gt; &#123; return text.Length; &#125;;</span><br><span class="line"></span><br><span class="line">Console.WriteLine(returnLength(&quot;Hello&quot;));</span><br></pre></td></tr></table></figure>
+<p>Lambda表达式有着和匿名方法控制返回语句一样的规则：不能从Lambda表达式返回void类型</p>
+<h3 id="使用单一表达式作为主体"><a href="#使用单一表达式作为主体" class="headerlink" title="使用单一表达式作为主体"></a>使用单一表达式作为主体</h3><p>大多数情况可以用一个表达式来表示整个主体，该表达式的值是Lambda的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（string text)=&gt;text.Length</span><br></pre></td></tr></table></figure>
+<h3 id="隐式类型的参数列表"><a href="#隐式类型的参数列表" class="headerlink" title="隐式类型的参数列表"></a>隐式类型的参数列表</h3><p>编译器能推断出参数类型，可以不用显示声明参数类型，<strong>注意：</strong>隐式和显示类型参数不能一起用。此外要是有out或ref参数，只能使用显示参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(text)=&gt;text.Length</span><br></pre></td></tr></table></figure>
+<h3 id="单一参数的快捷语法"><a href="#单一参数的快捷语法" class="headerlink" title="单一参数的快捷语法"></a>单一参数的快捷语法</h3><p>如果lambda表达式只需要一个参数，且那个参数可以隐式指定类型，可以省略圆括号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text=&gt;text.Length</span><br></pre></td></tr></table></figure>
+<p>现在，例子简化成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> Func&lt;string, int&gt; returnLength;</span><br><span class="line">returnLength =  text =&gt;  text.Length;</span><br><span class="line"></span><br><span class="line">Console.WriteLine(returnLength(&quot;Hello&quot;));</span><br></pre></td></tr></table></figure>
+<p><em>高阶函数</em><br><br>Lambda表达式主体可以包含另一个Lambda表达式，另外，Lambda表达式的参数可以是另一个委托</p>
+<h2 id="使用List和事件的简单例子"><a href="#使用List和事件的简单例子" class="headerlink" title="使用List和事件的简单例子"></a>使用List<t>和事件的简单例子</t></h2><h3 id="列表的过滤、排序和操作"><a href="#列表的过滤、排序和操作" class="headerlink" title="列表的过滤、排序和操作"></a>列表的过滤、排序和操作</h3><p>List<t>的FindAll方法，获取一个Predicate<t>,并返回一个新列表，包含原始列表中与谓词匹配的所有元素。Sort方法获取一个Comparison<t>,并相应地对列表进行排序。ForEach方法获取一个Action<t>,并对每个元素执行特定行为。</t></t></t></t></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">var films = new List&lt;Film&gt;</span><br><span class="line">&#123;</span><br><span class="line">    new Film &#123;Name=&quot;Jaws&quot;, Year=1975&#125;,</span><br><span class="line">    new Film &#123;Name=&quot;Singing in the Rain&quot;, Year=1952&#125;,</span><br><span class="line">    new Film &#123;Name=&quot;Some like it Hot&quot;, Year=1959&#125;,</span><br><span class="line">    new Film &#123;Name=&quot;The Wizard of Oz&quot;, Year=1939&#125;,</span><br><span class="line">    new Film &#123;Name=&quot;It&apos;s a Wonderful Life&quot;, Year=1946&#125;,</span><br><span class="line">    new Film &#123;Name=&quot;American Beauty&quot;, Year=1999&#125;,</span><br><span class="line">    new Film &#123;Name=&quot;High Fidelity&quot;, Year=2000&#125;,</span><br><span class="line">    new Film &#123;Name=&quot;The Usual Suspects&quot;, Year=1995&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Action&lt;Film&gt; print =</span><br><span class="line">    film =&gt; Console.WriteLine(&quot;Name=&#123;0&#125;, Year=&#123;1&#125;&quot;, film.Name, film.Year);</span><br><span class="line"></span><br><span class="line">// Note: extra lines added for clarity when running</span><br><span class="line">Console.WriteLine(&quot;All films&quot;);</span><br><span class="line">films.ForEach(print);</span><br><span class="line">Console.WriteLine();</span><br><span class="line"></span><br><span class="line">Console.WriteLine(&quot;Oldies&quot;);</span><br><span class="line">films.FindAll(film =&gt; film.Year &lt; 1960)</span><br><span class="line">     .ForEach(print);</span><br><span class="line">Console.WriteLine();</span><br><span class="line"></span><br><span class="line">Console.WriteLine(&quot;Sorted&quot;);</span><br><span class="line">films.Sort((f1, f2) =&gt; f1.Name.CompareTo(f2.Name));</span><br><span class="line">films.ForEach(print);</span><br><span class="line"></span><br><span class="line">Console.Read();</span><br></pre></td></tr></table></figure>
+<p>创建委托实例,用来打印列表中的项，因为之后会使用三次，所以用变量print来保存，而不用每次都单独使用一个Lambda表达式。它可以打印一个film类型，通过foreach就能打印整个列表。<br><code>Action&lt;Film&gt; print = film =&gt; Console.WriteLine(&quot;Name={0}, Year={1}&quot;, film.Name, film.Year);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`films.ForEach(print);`</span><br></pre></td></tr></table></figure>
+<h3 id="在事件处理程序中进行记录"><a href="#在事件处理程序中进行记录" class="headerlink" title="在事件处理程序中进行记录"></a>在事件处理程序中进行记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">static void Log(string title, object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;Event: &#123;0&#125;&quot;, title);</span><br><span class="line">    Console.WriteLine(&quot;  Sender: &#123;0&#125;&quot;, sender);</span><br><span class="line">    Console.WriteLine(&quot;  Arguments: &#123;0&#125;&quot;, e.GetType());</span><br><span class="line">    foreach (PropertyDescriptor prop in</span><br><span class="line">             TypeDescriptor.GetProperties(e))</span><br><span class="line">    &#123;</span><br><span class="line">        string name = prop.DisplayName;</span><br><span class="line">        object value = prop.GetValue(e);</span><br><span class="line">        Console.WriteLine(&quot;    &#123;0&#125;=&#123;1&#125;&quot;, name, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">    Button button = new Button();</span><br><span class="line">    button.Text = &quot;Click me&quot;;</span><br><span class="line">    button.Click += (src, e) =&gt; Log(&quot;Click&quot;, src, e);</span><br><span class="line">    button.KeyPress += (src, e) =&gt; Log(&quot;KeyPress&quot;, src, e);</span><br><span class="line">    button.MouseClick += (src, e) =&gt; Log(&quot;MouseClick&quot;, src, e);</span><br><span class="line"></span><br><span class="line">    Form form = new Form();</span><br><span class="line">    form.AutoSize = true;</span><br><span class="line">    form.Controls.Add(button);</span><br><span class="line">    Application.Run(form);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="表达式树"><a href="#表达式树" class="headerlink" title="表达式树"></a>表达式树</h2><h3 id="以编程方式构建表达式树，编译并执行"><a href="#以编程方式构建表达式树，编译并执行" class="headerlink" title="以编程方式构建表达式树，编译并执行"></a>以编程方式构建表达式树，编译并执行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Expression firstArg = Expression.Constant(2);</span><br><span class="line">Expression secondArg = Expression.Constant(3);</span><br><span class="line">Expression add = Expression.Add(firstArg, secondArg);</span><br><span class="line"></span><br><span class="line">Func&lt;int&gt; compiled = Expression.Lambda&lt;Func&lt;int&gt;&gt;(add).Compile();</span><br><span class="line">Console.WriteLine(compiled());</span><br><span class="line">Console.Read();</span><br></pre></td></tr></table></figure>
+<h3 id="将C-Lambda表达式转换成表达式树"><a href="#将C-Lambda表达式转换成表达式树" class="headerlink" title="将C# Lambda表达式转换成表达式树"></a>将C# Lambda表达式转换成表达式树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Expression&lt;Func&lt;int&gt;&gt; return5 = () =&gt; 5;</span><br><span class="line">Func&lt;int&gt; compiled = return5.Compile();</span><br><span class="line">Console.WriteLine(compiled());</span><br></pre></td></tr></table></figure>
+<p>（）=》 5是Lambda表达式</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

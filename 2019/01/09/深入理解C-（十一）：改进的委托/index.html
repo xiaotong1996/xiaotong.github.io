@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（十一）：改进的委托 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（十一）"><span class="toc-text">深入理解C#（十一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#回顾C-1中我们的做法"><span class="toc-text">回顾C# 1中我们的做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法组转换"><span class="toc-text">方法组转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协变性和逆变性"><span class="toc-text">协变性和逆变性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#委托参数的逆变性"><span class="toc-text">委托参数的逆变性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#委托返回类型的协变性"><span class="toc-text">委托返回类型的协变性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不兼容的风险"><span class="toc-text">不兼容的风险</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（十一）：改进的委托
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:51:56</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（十一）"><a href="#深入理解C-（十一）" class="headerlink" title="深入理解C#（十一）"></a>深入理解C#（十一）</h1><p>*第五章（C# 2：进入快速通道的委托（上））<br></p>
+<h2 id="回顾C-1中我们的做法"><a href="#回顾C-1中我们的做法" class="headerlink" title="回顾C# 1中我们的做法"></a>回顾C# 1中我们的做法</h2><p>总是先定义事件/委托实际要处理的方法，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static void LogKeyEvent(object sender, KeyPressEventArgs e)</span><br><span class="line">  &#123;</span><br><span class="line">      Console.WriteLine(&quot;LogKey&quot;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>然后new一个新的事件/委托实例，把这个方法加到委托列表中，如：<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button.KeyPress += new KeyPressEventHandler(LogKeyEvent);</span><br></pre></td></tr></table></figure>
+<p>我们总是要把委托实例实际执行的代码做参数穿给委托实例，这样绕弯子会使代码难以阅读，且使得类中填充了大量只用于委托的方法。</p>
+<h2 id="方法组转换"><a href="#方法组转换" class="headerlink" title="方法组转换"></a>方法组转换</h2><p>C# 2支持从方法组到一个兼容委托类型的隐式转换。方法组（method  group）其实就是一个方法名，可以选择添加一个目标，也就是说和C# 1中创建委托实例使用的表达式相同（含义不同，一个是类型加参数，一个是方法组）。新的隐式转换：<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button.KeyPress+=LogkeyEvent;</span><br></pre></td></tr></table></figure>
+<p>一个创建线程的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread t=new Thread(MyMethod);</span><br></pre></td></tr></table></figure>
+<p>为什么表达式如<code>LogKeyEvent</code>属于方法组，因为如果有重载的话，可能不止一个方法适用。隐式转换会将一个方法组转换为具有兼容签名的任意委托类型。<br><br>假定有以下两个方法签名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void MyMethod()</span><br><span class="line">void MyMethod(object sender,EventArgs e)</span><br></pre></td></tr></table></figure>
+<p>那么在向一个ThreadStart或EventHandler赋值时，都可以将MyMethod作为方法组使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ThreadStart x=MyMethod;</span><br><span class="line">EventHandler y=MyMethod；</span><br></pre></td></tr></table></figure>
+<p>对于本身已重载成可以获取一个ThreadStart或EventHandler的方法，不能把它作为方法的参数使用。同样，不能利用隐式方法组转换来转换成普通的System.Delegate类型。可用辅助方法、强制转换或中间变量来解决。</p>
+<h2 id="协变性和逆变性"><a href="#协变性和逆变性" class="headerlink" title="协变性和逆变性"></a>协变性和逆变性</h2><h3 id="委托参数的逆变性"><a href="#委托参数的逆变性" class="headerlink" title="委托参数的逆变性"></a>委托参数的逆变性</h3><p>举例说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public delegate void EventHandler(object sender,EventArgs e)</span><br><span class="line">public delegate void KeyPressEventHandler(object sender, KeyPressEventArgs e)</span><br><span class="line">public delegate void MouseEventHandler(object sender,MouseEventArgs e)</span><br></pre></td></tr></table></figure>
+<p>有三个委托类型的签名：KeyPressEventArgs和MouseEventArgs都是从EventArgs派生<br>利用方法组转换和委托逆变性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">static void LogPlainEvent(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine (&quot;An event occurred&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">    Button button = new Button();</span><br><span class="line">    button.Text = &quot;Click me&quot;;</span><br><span class="line">    button.Click += LogPlainEvent;</span><br><span class="line">    button.KeyPress += LogPlainEvent;</span><br><span class="line">    button.MouseClick += LogPlainEvent;</span><br><span class="line"></span><br><span class="line">    Form form = new Form();</span><br><span class="line">    form.AutoSize = true;</span><br><span class="line">    form.Controls.Add(button);</span><br><span class="line">    Application.Run(form);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用一个事件处理方法来处理所有事件。</p>
+<p><em>关于事件处理方法的参数说明：</em><br><br>第一个参数是object类型，代表事件来源；第二个参数则负责携带与事件有关的任何额外信息</p>
+<p>在有委托参数协变性后，我们可以使用一个具有EventHandler签名的方法，作为符合约定的所有委托类型的操作。</p>
+<h3 id="委托返回类型的协变性"><a href="#委托返回类型的协变性" class="headerlink" title="委托返回类型的协变性"></a>委托返回类型的协变性</h3><p>举例：<br><br>首先声明一个委托类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delegate Stream StreamFactory();</span><br></pre></td></tr></table></figure>
+<p>然后声明一个方法返回一个特定的流类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">static MemoryStream GenerateSampleData()</span><br><span class="line">&#123;</span><br><span class="line">    byte[] buffer = new byte[16];</span><br><span class="line">    for (int i = 0; i &lt; buffer.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        buffer[i] = (byte)i;</span><br><span class="line">    &#125;</span><br><span class="line">    return new MemoryStream(buffer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用协变性转换方法组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">    StreamFactory factory = GenerateSampleData;</span><br><span class="line"></span><br><span class="line">    using (Stream stream = factory())</span><br><span class="line">	//调用委托</span><br><span class="line">    &#123;</span><br><span class="line">        int data;</span><br><span class="line">        while ((data = stream.ReadByte()) != -1)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Console.Read();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：委托的返回类型是stream<br>,但声明的方法的返回类型是MemoryStream。<br><br><code>StreamFactory factory = GenerateSampleData;</code>这句话用到了方法组的转换，并利用返回类型的协变性来允许GenerateSampleData用于StreamFactory，等到调用委托实例时，实际返回的是委托声明的类型，也就是说返回类型已从MemoryStream协变成stream</p>
+<p>利用协变性和逆变性，还可以基于一个委托实例来构造另一个委托实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EventHandler general=new EventHandler(HandleEvent);</span><br><span class="line">KeyPressEventHandler key=new KeyPressEventHandler(general);</span><br></pre></td></tr></table></figure>
+<h3 id="不兼容的风险"><a href="#不兼容的风险" class="headerlink" title="不兼容的风险"></a>不兼容的风险</h3><p>可能发生在派生类中。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

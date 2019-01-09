@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入理解C#（十三）：迭代器 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深入理解C-（十三）"><span class="toc-text">深入理解C#（十三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识简介"><span class="toc-text">知识简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2：利用yield语句简化迭代器"><span class="toc-text">C# 2：利用yield语句简化迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器的工作流程"><span class="toc-text">迭代器的工作流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进一步了解"><span class="toc-text">进一步了解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代器示例"><span class="toc-text">迭代器示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代时刻表中的日期"><span class="toc-text">迭代时刻表中的日期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代文件中的行"><span class="toc-text">迭代文件中的行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用迭代器块和谓词对进行延迟过滤"><span class="toc-text">使用迭代器块和谓词对进行延迟过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CCR实现伪同步代码"><span class="toc-text">CCR实现伪同步代码</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入理解C#（十三）：迭代器
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:53:26</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#" title="C#">C#</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="深入理解C-（十三）"><a href="#深入理解C-（十三）" class="headerlink" title="深入理解C#（十三）"></a>深入理解C#（十三）</h1><p>*第六章（C# 2：实现迭代器的捷径）<br></p>
+<h2 id="知识简介"><a href="#知识简介" class="headerlink" title="知识简介"></a>知识简介</h2><p>迭代器模式：行为模式的一种范例，允许访问一个数据项序列中的所有元素，而不用关心序列的类型。能有效构建一个数据管道。(数据项序列进入数据管道后，经过一系列不同的转换或过滤后再从另一端出来）<br><br>行为模式：一种简化对象之间通信的设计模式</p>
+<p>迭代器模式通过IEnumerator和IEnumerable接口以及它们的泛型等价物来封装。若某个类型实现了IEnumerable接口，就意味着它可以被迭代访问。</p>
+<p>难点在于怎么自建迭代器</p>
+<h2 id="C-2：利用yield语句简化迭代器"><a href="#C-2：利用yield语句简化迭代器" class="headerlink" title="C# 2：利用yield语句简化迭代器"></a>C# 2：利用yield语句简化迭代器</h2><p>利用C# 2和yield return来迭代实例集合：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public IEnumerator GetEnumerator()</span><br><span class="line">&#123;</span><br><span class="line">	for(int index=0;index&lt;values.Length;index++)</span><br><span class="line">	&#123;  yield return values[(index+startingPoint)%values.Length];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个实现迭代器块的方法，这个方法被声明为返回一个<br>IEnumerator接口，所以就只能使用迭代器块来实现返回类型为IEnumerable、IEnumerator等的方法。如果方法声明的返回类型是非泛型接口，那么迭代器块的生成类型(yield type)是object，否则就是泛型接口的类型参数。如：方法声明返回IEnumerable<string>,就会得到string类型的生成类型。<br><br><em>在迭代器块中存在try/catch或try/finally代码块时，不能在try和finally中使用yield return</em><br><br><strong>编写迭代器块代码实际上是在请求编译器创建一个状态机</strong><br><br>当编译器看到迭代器块时，会为状态机创建一个嵌套类型，来正确记录块中的位置，以及局部变量（包括参数）的值。<br><br>这个状态机实现一下功能：</string></p>
+<ul>
+<li>必须具有某个初始状态</li>
+<li>每次调用MoveNext，提供下一个值之前（执行到yield return语句之前），执行GetEnumerator方法中的代码</li>
+<li>使用Current属性时，返回生成的上一个值</li>
+<li>知道何时完成生成值的操作，以便MoveNext返回false</li>
+</ul>
+<h3 id="迭代器的工作流程"><a href="#迭代器的工作流程" class="headerlink" title="迭代器的工作流程"></a>迭代器的工作流程</h3><ul>
+<li>在第一次调用MoveNext之前，CreateEnumerable不会被调用</li>
+<li>所有工作在调用MoveNext时就完成了，获取Current的值，不执行任何代码</li>
+<li>在yield return的位置，代码就停止执行，在下一次调用MoveNext时又继续执行</li>
+<li>在一个方法中的不同地方可以编写多个yield return语句</li>
+<li>代码不会在最后的yield return处结束，而是通过返回false的MoveNext调用来结束</li>
+</ul>
+<h3 id="进一步了解"><a href="#进一步了解" class="headerlink" title="进一步了解"></a>进一步了解</h3><p>yield return语句临时推出了方法，知道再次调用MoveNext后继续执行，根本没有检查finally代码块的行为。<br><br><em>迭代器块不能实现具有ref或out参数的方法</em><br><br>yield break结束迭代器的执行,类似于普通方法中的return语句<br><br>finally在迭代器块中常用于释放资源，通常与using语句配合使用</p>
+<h2 id="迭代器示例"><a href="#迭代器示例" class="headerlink" title="迭代器示例"></a>迭代器示例</h2><h3 id="迭代时刻表中的日期"><a href="#迭代时刻表中的日期" class="headerlink" title="迭代时刻表中的日期"></a>迭代时刻表中的日期</h3><p>C# 1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(DataTime day=timetable.StartDate;</span><br><span class="line">	day&lt;=timetable.EndDate;</span><br><span class="line">	day=day.AddDays(1))</span><br></pre></td></tr></table></figure>
+<p>C# 2<br>​    foreach(DateTime day in timetable.DateRange)<br>想要手动实现迭代器很麻烦，但用迭代器块就很方便。为表示时刻表的类添加一个属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public IEnumerable&lt;DateTime&gt; dateRange</span><br><span class="line">&#123;</span><br><span class="line">	get</span><br><span class="line">	&#123;</span><br><span class="line">		for(DateTime day=StartDate；</span><br><span class="line">			day&lt;=EndDate;</span><br><span class="line">			day=day.AddDays(1))</span><br><span class="line">		&#123;</span><br><span class="line">			yield return day;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="迭代文件中的行"><a href="#迭代文件中的行" class="headerlink" title="迭代文件中的行"></a>迭代文件中的行</h3><p>在.NET 4中，框架提供了reader.ReadLines来实现,如何自己轻松实现？<br>C# 1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">using(TextReader reader=File.OpenText(filename))</span><br><span class="line">&#123;</span><br><span class="line">	string line;</span><br><span class="line">	while((line=reader.ReadLine()) != null)</span><br><span class="line">	&#123;</span><br><span class="line">		//针对line进行操作</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取TextReader</li>
+<li>管理TextReader的生命周期（using）</li>
+<li>迭代TextReader.ReadLine返回的行</li>
+<li>对这些行处理</li>
+</ul>
+<p>生命周期管理和迭代机制都是样板代码，有两种方法改进。<br><br>一。使用委托，编写一个工具方法，将阅读器和委托作为参数，为文件中的每一行调用该委托，最后关闭阅读器。<br><br>二。使用迭代器一次返回文件中的一行，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static IEnumerable&lt;string&gt; ReadLines(string filename)</span><br><span class="line">    &#123;</span><br><span class="line">        using (TextReader reader = File.OpenText(filename))</span><br><span class="line">        &#123;</span><br><span class="line">            string line;</span><br><span class="line">            while ((line = reader.ReadLine()) != null)</span><br><span class="line">            &#123;</span><br><span class="line">                yield return line;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">foreach (string line in ReadLines(@&quot;文件路径&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(line);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>进一步改进：如果我们想从网络流中读取文本或使用UTF-8以外的编码格式，最简单的想法是重新修改方法签名，使其接受一个TextReader。但这个方案很糟糕，问题是，如果在第一次调用MoveNext（）之前发生了异常，就没有机会清理了。另外，若GetEnumerate人（）被调用两次，但它们使用相同的阅读器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static IEnumerable&lt;String&gt; ReadLines（Func &lt;TextReader&gt; provider)</span><br><span class="line">&#123;</span><br><span class="line">	using (TextReader reader=provider())</span><br><span class="line">	&#123;</span><br><span class="line">		。。。</span><br></pre></td></tr></table></figure>
+<h3 id="使用迭代器块和谓词对进行延迟过滤"><a href="#使用迭代器块和谓词对进行延迟过滤" class="headerlink" title="使用迭代器块和谓词对进行延迟过滤"></a>使用迭代器块和谓词对进行延迟过滤</h3><p><strong>看过linq后回来重看</strong></p>
+<h3 id="CCR实现伪同步代码"><a href="#CCR实现伪同步代码" class="headerlink" title="CCR实现伪同步代码"></a>CCR实现伪同步代码</h3><p>CCR（Concurrency and Coordination Runtime，并发和协调运行时）<br><strong>看完异步开发回来看</strong></p>
+<p>​    </p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

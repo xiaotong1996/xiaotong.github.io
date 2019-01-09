@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C#数据库工具开发（一） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-数据库工具开发（一）"><span class="toc-text">C#数据库工具开发（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#开发日程"><span class="toc-text">开发日程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要构成"><span class="toc-text">主要构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考页面"><span class="toc-text">参考页面</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C#数据库工具开发（一）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-09 10:59:45</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C#实战" title="C#实战">C#实战</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="C-数据库工具开发（一）"><a href="#C-数据库工具开发（一）" class="headerlink" title="C#数据库工具开发（一）"></a>C#数据库工具开发（一）</h1><h2 id="开发日程"><a href="#开发日程" class="headerlink" title="开发日程"></a>开发日程</h2><ol>
+<li>2019/07/09-/07/11<br><br>sql server数据库连接+登录界面<br><br>主界面+表单查询和显示</li>
+<li>07/11-07/12<br><br>登录配置文件<br><br>oracle数据库连接</li>
+<li>07/13-07/13<br><br>读取保存数据库字段属性<br><br>读取保存xml解析数据<br><br>部分实现利用xml解析数据同步数据库（添加表）<br><br>为主界面添加控件</li>
+<li>07/13-07/13<br><br>部分实现xml字段到sql字段映射<br><br>xml导入配置页面<br><br>部分实现利用xml解析数据同步数据库</li>
+<li>07/16-07/16<br><br>sql server和oracle数据库连接重构（sqlDataReader改用）<br><br>xml导入创建新表<br><br>部分实现xml与DB字段比较</li>
+<li>07/17-07/17<br><br>为比较页面（xml执行页面）添加字段长度项<br><br>优化xml与DB字段比较<br><br>用配置文件实现XML中字段类型映射<br><br>界面优化</li>
+<li>07/18-07/18<br><br>增加logo<br><br>增加数据库检索<br><br>将SQL和Oracle显示table界面合二为一，删除SQL显示table界面中显示数据库的表（该功能与数据库检索重复)<br><br>将字符串映射文件加入资源中</li>
+<li>07/19-07/19<br><br>更换logo，调整窗体<br><br>增加拖拽文件直接加载功能<br><br>优化字符串映射功能，避免bug<br><br>对比界面自动刷新,优化显示<br><br>增加同步数据库功能<br><br>增加导出sql语句功能<br></li>
+<li>07/20-07/20<br><br>优化对比界面更改字段事件<br><br>优化导出sql语句功能，避免线程卡死<br><br>添加xml显示界面手动添加或删除字段并刷新比对的功能</li>
+<li>07/24-07/24<br><br>优化添加表完成后字段页面同步刷新<br><br>优化添加表完成后导出sql语句<br><br>优化添加表完成后表显示页面刷新<br><br>修复修改字段不显示的bug<br><br>新增特性返回表显示页面自动定位到最新改动的table</li>
+<li>07/25-07/27<br><br>添加索引列，新增设置索引功能<br><br>增加索引同步功能（包括索引的增加、删除）<br><br>重写数据库同步xml部分，优化索引的建立删除，使其能像其他字段一样简单使用<br><br>xml执行界面添加用户误操作的警告和提示（如，用户添加字段名相同的行）</li>
+<li>07/30-08/01<br><br>优化对比界面(更好的对比显示，实现左右页面同步滚动）<br><br>简化用户操作(现在不用点击就可以选到鼠标指定行，删除操作也更方便）<br><br>更改logo</li>
+<li>08/01-08/03<br><br>添加单行同步与撤销操作功能</li>
+</ol>
+<h2 id="主要构成"><a href="#主要构成" class="headerlink" title="主要构成"></a>主要构成</h2><ol>
+<li>DBconnection：<br><br><strong>SQLServer数据库连接工具类</strong><br><br>主要功能：配置连接信息；打开、关闭数据库连接；执行sql语句获得结果（以ShowDatabaseList方法为例，用sql语句查询服务器中所有数据库名，将该结果存入sRead供前端窗口调用显示）</li>
+<li>FormLogin：<br><br><strong>登录窗口</strong><br><br>主要功能：获取连接信息<br>更新：<ul>
+<li>保存连接信息（记住密码）</li>
+<li>检索数据库（用于选择登入那个数据库） </li>
+</ul>
+</li>
+<li>FormMainTableShow：<br><br><strong>主窗口</strong><br><br>主要功能：主要逻辑业务的展示和执行界面，包含各种响应事件（第一阶段后可查看连接到远程数据库中所有表格）<br><br>更新：<ul>
+<li>改为只用来展示数据库中所有表名和显示表信息</li>
+<li>提供选择xml文件的入口</li>
+</ul>
+</li>
+<li>ConfigerManager：<br><br><strong>登陆信息实体类</strong><br><br>主要功能：方便实现存储登录记录<em>实现写在FormLogin各种事件中</em></li>
+<li>DBconnnectionOracle：<br><br><strong>Oracle数据库连接工具类</strong><br><br>主要功能：与DBconnection相似</li>
+<li>FormXMLExecute：<br><br><strong>主要功能窗口</strong><br><br>主要功能：解析显示xml表结构，提供添加或同步数据库表/表结构的功能,提供修改xml列表实时验证两表差异性的功能<br></li>
+<li>MappingTool：<br><br><strong>映射java类型到数据库的字段类型的工具类</strong><br>主要功能：解析保存映射信息的xml，将java类型，转换成保存数据库字段类型和对应默认字段长度的Dictionary。</li>
+<li>XMLParsing：<br><br><strong>解析提供表结构的xml的工具类</strong><br><br>主要功能：将xml保存的表结构，解析出表名和字段名，字段类型</li>
+<li>ParsedInfo：<br><br><strong>xml信息的实体类</strong><br><br>主要功能：保存xml解析出来的表结构信息</li>
+<li>DBmodify：<br><br><strong>执行增删改数据库字段、增删索引的工具类</strong><br></li>
+<li>RowRecord:<br><br><strong>记录DGV中行信息的实体类</strong><br><br>主要功能：保存对xml显示部分增删改之前的行信息，用于实现撤销操作</li>
+</ol>
+<h2 id="参考页面"><a href="#参考页面" class="headerlink" title="参考页面"></a>参考页面</h2><ol>
+<li><a href="https://www.xxling.com/blog/article/58.aspx" target="_blank" rel="noopener">关于数据库表结构</a></li>
+</ol>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
