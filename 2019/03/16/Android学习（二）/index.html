@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Android学习（二） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android（二）"><span class="toc-text">Android（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#活动生命周期（le-cycle-de-vie-des-activite"><span class="toc-text">活动生命周期（le cycle de vie des activite)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程（processus）"><span class="toc-text">进程（processus）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Taches-asynchrones（同步的任务）"><span class="toc-text">Taches asynchrones（同步的任务）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异步任务AsyncTask-lt-U-V-W-gt"><span class="toc-text">异步任务AsyncTask&lt;U,V,W&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON"><span class="toc-text">JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用HTTP读JSON-objets：1-把请求写入一个异步任务-2-使用这个AsyncTask类"><span class="toc-text">用HTTP读JSON objets：1. 把请求写入一个异步任务 2. 使用这个AsyncTask类</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Android学习（二）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-03-16 21:52:40</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Android（二）"><a href="#Android（二）" class="headerlink" title="Android（二）"></a>Android（二）</h1><h2 id="活动生命周期（le-cycle-de-vie-des-activite"><a href="#活动生命周期（le-cycle-de-vie-des-activite" class="headerlink" title="活动生命周期（le cycle de vie des activite)"></a>活动生命周期（le cycle de vie des activite)</h2><h3 id="进程（processus）"><a href="#进程（processus）" class="headerlink" title="进程（processus）"></a>进程（processus）</h3><p><strong>进程管理</strong></p>
+<ul>
+<li>在不同的GNU/LInux系统中不同</li>
+<li>目的：优化应用程序；节省资源；管理任务优先级</li>
+</ul>
+<p><strong>一个Android应用是一个Unix进程</strong></p>
+<ul>
+<li><p>可能有一个虚拟据（Dalvik）执行</p>
+</li>
+<li><p>一个虚拟机aspects的闭包（运行时ART android runtime）</p>
+<p>这个进程有一个特殊的生命周期</p>
+</li>
+</ul>
+<p><strong>几个活动生命周期的示例图</strong></p>
+<p><img src="D:\共享图片\笔记\Android\活动的生命周期图.PNG" alt="活动的生命周期图"></p>
+<p><img src="D:\共享图片\笔记\Android\活动的生命周期图2.PNG" alt="活动的生命周期图2"></p>
+<p><img src="D:\共享图片\笔记\Android\活动的生命周期图3.PNG" alt="活动的生命周期图3"></p>
+<p><em>注意：执行AlterDialog弹出警告框，这不是一个新的activity，所以没有onPause（</em>）*</p>
+<p><strong>进程销毁</strong></p>
+<p>onDestory（）</p>
+<p> 优先级等级</p>
+<ol>
+<li>屏幕显示的进程</li>
+<li>可见的进程</li>
+<li>服务进程</li>
+<li>后台任务进程</li>
+<li>空进程（已结束，存在cache中的进程）</li>
+</ol>
+<h2 id="Taches-asynchrones（同步的任务）"><a href="#Taches-asynchrones（同步的任务）" class="headerlink" title="Taches asynchrones（同步的任务）"></a>Taches asynchrones（同步的任务）</h2><p><strong>主进程（le thread principal）</strong></p>
+<ul>
+<li>刷新界面</li>
+<li>处理用户相关事务</li>
+<li>处理messages</li>
+<li>执行services</li>
+</ul>
+<p>不要阻断UI线程</p>
+<p>不要从UI线程外部access到UI toolkit</p>
+<p><strong>管理线程冲突</strong></p>
+<p>两种解决方法：</p>
+<ul>
+<li>给图像界面元素加锁</li>
+<li>只用一个Thread管理图形界面元素</li>
+</ul>
+<p>委托图形界面处理：</p>
+<ul>
+<li>Activity.runOnUiThread(Runnable)</li>
+<li>View.post(Runnable)</li>
+<li>View.postDelayed(Runnable,long)</li>
+</ul>
+<h2 id="异步任务AsyncTask-lt-U-V-W-gt"><a href="#异步任务AsyncTask-lt-U-V-W-gt" class="headerlink" title="异步任务AsyncTask&lt;U,V,W&gt;"></a>异步任务AsyncTask&lt;U,V,W&gt;</h2><p><img src="D:\共享图片\笔记\Android\AsyncTask.PNG" alt="AsyncTask"></p>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="用HTTP读JSON-objets：1-把请求写入一个异步任务-2-使用这个AsyncTask类"><a href="#用HTTP读JSON-objets：1-把请求写入一个异步任务-2-使用这个AsyncTask类" class="headerlink" title="用HTTP读JSON objets：1. 把请求写入一个异步任务 2. 使用这个AsyncTask类"></a>用HTTP读JSON objets：1. 把请求写入一个异步任务 2. 使用这个AsyncTask类</h3><p>要使用HTTP，有一个封装好的类：HttpURLConnection</p>
+<p><img src="D:\共享图片\笔记\Android\HttpURLConnection类示例图.PNG" alt="HttpURLConnection类示例图"></p>
+<p>自己写一个readStream（）方法用来读入数据流（flux de donnees）来构建结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">readStream</span><span class="params">(InputStream is)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();  </span><br><span class="line"></span><br><span class="line">    BufferedReader r = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(is),<span class="number">1000</span>);  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (String line = r.readLine(); line != <span class="keyword">null</span>; line =r.readLine())&#123;  </span><br><span class="line"></span><br><span class="line">        sb.append(line);  </span><br><span class="line"></span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    is.close();  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

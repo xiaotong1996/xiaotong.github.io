@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Android学习（一） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android学习（一）"><span class="toc-text">Android学习（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#日志"><span class="toc-text">日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#活动（Activity）"><span class="toc-text">活动（Activity）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Toast-短暂出现的提示框"><span class="toc-text">Toast(短暂出现的提示框)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Menu"><span class="toc-text">Menu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#销毁事件"><span class="toc-text">销毁事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Intent-连接各个活动"><span class="toc-text">Intent(连接各个活动)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#显示Intent"><span class="toc-text">显示Intent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隐式Intent"><span class="toc-text">隐式Intent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更多隐式Intent用法"><span class="toc-text">更多隐式Intent用法</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Android学习（一）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-03-16 21:50:30</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Android学习（一）"><a href="#Android学习（一）" class="headerlink" title="Android学习（一）"></a>Android学习（一）</h1><h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><ul>
+<li>Log. v()。 用于 打印 那些 最为 琐碎 的、 意义 最小 的 日志 信息。 对应 级别 verbose， 是 Android 日志 里面 级别 最低 的 一种。 </li>
+<li>Log. d()。 用于 打印 一些 调试 信息， 这些 信息 对 你 调试 程序 和 分析 问题 应该 是有 帮助 的。 对应 级别 debug， 比 verbose 高 一级。 </li>
+<li>Log. i()。 用于 打印 一些 比较 重要的 数据， 这些 数据 应该 是你 非常 想 看到 的、 可以 帮你 分析 用户 行为 数据。 对应 级别 info， 比 debug 高 一级。 </li>
+<li>Log. w()。 用于 打印 一些 警告 信息， 提示 程序 在这 个 地方 可能 会有 潜在 的 风险， 最好 去 修复 一下 这些 出现 警告 的 地方。对应 级别 warn， 比 info 高 一级。 </li>
+<li>Log. e()。 用于 打印 程序 中的 错误 信息， 比如 程序 进入 到了 catch 语句 当中。 当 有错误 信息 打印 出来 的 时候， 一般 都 代表 你的 程序 出现 严重 问题 了， 必须 尽快 修复。 对应 级别 error， 比 warn 高 一级。</li>
+</ul>
+<h2 id="活动（Activity）"><a href="#活动（Activity）" class="headerlink" title="活动（Activity）"></a>活动（Activity）</h2><p>活动（ Activity） 是最 容易 吸引 用户 的 地方， 它是 一种 可以 包含 用户 界面 的 组件， 主要 用于 和 用户 进行 交互。</p>
+<ol>
+<li>在 java/ com. example. activitytest中新建一个activity</li>
+<li>在 src/layout中创建一个布局文件, 在activity中加载布局（）回到 FirstActivity， 在 onCreate() 方法 中 加入 如下 代码： <code>setContentView( R. layout. first_ layout);</code></li>
+<li>在 AndroidManifest 文件 中 注册</li>
+</ol>
+<p>配置 主 活动 的 方法 其 实在 第 1 章 中 已经 介绍 过了， 就是 在&lt; activity&gt; 标签 的 内部 加入&lt; intent- filter&gt; 标签， 并在 这个 标签 里 添加&lt; action android: name=” android. intent. action. MAIN”/&gt; 和&lt; category android: name=” android. intent. category. LAUNCHER” /&gt;这 两句 声明 即可。</p>
+<h2 id="Toast-短暂出现的提示框"><a href="#Toast-短暂出现的提示框" class="headerlink" title="Toast(短暂出现的提示框)"></a>Toast(短暂出现的提示框)</h2><p>首先 需要 定义 一个 弹出 Toast 的 触发 点， 正好 界面 上有 个 按钮， 那 我们 就让 点击 这个 按钮 的 时候 弹出 一个 Toast 吧。 在 onCreate()中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Button button=(Button) findViewById(R.id.button);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"You clicked Button"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>得到 按钮 的 实例 之后， 我们 通过 调用 setOnClickListener() 方法 为 按钮 注册 一个 监听器， 点击 按钮 时 就会 执行 监听器 中的 onClick() 方法。</p>
+<p>静态方法makeText() 创建 出 一个 Toast 对象， 然后 调用 show() 将 Toast 显示 出来 就可以 了。 这里 需要 注意 的 是， makeText() 方法 需要 传入 3 个 参数。 第一个 参数 是 Context， 也就是 Toast 要求 的 上下文， 由于 活动 本身 就是 一个 Context 对象， 因此 这里 直接 传入 FirstActivity. this 即可。 第二个 参数 是 Toast 显示 的 文本 内容， 第三 个 参数 是 Toast 显示 的 时 长， 有两 个 内置 常量 可以 选择 Toast. LENGTH_ SHORT 和 Toast. LENGTH_ LONG。</p>
+<h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><ol>
+<li><p>在res/menu中新建Menu resource file</p>
+</li>
+<li><p>在新建出来的menuxml文件中添加items</p>
+</li>
+<li><p>在activity中重写onCreateOptionsMenu()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line">    getMenuInflater().inflate(R.menu.main,menu); <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>inflate() 方法 接收 两个 参数， 第一个 参数 用于 指定 我们 通过 哪一个 资源 文件 来 创建 菜单， 这里 当然 传入 R. menu. main。 第二个 参数 用于 指定 我们 的 菜单项 将 添加 到 哪一个 Menu 对象 当中， 这里 直接 使用 onCreateOptionsMenu() 方法 中 传入 的 menu 参数。 然后 给 这个 方法 返回 true， 表示 允许 创建 的 菜单 显示 出来， 如果 返回 了 false， 创建 的 菜单 将 无法 显示。</p>
+</li>
+<li><p>定义菜单响应事件。在acticity中重写onOprionsItemsSelected()方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (item.getItemId())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">                Toast.makeText(<span class="keyword">this</span>,<span class="string">"You clicked Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">                Toast.makeText(<span class="keyword">this</span>,<span class="string">"You clicked Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                Toast.makeText(<span class="keyword">this</span>,<span class="string">"Default"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="销毁事件"><a href="#销毁事件" class="headerlink" title="销毁事件"></a>销毁事件</h2><p>只要 按 一下 Back 键 就可以 销毁 当前 的 活动 了。 不过 如果 你 不想 通过 按键 的 方式， 而是 希望 在 程序 中 通过 代码 来 销毁 活动， 当然 也可以， Activity 类 提供 了 一个 finish() 方法， 我们 在 活动中 调用 一下 这个 方法 就可以 销毁 当前 活动 了。</p>
+<h2 id="Intent-连接各个活动"><a href="#Intent-连接各个活动" class="headerlink" title="Intent(连接各个活动)"></a>Intent(连接各个活动)</h2><p>Intent 是 Android 程序 中 各组 件 之间 进行 交互 的 一种 重要 方式， 它不 仅可 以指 明 当前 组件 想要 执行 的 动作， 还可 以在 不同 组件 之间 传递 数据。 Intent 一般 可被 用于 启动 活动、启动 服务 以及 发送 广播 等 场景。</p>
+<h3 id="显示Intent"><a href="#显示Intent" class="headerlink" title="显示Intent"></a>显示Intent</h3><p>Intent 有多 个 构造 函数 的 重载， 其中 一个 是 Intent( Context packageContext, Class&lt;?&gt; cls)。 这个 构造 函数 接收 两个 参数， 第一个 参数 Context 要求 提供 一个 启动 活动 的 上下文， 第二个 参数 Class 则是 指定 想要 启动 的 目标 活动， 通过 这个 构造 函数 就可以 构建 出 Intent 的“ 意图”。 然后 我们 应该 怎么 使用 这个 Intent 呢？ Activity 类 中 提供 了 一个 startActivity() 方法， 这个 方法 是 专门 用于 启动 活动 的， 它 接收 一个 Intent 参数， 这里 我们将 构建 好的 Intent 传入 startActivity() 方法 就可以 启动 目标 活动 了。</p>
+<p>修改MainActivity中按钮点击事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">                   Intent intent=<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,Test1Activity.class);</span><br><span class="line">                   startActivity(intent);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p>MainActivity.this作为上下文，Test1Activity.class作为目标活动。通过startActivity来执行Intent。</p>
+<h3 id="隐式Intent"><a href="#隐式Intent" class="headerlink" title="隐式Intent"></a>隐式Intent</h3><p>它 并不 明确 指出 我们 想要 启动 哪一个 活动， 而是 指定 了 一系列 更为 抽象 的 action 和 category 等 信息， 然后 交由 系统 去 分析 这个 Intent， 并 帮我 们 找出 合适 的 活动 去 启动。</p>
+<ol>
+<li><p>在AndroidManifest.xml中指定活动能够响应的action和category</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".Test1Activity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.activitytest.ACTION_START"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在&lt; action&gt; 标签 中 我们 指明 了 当前 活动 可以 响应 com. example. activitytest. ACTION_ START 这个 action， 而&lt; category&gt; 标签 则 包含 了 一些 附加 信息， 更 精确 地 指明 了 当前 的 活动 能够 响应 的 Intent 中 还可 能带 有的 category。 只有&lt; action&gt; 和&lt; category&gt; 中的 内容 同时 能够 匹配 上 Intent 中指 定的 action 和 category 时， 这个 活动 才能 响应 该 Intent。</p>
+</li>
+<li><p>修改按钮的点击事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">                    Intent intent=<span class="keyword">new</span> Intent(<span class="string">"com.example.activitytest.ACTION_START"</span>);</span><br><span class="line">                    startActivity(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>每个 Intent 中 只能 指定 一个 action， 但却 能 指定 多个 category</p>
+</li>
+</ol>
+<hr>
+<h3 id="更多隐式Intent用法"><a href="#更多隐式Intent用法" class="headerlink" title="更多隐式Intent用法"></a>更多隐式Intent用法</h3><p>使用 隐式 Intent， 我们 不仅 可以 启动 自己 程序 内 的 活动， 还可以 启动 其他 程序 的 活动， 这 使得 Android 多个 应用 程序 之间 的 功能 共享 成为 了 可能。 比如说 你的 应用 程序 中 需要 展示 一个 网页， 这时 你 没有 必要 自己 去 实现 一个 浏览器（ 事实上 也不 太 可能）， 而是 只需 要 调用 系统 的 浏览器 来 打开 这个 网页 就 行了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span></span><br><span class="line"><span class="function">            </span>&#123;</span><br><span class="line">                Intent intent=<span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">                intent.setData(Uri.parse(<span class="string">"http://www.google.com"</span>));</span><br><span class="line">                startActivity(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>了 Intent 的 action 是 Intent. ACTION_ VIEW， 这是 一个 Android 系统 内置 的 动作， 其 常 量值 为 android. intent. action. VIEW。 然后 通过 Uri. parse() 方法， 将 一个 网址 字符串 解析 成 一个 Uri 对象， 再 调用 Intent 的 setData() 方法 将 这个 Uri 对象 传递 进去。</p>
+<p>setData()方法，它 接收 一个 Uri 对象， 主要 用于 指定 当前 Intent 正在 操作 的 数据， 而这 些 数据 通常 都是 以 字符串 的 形式 传入到 Uri. parse() 方法 中 解析 产生 的。 </p>
+<p>与此 对应， 我们 还可 以在&lt; intent- filter&gt; 标签 中 再 配置 一个&lt; data&gt; 标签， 用于 更 精确 地 指定 当前 活动 能够 响应 什么 类型 的 数据。&lt; data&gt; 标签 中 主要 可以 配置 以下 内容。 </p>
+<ul>
+<li>android: scheme。 用于 指定 数据 的 协议 部分， 如上 例 中的 http 部分。 </li>
+<li>android: host。 用于 指定 数据 的 主机 名 部分， 如上 例 中的 www. baidu. com 部分。 </li>
+<li>android: port。 用于 指定 数据 的 端口 部分， 一般 紧随 在 主机 名 之后。 </li>
+<li>android: path。 用于 指定 主 机名 和 端口 之后 的 部分， 如一 段 网址 中 跟在 域名 之后 的 内容。 </li>
+<li>android: mimeType。 用于 指定 可以处理 的 数据 类型， 允许 使用 通配符 的 方式 进行 指定。</li>
+</ul>
+<p>除了 http 协议 外， 我们 还可以 指定 很多 其他 协议， 比如 geo 表示 显示 地理 位置、 tel 表示 拨 打电话。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
