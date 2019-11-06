@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C++学习与总结-1114篇 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-学习与总结-11-14篇"><span class="toc-text">C++学习与总结-11/14篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小结："><span class="toc-text">小结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nullptr-与-constexpr"><span class="toc-text">nullptr 与 constexpr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型推导"><span class="toc-text">类型推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区间迭代"><span class="toc-text">区间迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化列表"><span class="toc-text">初始化列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板增强"><span class="toc-text">模板增强</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#外部模板"><span class="toc-text">外部模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类型别名模板"><span class="toc-text">类型别名模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#默认模板参数"><span class="toc-text">默认模板参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#变长参数模板"><span class="toc-text">变长参数模板</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象增强"><span class="toc-text">面向对象增强</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#委托构造"><span class="toc-text">委托构造</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承构造"><span class="toc-text">继承构造</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显式虚函数重载"><span class="toc-text">显式虚函数重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显式禁用默认函数"><span class="toc-text">显式禁用默认函数</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#强类型枚举"><span class="toc-text">强类型枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda表达式"><span class="toc-text">Lambda表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数对象包装器"><span class="toc-text">函数对象包装器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#右值引用"><span class="toc-text">右值引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新增容器"><span class="toc-text">新增容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-array"><span class="toc-text">std::array</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-forward-list"><span class="toc-text">std::forward_list</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元组-std-tuple"><span class="toc-text">元组 std::tuple</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#智能指针和引用计数"><span class="toc-text">智能指针和引用计数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程支持"><span class="toc-text">线程支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C++学习与总结-1114篇
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:50:26</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C++" title="C++">C++</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="C-学习与总结-11-14篇"><a href="#C-学习与总结-11-14篇" class="headerlink" title="C++学习与总结-11/14篇"></a>C++学习与总结-11/14篇</h1><h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ul>
+<li><strong>使用nullptr而不是NULL</strong></li>
+<li><strong>巧用auto</strong></li>
+<li><strong>for(auto &amp;x : array) {</strong><pre><code>**std::cout &lt;&lt; x &lt;&lt; std::endl;**
+</code></pre><strong>}</strong></li>
+<li><strong>使用 <code>{}</code> 进行初始化</strong></li>
+<li><strong>模板可用using改名，可添加默认参数，可变长</strong></li>
+<li><strong>构造函数可以委托和继承</strong></li>
+<li><strong>关键字  <code>override</code> 和 <code>final</code>用于控制重载  default和delete用于控制编译器生成默认构造函数</strong></li>
+<li><strong>enum class</strong></li>
+<li><strong>使用lambda表达式和捕获列表</strong></li>
+<li><strong>用<code>std::function</code>包装函数，将函数和函数指针作为对象处理</strong></li>
+<li><strong><code>std::move</code> 总会接受到一个左值，从而转发调用了<code>reference(int&amp;&amp;)</code> 输出右值引用。</strong> </li>
+<li><strong>std::array</strong></li>
+<li><strong><code>std::shared_ptr</code>/<code>std::unique_ptr</code>/<code>std::weak_ptr</code></strong></li>
+<li><strong><code>std::regex</code></strong></li>
+<li><strong><thread>和<mutex></mutex></thread></strong></li>
+<li><strong><code>noexcept</code> 修饰符</strong></li>
+<li><strong>字面量R</strong></li>
+</ul>
+<h2 id="nullptr-与-constexpr"><a href="#nullptr-与-constexpr" class="headerlink" title="nullptr 与 constexpr"></a>nullptr 与 constexpr</h2><p> 当需要使用 <code>NULL</code> 时候，请养成直接使用 <code>nullptr</code> 的习惯。 </p>
+<p> <code>constexpr</code>常量表达式 让用户显式的声明函数或对象构造函数在编译器会成为常数  从 C++ 14 开始，<code>constexptr</code> 函数可以在内部使用局部变量、循环和分支等简单语句 </p>
+<h2 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h2><p> C++ 11 引入了 <code>auto</code> 和 <code>decltype</code> 这两个关键字实现了类型推导，让编译器来操心变量的类型。 </p>
+<p> 使用 <code>auto</code> 进行类型推导的一个最为常见而且显著的例子就是迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(auto itr = vec.cbegin(); itr != vec.cend(); ++itr);</span><br></pre></td></tr></table></figure>
+<p> <strong>注意</strong>：<code>auto</code> 不能用于函数传参，  <code>auto</code> 还不能用于推导数组类型： </p>
+<p> <code>decltype</code> 关键字是为了解决 auto 关键字只能对变量进行类型推导的缺陷而出现的。 和sizeof相似：</p>
+<p>有时候，我们可能需要计算某个表达式的类型，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto x = 1;</span><br><span class="line">auto y = 2;</span><br><span class="line">decltype(x+y) z;   // z 是一个 int 型的</span><br></pre></td></tr></table></figure>
+<p> 从 C++ 14 开始是可以直接让普通函数具备返回值推导 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T, typename U&gt;</span><br><span class="line">auto add(T x, U y) &#123;</span><br><span class="line">    return x+y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="区间迭代"><a href="#区间迭代" class="headerlink" title="区间迭代"></a>区间迭代</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int array[] = &#123;1,2,3,4,5&#125;;</span><br><span class="line">for(auto &amp;x : array) &#123;</span><br><span class="line">    std::cout &lt;&lt; x &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="初始化列表"><a href="#初始化列表" class="headerlink" title="初始化列表"></a>初始化列表</h2><p> 使用 <code>{}</code> 进行初始化 </p>
+<p>C++11 首先把初始化列表的概念绑定到了类型上，并将其称之为 <code>std::initializer_list</code>，允许构造函数或其他函数像参数一样使用初始化列表，这就为类对象的初始化与普通数组和 POD 的初始化方法提供了统一的桥梁，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;initializer_list&gt;</span><br><span class="line"></span><br><span class="line">class Magic &#123;</span><br><span class="line">public:</span><br><span class="line">    Magic(std::initializer_list&lt;int&gt; list) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Magic magic = &#123;1,2,3,4,5&#125;;</span><br><span class="line">std::vector&lt;int&gt; v = &#123;1, 2, 3, 4&#125;;</span><br></pre></td></tr></table></figure>
+<p>初始化列表除了用在对象构造上，还能将其作为普通函数的形参，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void func(std::initializer_list&lt;int&gt; list) &#123;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func(&#123;1,2,3&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="模板增强"><a href="#模板增强" class="headerlink" title="模板增强"></a>模板增强</h2><h4 id="外部模板"><a href="#外部模板" class="headerlink" title="外部模板"></a>外部模板</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extern template class std::vector&lt;double&gt;;  // 不在该编译文件中实例化模板</span><br></pre></td></tr></table></figure>
+<h4 id="类型别名模板"><a href="#类型别名模板" class="headerlink" title="类型别名模板"></a>类型别名模板</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using process = int(*)(void *); // 定义了一个返回类型为 int，参数为 void* 的函数指针类型，名字叫做 process</span><br></pre></td></tr></table></figure>
+<h4 id="默认模板参数"><a href="#默认模板参数" class="headerlink" title="默认模板参数"></a>默认模板参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T = int, typename U = int&gt;</span><br><span class="line">auto add(T x, U y) -&gt; decltype(x+y) &#123;</span><br><span class="line">    return x+y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="变长参数模板"><a href="#变长参数模板" class="headerlink" title="变长参数模板"></a>变长参数模板</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename... Ts&gt; class Magic;</span><br></pre></td></tr></table></figure>
+<p> 可以使用 <code>sizeof...</code> 来计算参数的个数 </p>
+<p> 对参数进行解包 :</p>
+<p> <strong>递归模板函数</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">void printf(T value) &#123;</span><br><span class="line">    std::cout &lt;&lt; value &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;typename T, typename... Args&gt;</span><br><span class="line">void printf(T value, Args... args) &#123;</span><br><span class="line">    std::cout &lt;&lt; value &lt;&lt; std::endl;</span><br><span class="line">    printf(args...);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(1, 2, &quot;123&quot;, 1.1);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>初始化列表展开</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T, typename... Args&gt;</span><br><span class="line">auto print(T value, Args... args) &#123;</span><br><span class="line">    std::cout &lt;&lt; value &lt;&lt; std::endl;</span><br><span class="line">    return std::initializer_list&lt;T&gt;&#123;([&amp;] &#123;</span><br><span class="line">        std::cout &lt;&lt; args &lt;&lt; std::endl;</span><br><span class="line">    &#125;(), value)...&#125;;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    print(1, 2.1, &quot;123&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="面向对象增强"><a href="#面向对象增强" class="headerlink" title="面向对象增强"></a>面向对象增强</h2><h4 id="委托构造"><a href="#委托构造" class="headerlink" title="委托构造"></a>委托构造</h4><p> C++ 11 引入了委托构造的概念，这使得构造函数可以在同一个类中一个构造函数调用另一个构造函数，从而达到简化代码的目的： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Base &#123;</span><br><span class="line">public:</span><br><span class="line">    int value1;</span><br><span class="line">    int value2;</span><br><span class="line">    Base() &#123;</span><br><span class="line">        value1 = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    Base(int value) : Base() &#123;  // 委托 Base() 构造函数</span><br><span class="line">        value2 = 2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    Base b(2);</span><br><span class="line">    std::cout &lt;&lt; b.value1 &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; b.value2 &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="继承构造"><a href="#继承构造" class="headerlink" title="继承构造"></a>继承构造</h4><p>在传统 C++ 中，构造函数如果需要继承是需要将参数一一传递的，这将导致效率低下。C++ 11 利用关键字 using 引入了继承构造函数的概念：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Base &#123;</span><br><span class="line">public:</span><br><span class="line">    int value1;</span><br><span class="line">    int value2;</span><br><span class="line">    Base() &#123;</span><br><span class="line">        value1 = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    Base(int value) : Base() &#123;                          // 委托 Base() 构造函数</span><br><span class="line">        value2 = 2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">class Subclass : public Base &#123;</span><br><span class="line">public:</span><br><span class="line">    using Base::Base;  // 继承构造</span><br><span class="line">&#125;;</span><br><span class="line">int main() &#123;</span><br><span class="line">    Subclass s(3);</span><br><span class="line">    std::cout &lt;&lt; s.value1 &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; s.value2 &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="显式虚函数重载"><a href="#显式虚函数重载" class="headerlink" title="显式虚函数重载"></a>显式虚函数重载</h4><p> C++ 11 引入了 <code>override</code> 和 <code>final</code> 这两个关键字来防止上述情形的发生。 </p>
+<p>当重载虚函数时，引入 <code>override</code> 关键字将显式的告知编译器进行重载，编译器将检查基函数是否存在这样的虚函数，否则将无法通过编译。</p>
+<p><code>final</code> 则是为了防止类被继续继承以及终止虚函数继续重载引入的。</p>
+<h4 id="显式禁用默认函数"><a href="#显式禁用默认函数" class="headerlink" title="显式禁用默认函数"></a>显式禁用默认函数</h4><p> 允许显式的声明采用或拒绝编译器自带的函数。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Magic &#123;</span><br><span class="line">public:</span><br><span class="line">    Magic() = default;  // 显式声明使用编译器生成的构造</span><br><span class="line">    Magic&amp; operator=(const Magic&amp;) = delete; // 显式声明拒绝编译器生成构造</span><br><span class="line">    Magic(int magic_number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="强类型枚举"><a href="#强类型枚举" class="headerlink" title="强类型枚举"></a>强类型枚举</h2><p>C++ 11 引入了枚举类（enumaration class），并使用 <code>enum class</code> 的语法进行声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum class new_enum : unsigned int &#123;</span><br><span class="line">    value1,</span><br><span class="line">    value2,</span><br><span class="line">    value3 = 100,</span><br><span class="line">    value4 = 100</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这个语法中，枚举类型后面使用了冒号及类型关键字来指定枚举中枚举值的类型，这使得我们能够为枚举赋值（未指定时将默认使用 int）。</p>
+<p>而我们希望获得枚举值的值时，将必须显式的进行类型转换，不过我们可以通过重载 <code>&lt;&lt;</code> 这个算符来进行输出，可以收藏下面这个代码段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">std::ostream&amp; operator&lt;&lt;(typename std::enable_if&lt;std::is_enum&lt;T&gt;::value, std::ostream&gt;::type&amp; stream, const T&amp; e)</span><br><span class="line">&#123;</span><br><span class="line">    return stream &lt;&lt; static_cast&lt;typename std::underlying_type&lt;T&gt;::type&gt;(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时，下面的代码将能够被编译：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; new_enum::value3 &lt;&lt; std::endl</span><br></pre></td></tr></table></figure>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>Lambda 表达式的基本语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[捕获列表](参数列表) mutable(可选) 异常属性 -&gt; 返回类型 &#123;</span><br><span class="line">    // 函数体</span><br><span class="line">&#125;</span><br><span class="line">[ caputrue ] ( params ) opt -&gt; ret &#123; body; &#125;;</span><br></pre></td></tr></table></figure>
+<p>所谓捕获列表，其实可以理解为参数的一种类型，lambda 表达式内部函数体在默认情况下是不能够使用函数体外部的变量的，这时候捕获列表可以起到传递外部数据的作用。根据传递的行为，捕获列表也分为以下几种：</p>
+<p><strong>1. 值捕获</strong></p>
+<p> <strong>2. 引用捕获</strong> </p>
+<p> <strong>3. 隐式捕获</strong> </p>
+<p>总结一下，捕获提供了 Lambda 表达式对外部值进行使用的功能，捕获列表的最常用的四种形式可以是：</p>
+<ul>
+<li><code>[]</code> 空捕获列表</li>
+<li><code>[name1, name2, ...]</code> 捕获一系列变量</li>
+<li><code>[&amp;]</code> 引用捕获, 让编译器自行推导捕获列表</li>
+<li><code>[=]</code> 值捕获, 让编译器执行推导应用列表</li>
+<li><strong>表达式捕获（C++ 14）</strong> </li>
+<li>泛型 Lambda (C++ 14) <code>auto</code> 关键字来产生意义上的泛型： </li>
+</ul>
+<h2 id="函数对象包装器"><a href="#函数对象包装器" class="headerlink" title="函数对象包装器"></a>函数对象包装器</h2><p>C++11 <code>std::function</code>  是一种通用、多态的函数封装，它的实例可以对任何可以调用的目标实体进行存储、复制和调用操作，它也是对  C++中现有的可调用实体的一种类型安全的包裹（相对来说，函数指针的调用不是类型安全的），换句话说，就是函数的容器。当我们有了函数的容器之后便能够更加方便的将函数、函数指针作为对象进行处理。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;functional&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int foo(int para) &#123;</span><br><span class="line">    return para;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    // std::function 包装了一个返回值为 int, 参数为 int 的函数</span><br><span class="line">    std::function&lt;int(int)&gt; func = foo;</span><br><span class="line"></span><br><span class="line">    int important = 10;</span><br><span class="line">    std::function&lt;int(int)&gt; func2 = [&amp;](int value) -&gt; int &#123;</span><br><span class="line">        return 1+value+important;</span><br><span class="line">    &#125;;</span><br><span class="line">    std::cout &lt;&lt; func(10) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; func2(10) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 而 <code>std::bind</code> 则是用来绑定函数调用的参数的，它解决的需求是我们有时候可能并不一定能够一次性获得调用某个函数的全部参数，通过这个函数，我们可以将部分调用参数提前绑定到函数身上成为一个新的对象，然后在参数齐全后，完成调用 </p>
+<h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>  传统的 C++ 没有区分『移动』和『拷贝』的概念，造成了大量的数据移动，浪费时间和空间。右值引用的出现恰好就解决了这两个概念的混淆问题 </p>
+<p>无论传递参数为左值还是右值，普通传参都会将参数作为左值进行转发，所以 <code>std::move</code> 总会接受到一个左值，从而转发调用了<code>reference(int&amp;&amp;)</code> 输出右值引用。 </p>
+<h2 id="新增容器"><a href="#新增容器" class="headerlink" title="新增容器"></a>新增容器</h2><h4 id="std-array"><a href="#std-array" class="headerlink" title="std::array"></a>std::array</h4><p>使用 <code>std::array</code> 保存在栈内存中，相比堆内存中的 <code>std::vector</code>，我们就能够灵活的访问这里面的元素，从而获得更高的性能；同时正式由于其堆内存存储的特性，有些时候我们还需要自己负责释放这些资源。</p>
+<p>而第二个问题就更加简单，使用<code>std::array</code>能够让代码变得更加现代，且封装了一些操作函数，同时还能够友好的使用标准库中的容器算法等等，比如 <code>std::sort</code>。</p>
+<p><code>std::array</code> 会在编译时创建一个固定大小的数组，<code>std::array</code> 不能够被隐式的转换成指针，使用 <code>std::array</code> 很简单，只需指定其类型和大小即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::array&lt;int, 4&gt; arr= &#123;1,2,3,4&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="std-forward-list"><a href="#std-forward-list" class="headerlink" title="std::forward_list"></a>std::forward_list</h4><p> <code>std::forward_list</code> 使用单向链表进行实现 </p>
+<p> C++11 引入了两组无序容器：<code>std::unordered_map</code>/<code>std::unordered_multimap</code> 和 <code>std::unordered_set</code>/<code>std::unordered_multiset</code>。 </p>
+<h4 id="元组-std-tuple"><a href="#元组-std-tuple" class="headerlink" title="元组 std::tuple"></a>元组 std::tuple</h4><p>关于元组的使用有三个核心的函数：</p>
+<ol>
+<li><code>std::make_tuple</code>: 构造元组</li>
+<li><code>std::get</code>: 获得元组某个位置的值</li>
+<li><code>std::tie</code>: 元组拆包</li>
+</ol>
+<h2 id="智能指针和引用计数"><a href="#智能指针和引用计数" class="headerlink" title="智能指针和引用计数"></a>智能指针和引用计数</h2><p> <code>std::shared_ptr</code>/<code>std::unique_ptr</code>/<code>std::weak_ptr</code>，使用它们需要包含头文件memory。 </p>
+<p> <code>std::make_shared</code> 就能够用来消除显示的使用 <code>new</code>，所以<code>std::make_shared</code> 会分配创建传入参数中的对象，并返回这个对象类型的<code>std::shared_ptr</code>指针。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto pointer = std::make_shared&lt;int&gt;(10);</span><br></pre></td></tr></table></figure>
+<p> <code>std::shared_ptr</code> 可以通过 <code>get()</code> 方法来获取原始指针，通过 <code>reset()</code> 来减少一个引用计数，并通过<code>get_count()</code>来查看一个对象的引用计数。 </p>
+<p> <code>std::unique_ptr</code> 是一种独占的智能指针，它禁止其他智能指针与其共享同一个对象，从而保证了代码的安全： </p>
+<p> 是，我们可以利用 <code>std::move</code> 将其转移给其他的 <code>unique_ptr</code></p>
+<p> <code>std::weak_ptr</code>是一种弱引用（相比较而言 <code>std::shared_ptr</code> 就是一种强引用）。弱引用不会引起引用计数增加 </p>
+<p> <code>std::weak_ptr</code> 没有 <code>*</code> 运算符和 <code>-&gt;</code> 运算符，所以不能够对资源进行操作，它的唯一作用就是用于检查 <code>std::shared_ptr</code> 是否存在，<code>expired()</code> 方法在资源未被释放时，会返回 <code>true</code>，否则返回 <code>false</code>。 </p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p> C++11 提供的正则表达式库操作 <code>std::string</code> 对象，模式 <code>std::regex</code> (本质是 <code>std::basic_regex</code>)进行初始化，通过 <code>std::regex_match</code> 进行匹配，从而产生 <code>std::smatch</code> （本质是 <code>std::match_results</code> 对象）。 </p>
+<h2 id="线程支持"><a href="#线程支持" class="headerlink" title="线程支持"></a>线程支持</h2><p> <code>std::thread</code> 用于创建一个执行的线程实例，所以它是一切并发编程的基础，使用时需要包含<thread>头文件，它提供了很多基本的线程操作，例如<code>get_id()</code>来获取所创建线程的线程 ID，例如使用 <code>join()</code> 来加入一个线程  等等 </thread></p>
+<p> C++11 引入了 mutex 相关的类，其所有相关的函数都放在mutex 头文件中。 </p>
+<p><code>std::mutex</code> 是 C++11 中最基本的 <code>mutex</code> 类，通过实例化 <code>std::mutex</code> 可以创建互斥量，而通过其成员函数 <code>lock()</code> 可以仅此能上锁，<code>unlock()</code> 可以进行解锁。但是在在实际编写代码的过程中，最好不去直接调用成员函数，因为调用成员函数就需要在每个临界区的出口处调用 <code>unlock()</code>，当然，还包括异常。这时候 C++11 还为互斥量提供了一个 RAII 语法的模板类<code>std::lock_gurad</code>。RAII 在不失代码简洁性的同时，很好的保证了代码的异常安全性。</p>
+<p>在 RAII 用法下，对于临界区的互斥量的创建只需要在作用域的开始部分，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void some_operation(const std::string &amp;message) &#123;</span><br><span class="line">    static std::mutex mutex;</span><br><span class="line">    std::lock_guard&lt;std::mutex&gt; lock(mutex);</span><br><span class="line"></span><br><span class="line">    // ...操作</span><br><span class="line"></span><br><span class="line">    // 当离开这个作用域的时候，互斥锁会被析构，同时unlock互斥锁</span><br><span class="line">    // 因此这个函数内部的可以认为是临界区</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在并发编程中，推荐使用 <code>std::unique_lock</code>。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &lt;mutex&gt;</span><br><span class="line"></span><br><span class="line">std::mutex mtx;</span><br><span class="line"></span><br><span class="line">void block_area() &#123;</span><br><span class="line">    std::unique_lock&lt;std::mutex&gt; lock(mtx);</span><br><span class="line">    //...临界区</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    std::thread thd1(block_area);</span><br><span class="line"></span><br><span class="line">    thd1.join();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <code>std::future</code> 则是提供了一个访问异步操作结果的途径 </p>
+<p> <code>std::packaged_task</code> 可以用来封装任何可以调用的目标，从而用于实现异步的调用 </p>
+<p> <code>std::condition_variable</code> 是为了解决死锁而生的。当互斥操作不够用而引入的。 </p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p> <code>long long int</code> 类型至少具备 64 位的比特数。 </p>
+<p>C++11 将异常的声明简化为以下两种情况：</p>
+<ol>
+<li>函数可能抛出任何异常</li>
+<li>函数不能抛出任何异常</li>
+</ol>
+<p>并使用 <code>noexcept</code> 对这两种行为进行限制，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void may_throw();           // 可能抛出异常</span><br><span class="line">void no_throw() noexcept;   // 不可能抛出异常</span><br></pre></td></tr></table></figure>
+<p>使用 <code>noexcept</code> 修饰过的函数如果抛出异常，编译器会使用 <code>std::terminate()</code> 来立即终止程序运行。</p>
+<p><code>noexcept</code> 还能用作操作符，用于操作一个表达式，当表达式无异常时，返回 <code>true</code>，否则返回 <code>false</code>。</p>
+<p> C++11 提供了原始字符串字面量的写法，可以在一个字符串前方使用 <code>R</code> 来修饰这个字符串，同时，将原始字符串使用括号包裹，例如： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::string str = R&quot;(C:\\What\\The\\Fxxk)&quot;;</span><br></pre></td></tr></table></figure>
+<p> C++11 引进了自定义字面量的能力，通过重载双引号后缀运算符实现： </p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

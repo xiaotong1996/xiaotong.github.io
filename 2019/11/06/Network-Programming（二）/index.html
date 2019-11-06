@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Network Programming（二） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Network-Programming（二）"><span class="toc-text">Network Programming（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Client-server-communication-客户端-服务器通信"><span class="toc-text">Client/server communication 客户端/服务器通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Network-API"><span class="toc-text">Network API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sockets"><span class="toc-text">Sockets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#套接字用于客户端-服务器通信"><span class="toc-text">套接字用于客户端/服务器通信</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Network Programming（二）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:28:03</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Network Programming" title="Network Programming">Network Programming</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#笔记" title="笔记">笔记</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Network-Programming（二）"><a href="#Network-Programming（二）" class="headerlink" title="Network Programming（二）"></a>Network Programming（二）</h1><h2 id="Client-server-communication-客户端-服务器通信"><a href="#Client-server-communication-客户端-服务器通信" class="headerlink" title="Client/server communication 客户端/服务器通信"></a>Client/server communication 客户端/服务器通信</h2><ul>
+<li><p>服务器：<br>被动地等待和响应客户<br> passive socket</p>
+</li>
+<li><p>客户端：<br>开始通信<br> 必须知道服务器的地址和端口<br> active socket</p>
+</li>
+<li><p>功能说明:<br>–指定本地和远程通信端点<br> –启动连接<br> –等待传入连接<br> –发送和接收数据<br> –正常终止连接<br> –错误处理</p>
+<h2 id="Network-API"><a href="#Network-API" class="headerlink" title="Network API"></a>Network API</h2><p>api：application programming interface 应用程序接口<br>API是由程序系统提供的一组功能/服务。</p>
+<p>Network API：<br>服务(通常由操作系统提供)<br>提供应用程序和协议软件之间的接口</p>
+<p>有各种各样的应用程序接口可用于TCP / IP :<br>Sockets by Berkeley<br>XTI (X/Open Transport Interface) by AT&amp;T<br>Winsock -Windows Sockets API by Microsoft<br>MacTCP/ Open Transport by Apple</p>
+</li>
+</ul>
+<h2 id="Sockets"><a href="#Sockets" class="headerlink" title="Sockets"></a>Sockets</h2><ul>
+<li>用于通信的编程接口 </li>
+<li>提供此服务的一组原语 </li>
+<li>通用•可以适应不同的通信需求 </li>
+<li>独立的特定网络或协议，•最初在4.2BSD系统中开发用于因特网通信，于1983年发布。 </li>
+<li>不需要使用网络进行通信•本地机器通信：Unix域</li>
+</ul>
+<p>套接字:<br>–应用程序进程发送和接收数据的入口点<br>–唯一标识通过<br>互联网地址<br>端到端协议(例如，TCP或UDP )<br>端口号</p>
+<p>两种类型的( TCP/IP )套接字<br>—流套接字/连接模式(例如使用TCP )<br>提供可靠的字节流服务<br>—数据语法套接字/非连接模式(例如使用UDP )<br>提供尽力而为的数据报服务<br>最多65.500字节的消息</p>
+<h2 id="套接字用于客户端-服务器通信"><a href="#套接字用于客户端-服务器通信" class="headerlink" title="套接字用于客户端/服务器通信"></a>套接字用于客户端/服务器通信</h2><p>套接字的使用方法如下：</p>
+<ul>
+<li><p>每个应用程序:<br>创建一个套接字–想法:两个应用程序之间的通信将通过一个将两个套接字连接在一起的假想“管道”进行。<br>关闭一个socket套接字</p>
+</li>
+<li><p>服务器: 将其套接字绑定到一个已知的地址</p>
+</li>
+<li>客户端：找到服务器套接字（通过其已知的地址）并与服务器“发起通信”</li>
+</ul>
+<p><img src="../img/network programming/socket.png" alt=" " title="socket"></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C++学习与总结-基础篇 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-学习与总结-基础篇"><span class="toc-text">C++学习与总结-基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小结："><span class="toc-text">小结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于注释"><span class="toc-text">关于注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于数据类型"><span class="toc-text">关于数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于变量类型"><span class="toc-text">关于变量类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于常量"><span class="toc-text">关于常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于存储类"><span class="toc-text">关于存储类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于运算符"><span class="toc-text">关于运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于函数"><span class="toc-text">关于函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于引用"><span class="toc-text">关于引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于标准输入输出"><span class="toc-text">关于标准输入输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于类和对象"><span class="toc-text">关于类和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝构造函数"><span class="toc-text">拷贝构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#友元函数"><span class="toc-text">友元函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于继承"><span class="toc-text">关于继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于重载"><span class="toc-text">关于重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于多态"><span class="toc-text">关于多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于数据抽象"><span class="toc-text">关于数据抽象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于数据封装"><span class="toc-text">关于数据封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于接口"><span class="toc-text">关于接口</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C++学习与总结-基础篇
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:47:01</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C++" title="C++">C++</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="C-学习与总结-基础篇"><a href="#C-学习与总结-基础篇" class="headerlink" title="C++学习与总结-基础篇"></a>C++学习与总结-基础篇</h1><h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ul>
+<li><strong>用#if 0</strong><br><strong>code</strong><br><strong>#endif 测试</strong></li>
+<li><strong>typedef重命名类型</strong></li>
+<li><strong>常量：const 和 #define</strong></li>
+<li><strong>引用</strong></li>
+<li><strong>clog</strong></li>
+<li><strong>拷贝构造函数</strong></li>
+<li><strong>函数重载和运算符重载</strong></li>
+<li><strong>virtual虚函数，动态链接，数据封装，多态</strong></li>
+<li><strong>纯虚函数，接口，抽象类</strong></li>
+</ul>
+<p>C++11/14 以前的重要特性：</p>
+<p> C++ 是一种静态类型的、编译式的、通用的、大小写敏感的、不规则的编程语言，支持过程化编程、面向对象编程和泛型编程。 </p>
+<p>四大特性：</p>
+<ol>
+<li>封装</li>
+<li>抽象</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<hr>
+<h2 id="关于注释"><a href="#关于注释" class="headerlink" title="关于注释"></a>关于注释</h2><p>我们还可以使用 #if 0 … #endif  来实现注释，且可以实现嵌套，格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#if 0</span><br><span class="line">   code</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>你可以把 #if 0 改成 #if 1 来执行 <strong>code</strong> 的代码。</p>
+<p>这种形式对程序调试也可以帮助，测试时使用 <strong>#if 1</strong> 来执行测试代码，发布后使用 <strong>#if 0</strong> 来屏蔽测试代码。</p>
+<p><strong>#if</strong> 后可以是任意的条件语句。</p>
+<p>下面的代码如果 condition 条件为 true 执行 code1 ，否则执行 code2。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#if condition</span><br><span class="line">  code1</span><br><span class="line">#else</span><br><span class="line">  code2</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<h2 id="关于数据类型"><a href="#关于数据类型" class="headerlink" title="关于数据类型"></a>关于数据类型</h2><p>char 一个字节</p>
+<p>int 四个字节</p>
+<p>float 四个字节</p>
+<p> 使用 <strong>typedef</strong> 为一个已有的类型取一个新的名字 </p>
+<h2 id="关于变量类型"><a href="#关于变量类型" class="headerlink" title="关于变量类型"></a>关于变量类型</h2><p>C++ 中有两种类型的表达式：</p>
+<ul>
+<li><strong>左值（lvalue）：</strong>指向内存位置的表达式被称为左值（lvalue）表达式。左值可以出现在赋值号的左边或右边。</li>
+<li><strong>右值（rvalue）：</strong>术语右值（rvalue）指的是存储在内存中某些地址的数值。右值是不能对其进行赋值的表达式，也就是说，右值可以出现在赋值号的右边，但不能出现在赋值号的左边。</li>
+</ul>
+<h2 id="关于常量"><a href="#关于常量" class="headerlink" title="关于常量"></a>关于常量</h2><p>在 C++ 中，有两种简单的定义常量的方式：</p>
+<ul>
+<li>使用 <strong>#define</strong> 预处理器。</li>
+<li>使用 <strong>const</strong> 关键字。</li>
+</ul>
+<h2 id="关于存储类"><a href="#关于存储类" class="headerlink" title="关于存储类"></a>关于存储类</h2><p> 存储类定义 C++ 程序中变量/函数的范围（可见性）和生命周期。 </p>
+<p>使用 thread_local 说明符声明的变量仅可在它在其上创建的线程上访问。 变量在创建线程时创建，并在销毁线程时销毁。 每个线程都有其自己的变量副本。</p>
+<h2 id="关于运算符"><a href="#关于运算符" class="headerlink" title="关于运算符"></a>关于运算符</h2><p> sizeof  返回变量的大小 </p>
+<p> Condition ? X : Y   如果 Condition 为真 ? 则值为 X : 否则值为 Y。 </p>
+<p> &amp;   返回变量的地址 </p>
+<p> *  指向一个变量 </p>
+<h2 id="关于函数"><a href="#关于函数" class="headerlink" title="关于函数"></a>关于函数</h2><p>向函数传递参数的<strong>传值调用</strong>方法，把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数不会影响实际参数。</p>
+<p>向函数传递参数的<strong>指针调用</strong>方法，把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p>
+<p>向函数传递参数的<strong>引用调用</strong>方法，把引用的地址复制给形式参数。在函数内，该引用用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p>
+<p> 当您定义一个函数，您可以为参数列表中后边的每一个参数指定默认值。当调用函数时，如果实际参数的值留空，则使用这个默认值。 </p>
+<h2 id="关于引用"><a href="#关于引用" class="headerlink" title="关于引用"></a>关于引用</h2><p> 引用变量是一个别名，也就是说，它是某个已存在变量的另一个名字。一旦把引用初始化为某个变量，就可以使用该引用名称或变量名称来指向变量。 </p>
+<ul>
+<li>不存在空引用。引用必须连接到一块合法的内存。</li>
+<li>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。</li>
+<li><p>引用必须在创建时被初始化。指针可以在任何时间被初始化。</p>
+<p>C++ 支持把引用作为参数传给函数，这比传一般的参数更安全。 </p>
+<p>可以从 C++ 函数中返回引用，就像返回其他数据类型一样。 </p>
+</li>
+</ul>
+<h2 id="关于标准输入输出"><a href="#关于标准输入输出" class="headerlink" title="关于标准输入输出"></a>关于标准输入输出</h2><p>标准日志流（clog）</p>
+<p>预定义的对象 <strong>clog</strong> 是 <strong>iostream</strong> 类的一个实例。clog 对象附属到标准错误设备，通常也是显示屏，但是 <strong>clog</strong> 对象是缓冲的。这意味着每个流插入到 clog 都会先存储在缓冲在，直到缓冲填满或者缓冲区刷新时才会输出。</p>
+<h2 id="关于类和对象"><a href="#关于类和对象" class="headerlink" title="关于类和对象"></a>关于类和对象</h2><p>使用初始化列表来初始化字段</p>
+<p> C::C( double a, double b, double c): X(a), Y(b), Z(c) </p>
+<h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><p><strong>必须定义拷贝构造函数的情况：</strong></p>
+<p>只包含类类型成员或内置类型（但不是指针类型）成员的类，无须显式地定义拷贝构造函数也可以拷贝；有的类有一个数据成员是指针，或者是有成员表示在构造函数中分配的其他资源，这两种情况下都必须定义拷贝构造函数。</p>
+<p><strong>什么情况使用拷贝构造函数：</strong></p>
+<p>类的对象需要拷贝时，拷贝构造函数将会被调用。以下情况都会调用拷贝构造函数：</p>
+<ul>
+<li>（1）一个对象以值传递的方式传入函数体  </li>
+<li>（2）一个对象以值传递的方式从函数返回  </li>
+<li>（3）一个对象需要通过另外一个对象进行初始化。</li>
+</ul>
+<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><p>类的友元函数是定义在类外部，但有权访问类的所有私有（private）成员和保护（protected）成员。尽管友元函数的原型有在类的定义中出现过，但是友元函数并不是成员函数。 </p>
+<p>因为友元函数没有this指针，则参数要有三种情况： </p>
+<p>要访问非static成员时，需要对象做参数；</p>
+<p>要访问static成员或全局变量时，则不需要对象做参数；</p>
+<p>如果做参数的对象是全局对象，则不需要对象做参数.</p>
+<p>可以直接调用友元函数，不需要通过对象或指针</p>
+<h2 id="关于继承"><a href="#关于继承" class="headerlink" title="关于继承"></a>关于继承</h2><p>多继承(环状继承),A-&gt;D, B-&gt;D, C-&gt;(A，B)，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class D&#123;......&#125;;</span><br><span class="line">class B: public D&#123;......&#125;;</span><br><span class="line">class A: public D&#123;......&#125;;</span><br><span class="line">class C: public B, public A&#123;.....&#125;;</span><br></pre></td></tr></table></figure>
+<p>这个继承会使D创建两个对象,要解决上面问题就要用虚拟继承格式</p>
+<p>格式：class 类名: virtual 继承方式 父类名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class D&#123;......&#125;;</span><br><span class="line">class B: virtual public D&#123;......&#125;;</span><br><span class="line">class A: virtual public D&#123;......&#125;;</span><br><span class="line">class C: public B, public A&#123;.....&#125;;</span><br></pre></td></tr></table></figure>
+<p>虚继承–（在创建对象的时候会创建一个虚表）在创建父类对象的时候</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A:virtual public D</span><br><span class="line">B:virtual public D</span><br></pre></td></tr></table></figure>
+<h2 id="关于重载"><a href="#关于重载" class="headerlink" title="关于重载"></a>关于重载</h2><p>C++ 允许在同一作用域中的某个<strong>函数</strong>和<strong>运算符</strong>指定多个定义，分别称为<strong>函数重载</strong>和<strong>运算符重载</strong>。</p>
+<p>重载的运算符是带有特殊名称的函数，函数名是由关键字 operator 和其后要重载的运算符符号构成的。与其他函数一样，重载运算符有一个返回类型和一个参数列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box operator+(const Box&amp;);</span><br></pre></td></tr></table></figure>
+<h2 id="关于多态"><a href="#关于多态" class="headerlink" title="关于多态"></a>关于多态</h2><p><strong>虚函数</strong> 是在基类中使用关键字 <strong>virtual</strong> 声明的函数。在派生类中重新定义基类中定义的虚函数时，会告诉编译器不要静态链接到该函数。</p>
+<p>我们想要的是在程序中任意点可以根据所调用的对象类型来选择调用的函数，这种操作被称为<strong>动态链接</strong>，或<strong>后期绑定</strong>。</p>
+<p><em>不添加virtual就是静态多态，或静态链接。</em></p>
+<p>您可能想要在基类中定义虚函数，以便在派生类中重新定义该函数更好地适用于对象，但是您在基类中又不能对虚函数给出有意义的实现，这个时候就会用到纯虚函数。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// pure virtual function</span><br><span class="line">virtual int area() = 0;</span><br></pre></td></tr></table></figure>
+<h2 id="关于数据抽象"><a href="#关于数据抽象" class="headerlink" title="关于数据抽象"></a>关于数据抽象</h2><p>用类定义抽象数据类型（ADT）</p>
+<p><strong>设计策略</strong></p>
+<p><em>抽象把代码分离为接口和实现。</em>所以在设计组件时，必须保持接口独立于实现，这样，如果改变底层实现，接口也将保持不变。</p>
+<p><strong>在这种情况下，不管任何程序使用接口，接口都不会受到影响，只需要将最新的实现重新编译即可。</strong></p>
+<h2 id="关于数据封装"><a href="#关于数据封装" class="headerlink" title="关于数据封装"></a>关于数据封装</h2><p> C++ 通过创建<strong>类</strong>来支持封装和数据隐藏（public、protected、private） </p>
+<p> C++中<strong>, 虚函数</strong>可以为private, 并且可以被子类覆盖（因为虚函数表的传递），但子类不能调用父类的private虚函数。虚函数的重载性和它声明的权限无关。 </p>
+<h2 id="关于接口"><a href="#关于接口" class="headerlink" title="关于接口"></a>关于接口</h2><p> C++ 接口是使用<strong>抽象类</strong>来实现的，  如果类中至少有一个函数被声明为纯虚函数，则这个类就是抽象类。纯虚函数是通过在声明中使用 “= 0” 来指定的，</p>
+<p>如果类中至少有一个函数被声明为纯虚函数，则这个类就是抽象类。纯虚函数是通过在声明中使用 “= 0” 来指定的</p>
+<p><strong>设计策略</strong></p>
+<p>面向对象的系统可能会使用一个抽象基类<em>为所有的外部应用程序提供一个适当的、通用的、标准化的接口</em>。然后，派生类通过继承抽象基类，就把所有类似的操作都继承下来。</p>
+<p>外部应用程序提供的功能（即公有函数）在抽象基类中是以纯虚函数的形式存在的。这些纯虚函数在相应的派生类中被实现。</p>
+<p><strong>这个架构也使得新的应用程序可以很容易地被添加到系统中，即使是在系统被定义之后依然可以如此。</strong></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

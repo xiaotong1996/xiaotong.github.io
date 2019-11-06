@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C++学习与总结-高级篇 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-学习与总结-高级篇"><span class="toc-text">C++学习与总结-高级篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小结："><span class="toc-text">小结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-文件和流"><span class="toc-text">C++ 文件和流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-异常处理"><span class="toc-text">C++ 异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-动态内存"><span class="toc-text">C++ 动态内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-命名空间"><span class="toc-text">C++ 命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-模板"><span class="toc-text">C++ 模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-预处理器"><span class="toc-text">C++ 预处理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-信号处理"><span class="toc-text">C++ 信号处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#signal-函数"><span class="toc-text">signal() 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-多线程"><span class="toc-text">C++ 多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Web-编程"><span class="toc-text">C++ Web 编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-STL-教程"><span class="toc-text">C++ STL 教程</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C++学习与总结-高级篇
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:52:02</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C++" title="C++">C++</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="C-学习与总结-高级篇"><a href="#C-学习与总结-高级篇" class="headerlink" title="C++学习与总结-高级篇"></a>C++学习与总结-高级篇</h1><h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ul>
+<li><strong>文件读写和文件位置定位</strong></li>
+<li><strong>try、catch、throw</strong></li>
+<li><strong>定义新的异常，继承exception</strong> </li>
+<li><strong>栈：在函数内部声明的所有变量都将占用栈内存。</strong></li>
+<li><strong>堆：这是程序中未使用的内存，在程序运行时可用于动态分配内存。</strong></li>
+<li><strong>模板</strong></li>
+<li><strong>预处理器和宏</strong></li>
+<li><strong>信号处理<csignal></csignal></strong></li>
+<li><strong>多线程</strong></li>
+<li><strong>STL</strong></li>
+</ul>
+<h2 id="C-文件和流"><a href="#C-文件和流" class="headerlink" title="C++ 文件和流"></a>C++ 文件和流</h2><p> <iostream> 和 <fstream> </fstream></iostream></p>
+<p> <strong>ofstream</strong> 和 <strong>fstream</strong> 对象都可以用来打开文件进行写操作，如果只需要打开文件进行读操作，则使用 <strong>ifstream</strong> 对象。 </p>
+<p>文件操作：打开open，关闭close，写入 &lt;&lt; ，读取 >&gt;  </p>
+<p>文件位置指针</p>
+<p><strong>istream</strong> 和 <strong>ostream</strong> 都提供了用于重新定位文件位置指针的成员函数。这些成员函数包括关于 istream 的 <strong>seekg</strong>（”seek get”）和关于 ostream 的 <strong>seekp</strong>（”seek put”）。</p>
+<p>seekg 和 seekp 的参数通常是一个长整型。第二个参数可以用于指定查找方向。查找方向可以是 <strong>ios::beg</strong>（默认的，从流的开头开始定位），也可以是 <strong>ios::cur</strong>（从流的当前位置开始定位），也可以是 <strong>ios::end</strong>（从流的末尾开始定位）。</p>
+<p>文件位置指针是一个整数值，指定了从文件的起始位置到指针所在位置的字节数。</p>
+<h2 id="C-异常处理"><a href="#C-异常处理" class="headerlink" title="C++ 异常处理"></a>C++ 异常处理</h2><p> 三个关键字：<strong>try、catch、throw</strong></p>
+<p>定义新的异常</p>
+<p>您可以通过继承和重载 <strong>exception</strong> 类来定义新的异常。</p>
+<h2 id="C-动态内存"><a href="#C-动态内存" class="headerlink" title="C++ 动态内存"></a>C++ 动态内存</h2><p>C++ 程序中的内存分为两个部分：</p>
+<ul>
+<li><strong>栈：</strong>在函数内部声明的所有变量都将占用栈内存。</li>
+<li><strong>堆：</strong>这是程序中未使用的内存，在程序运行时可用于动态分配内存。</li>
+</ul>
+<p>在 C++ 中，您可以使用特殊的运算符为给定类型的变量<strong>在运行时分配堆内的内存</strong>，这会返回所分配的空间地址。这种运算符即 <strong>new</strong> 运算符。</p>
+<p>如果您不再需要动态分配的内存空间，可以使用 <strong>delete</strong> 运算符，删除之前由 new 运算符分配的内存。</p>
+<p> <strong>malloc()</strong> <em>函数在 C 语言中就出现了，在 C++ 中仍然存在，但建议尽量不要使用 malloc() 函数。new 与 malloc() 函数相比，其主要的优点是，new 不只是分配了内存，它还创建了对象。</em> </p>
+<h2 id="C-命名空间"><a href="#C-命名空间" class="headerlink" title="C++ 命名空间"></a>C++ 命名空间</h2><p> 在 C++ 应用程序中。例如，您可能会写一个名为 xyz() 的函数，在另一个可用的库中也存在一个相同的函数 xyz()。这样，编译器就无法判断您所使用的是哪一个 xyz() 函数。 </p>
+<p> 因此，引入了<strong>命名空间</strong>这个概念，专门用于解决上面的问题，它可作为<strong>附加信息</strong>来区分不同库中相同名称的函数、类、变量等。使用了命名空间即定义了上下文。本质上，<strong>命名空间就是定义了一个范围</strong>。 </p>
+<h2 id="C-模板"><a href="#C-模板" class="headerlink" title="C++ 模板"></a>C++ 模板</h2><p>模板是泛型编程的基础，泛型编程即以一种独立于任何特定类型的方式编写代码。</p>
+<p>模板是创建泛型类或函数的蓝图或公式。库容器，比如迭代器和算法，都是泛型编程的例子，它们都使用了模板的概念。</p>
+<h2 id="C-预处理器"><a href="#C-预处理器" class="headerlink" title="C++ 预处理器"></a>C++ 预处理器</h2><p>预处理器是一些指令，指示编译器在实际编译之前所需完成的预处理。</p>
+<p>所有的预处理器指令都是以井号（#）开头，只有空格字符可以出现在预处理指令之前。预处理指令不是 C++ 语句，所以它们不会以分号（;）结尾。</p>
+<p>我们已经看到，之前所有的实例中都有 <strong>#include</strong> 指令。这个宏用于把头文件包含到源文件中。</p>
+<ul>
+<li>#define 预处理指令用于创建符号常量。该符号常量通常称为<strong>宏</strong>，</li>
+<li>您可以使用 #define 来定义一个带有参数的宏 </li>
+<li>条件编译, 有几个指令可以用来有选择地对部分程序源代码进行编译。这个过程被称为条件编译。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ifdef NULL</span><br><span class="line">   #define NULL 0</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>C++ 中的预定义宏:</p>
+<table>
+<thead>
+<tr>
+<th><code>__LINE__</code></th>
+<th>这会在程序编译时包含当前行号。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__FILE__</code></td>
+<td>这会在程序编译时包含当前文件名。</td>
+</tr>
+<tr>
+<td><code>__DATE__</code></td>
+<td>这会包含一个形式为 month/day/year 的字符串，它表示把源文件转换为目标代码的日期。</td>
+</tr>
+<tr>
+<td><code>__TIME__</code></td>
+<td>这会包含一个形式为 hour:minute:second 的字符串，它表示程序被编译的时间。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>#</strong> 和 <strong>##</strong> 运算符</p>
+<p># 字符串化的意思，出现在宏定义中的#是把跟在后面的参数转换成一个字符串。</p>
+<p>当用作字符串化操作时，# 的主要作用是将宏参数不经扩展地转换成字符串常量。</p>
+<ul>
+<li>宏定义参数的左右两边的空格会被忽略，参数的各个 Token 之间的多个空格会被转换成一个空格。 </li>
+<li>宏定义参数中含有需要特殊含义字符如”或\时，它们前面会自动被加上转义字符 \。 </li>
+</ul>
+<p>## 连接符号，把参数连在一起。</p>
+<p>将多个 Token 连接成一个 Token。要点：</p>
+<ul>
+<li>它不能是宏定义中的第一个或最后一个 Token。</li>
+<li>前后的空格可有可无。</li>
+</ul>
+<h2 id="C-信号处理"><a href="#C-信号处理" class="headerlink" title="C++ 信号处理"></a>C++ 信号处理</h2><p>信号是由操作系统传给进程的中断，会提早终止一个程序。在 UNIX、LINUX、Mac OS X 或 Windows 系统上，可以通过按 Ctrl+C 产生中断。</p>
+<p>有些信号不能被程序捕获，但是下表所列信号可以在程序中捕获，并可以基于信号采取适当的动作。这些信号是定义在 C++ 头文件 <csignal> 中。</csignal></p>
+<h2 id="signal-函数"><a href="#signal-函数" class="headerlink" title="signal() 函数"></a>signal() 函数</h2><p>C++ 信号处理库提供了 <strong>signal</strong> 函数，用来捕获突发事件。以下是 signal() 函数的语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void (*signal (int sig, void (*func)(int)))(int);</span><br></pre></td></tr></table></figure>
+<p>您可以使用函数 <strong>raise()</strong> 生成信号，该函数带有一个整数信号编号作为参数，语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int raise (signal sig);</span><br></pre></td></tr></table></figure>
+<p><strong>Sleep 函数</strong></p>
+<p>功能：执行挂起一段时间，也就是等待一段时间在继续执行</p>
+<p>用法：Sleep(时间)</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>（1）Linux 用 <strong>#include </strong> 和 <strong>sleep()</strong>，Windos 用 <strong>#include </strong> 和 <strong>Sleep()</strong>。</li>
+<li>（2）Sleep括号里的时间，在windows下是已毫秒为单位，而LInux是已秒为单位。</li>
+</ul>
+<h2 id="C-多线程"><a href="#C-多线程" class="headerlink" title="C++ 多线程"></a>C++ 多线程</h2><p>多线程是多任务处理的一种特殊形式，多任务处理允许让电脑同时运行两个或两个以上的程序。一般情况下，两种类型的多任务处理：<strong>基于进程和基于线程</strong>。</p>
+<ul>
+<li>基于进程的多任务处理是程序的并发执行。</li>
+<li><p>基于线程的多任务处理是同一程序的片段的并发执行。</p>
+<p>c++ 11 之后有了标准的线程库： #include <thread></thread></p>
+</li>
+</ul>
+<h2 id="C-Web-编程"><a href="#C-Web-编程" class="headerlink" title="C++ Web 编程"></a>C++ Web 编程</h2><p> 公共网关接口（CGI），是一套标准，定义了信息是如何在 Web 服务器和客户端脚本之间进行交换的。 </p>
+<h2 id="C-STL-教程"><a href="#C-STL-教程" class="headerlink" title="C++ STL 教程"></a>C++ STL 教程</h2><p>C++ 标准模板库的核心包括以下三个组件：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>描述</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>容器（Containers）</td>
+<td>容器是用来管理某一类对象的集合。C++ 提供了各种不同类型的容器，比如 deque、list、vector、map 等。</td>
+<td>vector，string，list，set（任意两元素不相等），map,stack,queue,deque(双端队列，动态数组)</td>
+</tr>
+<tr>
+<td>算法（Algorithms）</td>
+<td>算法作用于容器。它们提供了执行各种操作的方式，包括对容器内容执行初始化、排序、搜索和转换等操作。</td>
+<td></td>
+</tr>
+<tr>
+<td>迭代器（iterators）</td>
+<td>迭代器用于遍历对象集合的元素。这些集合可能是容器，也可能是容器的子集。</td>
+</tr>
+</tbody>
+</table>
+<p>标准模板库包含了序列容器（sequence containers）与关系容器（associative containers）。 </p>
+<table>
+<thead>
+<tr>
+<th>数据容器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序列容器 - <a href="https://zh.wikipedia.org/wiki/线性表" target="_blank" rel="noopener">有序集</a></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><a href="https://zh.wikipedia.org/wiki/Vector_(STL" target="_blank" rel="noopener">vector</a>)</strong></td>
+<td>动态数组，兼容C语言数组。vector可以如同数组一样的访问方式，例如使用下标（operator[]）运算符，并记得自己的长度信息（size），您也可以使用对象的方式来访问vector（push_back、pop_back）。使用vector可以轻易地定义多维可调整型数组（std::vector&lt;std::vector&lt;…&gt; &gt;）。要使用vector，必须含入vector头文件。vector可在<a href="https://zh.wikipedia.org/wiki/大O记号" target="_blank" rel="noopener">O(1)</a>内完成在末尾插入 / 移除元素，但在vector中间或开头插入/移除元素，则需要消耗O(n)时间。</td>
+</tr>
+<tr>
+<td><strong><a href="https://zh.wikipedia.org/wiki/List_(STL" target="_blank" rel="noopener">list</a>)</strong></td>
+<td>list容器是一个有序（Ordered）的数据结构（循序容器），每个元素中存储着上一个元素和下一个元素的地址（指针），因此是一个双向链接的链表。与vector相比，其元素的访问速度较慢，而在已知元素位置的情况下，插入和删除速度较快。STL容器中唯一支持事务语义。</td>
+</tr>
+<tr>
+<td><strong>forward_list</strong> （单向链表）</td>
+<td>list的单链表版，去掉了一些操作。</td>
+</tr>
+<tr>
+<td><strong>deque</strong> （<a href="https://zh.wikipedia.org/wiki/双端队列" target="_blank" rel="noopener">双端队列</a>）</td>
+<td>可看做为能在常量时间内完成向开头或结尾插入或删除元素的vector，但是修改之后，其迭代器的有效性就无法得到保障。</td>
+</tr>
+<tr>
+<td><strong>array</strong></td>
+<td>只能在初始化时指定大小的数组，可视为内置数组的封装。</td>
+</tr>
+<tr>
+<td><a href="https://zh.wikipedia.org/w/index.php?title=Associative_array&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">关联容器</a> - 无序集</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>set</strong></td>
+<td>不重复元素的集合。</td>
+</tr>
+<tr>
+<td><strong>multiset</strong></td>
+<td>跟set具有相同功能，但允许重复的元素。</td>
+</tr>
+<tr>
+<td><strong><a href="https://zh.wikipedia.org/w/index.php?title=Map_(C%2B%2B_container" target="_blank" rel="noopener">map</a>&amp;action=edit&amp;redlink=1)</strong></td>
+<td>关联数组，每个元素含有两个数据项，map将一个数据项映射到另一个数据项中。</td>
+</tr>
+<tr>
+<td><strong>multimap</strong></td>
+<td>跟map具有相同功能，但允许重复的键值。</td>
+</tr>
+<tr>
+<td><strong>unordered_set</strong> <strong>unordered_multiset</strong> <strong>unordered_map</strong> <strong>unordered_multimap</strong></td>
+<td>分别类似于集合、多重集合、映射、多重映射，但使用<a href="https://zh.wikipedia.org/wiki/哈希表" target="_blank" rel="noopener">哈希表</a>实现。它的键（Keys）没有排序（operator&lt;），相反必须存在一个从键类型到size_t的哈希函数、且要求键之间可以判等（operator==）。自<a href="https://zh.wikipedia.org/wiki/C%2B%2B11" target="_blank" rel="noopener">C++11</a>起进入语言标准。</td>
+</tr>
+<tr>
+<td>其他类型的容器</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>bitset</strong></td>
+<td>存储系列位类似的固定大小的布尔向量。实现按位运算，没有迭代器，不是序列。可视为std::array&lt;bool, N&gt;。若需要改变序列长度，可用std::vector<bool>。</bool></td>
+</tr>
+<tr>
+<td><strong>valarray</strong></td>
+<td>数值类型的std::vector。牺牲泛型能力而专为数值计算做了优化，例如在数组上的sin操作可对数组内所有数值取<a href="https://zh.wikipedia.org/wiki/正弦" target="_blank" rel="noopener">正弦</a>。有些实现会对std::valarray应用向量指令等优化手段。 一个观点是里面全是数值类型的valarray才是<a href="https://zh.wikipedia.org/wiki/数学" target="_blank" rel="noopener">数学</a>意义上的<a href="https://zh.wikipedia.org/wiki/向量" target="_blank" rel="noopener">向量</a>，而可以泛型的vector更该叫array——<a href="https://zh.wikipedia.org/wiki/编程语言" target="_blank" rel="noopener">编程语言</a>中的<a href="https://zh.wikipedia.org/wiki/数组" target="_blank" rel="noopener">数组</a>。</td>
+</tr>
+</tbody>
+</table>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

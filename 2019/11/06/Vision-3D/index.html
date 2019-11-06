@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Vision 3D - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vision-3D"><span class="toc-text">Vision 3D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#传感器和测量方法"><span class="toc-text">传感器和测量方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3D重建方法"><span class="toc-text">3D重建方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3D重建的视觉部分"><span class="toc-text">3D重建的视觉部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shape-from-Shading-阴影形状"><span class="toc-text">Shape from Shading 阴影形状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shape-Depth-from-focus-defocus"><span class="toc-text">Shape / Depth from focus / defocus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reconstruction-stereo-立体重建"><span class="toc-text">Reconstruction stéréo 立体重建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shape-from-structured-light-结构光图形"><span class="toc-text">Shape from structured light 结构光图形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Range-Imaging-Time-of-Flight-距离成像：飞行时间"><span class="toc-text">Range Imaging : Time of Flight 距离成像：飞行时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Methodes-de-reconstruction-重建方法"><span class="toc-text">Méthodes de reconstruction 重建方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Primitives-2D-3D-原语"><span class="toc-text">Primitives 2D / 3D 原语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calibration-校准"><span class="toc-text">Calibration 校准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calibration-Parametres-intrinseques-校准：内在参数"><span class="toc-text">Calibration : Paramètres intrinsèques 校准：内在参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Distorsions-扭曲"><span class="toc-text">Distorsions 扭曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parametres-extrinseques-外部参数"><span class="toc-text">Paramètres extrinsèques 外部参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calibration-avec-OpenCV"><span class="toc-text">Calibration avec OpenCV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calibration-stereo"><span class="toc-text">Calibration stéréo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-points"><span class="toc-text">Feature points</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Descripteurs-et-Matching-描述符和匹配"><span class="toc-text">Descripteurs et Matching  描述符和匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分解为奇异值（SVD）"><span class="toc-text">分解为奇异值（SVD）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Etude-de-cas-Recalage-cible-pour-augmentation"><span class="toc-text">Etude de cas : Recalage / cible pour augmentation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SLAM"><span class="toc-text">SLAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SLAM定义"><span class="toc-text">SLAM定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SLAM：架构"><span class="toc-text">SLAM：架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-Base-vs-Direct"><span class="toc-text">Feature-Base vs Direct</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Visual-SLAM-Methodes-sparses-稀疏的"><span class="toc-text">Visual SLAM : Méthodes sparses 稀疏的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VisualSLAM-Methodes-denses-密集的"><span class="toc-text">VisualSLAM : Méthodes denses 密集的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Visual-SLAM-Autres-methodes"><span class="toc-text">Visual SLAM : Autres méthodes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ajustement-de-faisceaux-Bundle-Adjustment-捆绑调整"><span class="toc-text">Ajustement de faisceaux (Bundle Adjustment) 捆绑调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORB-SLAM：功能"><span class="toc-text">ORB-SLAM：功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORB-SLAM-Architecture"><span class="toc-text">ORB-SLAM : Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORB-SLAM：数据"><span class="toc-text">ORB-SLAM：数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORB-SLAM-Tracking-追踪"><span class="toc-text">ORB-SLAM : Tracking 追踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORB-SLAM-Local-Mapping"><span class="toc-text">ORB-SLAM : Local Mapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORB-SLAM-Loop-Closing"><span class="toc-text">ORB-SLAM: Loop Closing</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Vision 3D
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:40:40</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#计算机图形学" title="计算机图形学">计算机图形学</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#SLAM" title="SLAM">SLAM</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Vision-3D"><a href="#Vision-3D" class="headerlink" title="Vision 3D"></a>Vision 3D</h1><h2 id="传感器和测量方法"><a href="#传感器和测量方法" class="headerlink" title="传感器和测量方法"></a>传感器和测量方法</h2><p> Mesures absolues </p>
+<ul>
+<li>深度信息得到物体的位置和转向</li>
+<li>体视法 和  摄影测量术 </li>
+<li>temps de vol</li>
+<li>成焦或散焦的形状  结构光：结构光投影和激光三角测量 </li>
+<li><p>卷信息  断层摄影术 </p>
+<p>Mesures relatives</p>
+</li>
+<li><p>对象表面的[局部]几何形状，但不是其位置 </p>
+</li>
+<li>阴影（shading）形状 纹理（textures）形状</li>
+</ul>
+<h2 id="3D重建方法"><a href="#3D重建方法" class="headerlink" title="3D重建方法"></a>3D重建方法</h2><p> 选配 （自上而下）</p>
+<ul>
+<li>搜索已知对象类型的出现，并在场景空间中进行替换。 </li>
+<li><p>高级原语：预定义的对象 </p>
+<p>建设 （自下而上）</p>
+</li>
+<li><p>无需事先使用已知对象即可进行重建 </p>
+</li>
+<li><p>使用低级重建原语，原语的程序集构造一个较高级的实体。 </p>
+<h2 id="3D重建的视觉部分"><a href="#3D重建的视觉部分" class="headerlink" title="3D重建的视觉部分"></a>3D重建的视觉部分</h2><p>Vision Active </p>
+</li>
+<li><p>Image + source （图像和源）</p>
+</li>
+<li><p>Laser （激光）</p>
+<p><img src="../img/未分类/1572280064835.png" alt="1572280064835"></p>
+</li>
+<li><p>Tomographie 断层摄影术 </p>
+<p><img src="../img/未分类/1572280091661.png" alt="1572280091661"></p>
+</li>
+<li><p>Shape from shading 阴影形状</p>
+<p>Vision Passive  </p>
+</li>
+<li><p>利用图像之间的差异 </p>
+</li>
+</ul>
+<p><img src="../img/未分类/1572280192378.png" alt="1572280192378"></p>
+<ul>
+<li>多眼视觉（立体视觉） </li>
+<li>运动中的单眼视觉 </li>
+</ul>
+<h2 id="Shape-from-Shading-阴影形状"><a href="#Shape-from-Shading-阴影形状" class="headerlink" title="Shape from Shading 阴影形状"></a>Shape from Shading 阴影形状</h2><p> 原理1：光度法 </p>
+<p><img src="../img/未分类/1572280338294.png" alt="1572280338294"></p>
+<p><img src="../img/未分类/1572280352725.png" alt="1572280352725"></p>
+<ul>
+<li>a:  恒定且已知的反照率 </li>
+<li>已知光源 </li>
+</ul>
+<p>原理2： 扩散照明模型（朗伯型）  Lambertien </p>
+<p><img src="../img/未分类/1572280494638.png" alt="1572280494638"></p>
+<p><img src="../img/未分类/1572280479562.png" alt="1572280479562"></p>
+<p>原理3： 伪尺度照明模型 </p>
+<h2 id="Shape-Depth-from-focus-defocus"><a href="#Shape-Depth-from-focus-defocus" class="headerlink" title="Shape / Depth from focus / defocus"></a>Shape / Depth from focus / defocus</h2><p> 问题：通过更改传感器的焦距或位置获得的2张或更多图像得到场景的3D估算</p>
+<p> Depth from focus (actif) 聚焦深度</p>
+<p><img src="../img/未分类/1572293531473.png" alt="1572293531473"> </p>
+<p> 离焦深度（passif） </p>
+<p><img src="../img/未分类/1572293595010.png" alt="1572293595010"></p>
+<h2 id="Reconstruction-stereo-立体重建"><a href="#Reconstruction-stereo-立体重建" class="headerlink" title="Reconstruction stéréo 立体重建"></a>Reconstruction stéréo 立体重建</h2><p> Principe : Triangulation 三角测量</p>
+<p><img src="../img/未分类/1572343874877.png" alt="1572343874877"></p>
+<p>需要校准</p>
+<h2 id="Shape-from-structured-light-结构光图形"><a href="#Shape-from-structured-light-结构光图形" class="headerlink" title="Shape from structured light 结构光图形"></a>Shape from structured light 结构光图形</h2><p> 激光投影：半径→点，平面→线，网格 </p>
+<p>激光平面 plan laser：</p>
+<ul>
+<li>柱面镜或旋转镜 </li>
+<li>已知方程</li>
+<li>校准好的相机 </li>
+</ul>
+<p><img src="../img/未分类/1572344041720.png" alt="1572344041720"></p>
+<p> 一个或多个模式的投影 </p>
+<p>模式：</p>
+<ul>
+<li>干扰（光相干） </li>
+<li>投影 </li>
+</ul>
+<p>模式编码</p>
+<p> 两种模式之间只有1位的变化 </p>
+<h2 id="Range-Imaging-Time-of-Flight-距离成像：飞行时间"><a href="#Range-Imaging-Time-of-Flight-距离成像：飞行时间" class="headerlink" title="Range Imaging : Time of Flight 距离成像：飞行时间"></a>Range Imaging : Time of Flight 距离成像：飞行时间</h2><p>principe:lidar 激光雷达</p>
+<ul>
+<li>在持续时间d的t0处发出一个光脉冲 </li>
+<li>测量脉冲t0 + Dt（i，j）的反射光的每个像素（i，j）：Dt表示距离 </li>
+</ul>
+<p>技术</p>
+<ul>
+<li>TOF：反射信号的Dt的脉冲测量 </li>
+<li>相位：在频率f处的连续调制，反射信号的相移测量 </li>
+</ul>
+<h2 id="Methodes-de-reconstruction-重建方法"><a href="#Methodes-de-reconstruction-重建方法" class="headerlink" title="Méthodes de reconstruction 重建方法"></a>Méthodes de reconstruction 重建方法</h2><p> Méthodes Globales :   处理所有图像。 </p>
+<ul>
+<li>shape from XXX</li>
+<li>立体技术： 关联 / 弹性匹配 </li>
+</ul>
+<p>应用： 深度图 </p>
+<p>  Méthodes basées sur des primitives :  基于原语的方法：</p>
+<p> 仅处理从图像中提取的图元。 </p>
+<ul>
+<li>特别点   Points particuliers </li>
+<li>等高线  Contours </li>
+<li><p>地区  Régions </p>
+<p>条件重建 </p>
+</li>
+</ul>
+<h2 id="Primitives-2D-3D-原语"><a href="#Primitives-2D-3D-原语" class="headerlink" title="Primitives 2D / 3D 原语"></a>Primitives 2D / 3D 原语</h2><p> Points d’intérêts  特别点</p>
+<ul>
+<li><p>Sommet 顶点</p>
+</li>
+<li><p>缺点： 相似度低的标准1 ， 可以使用其邻域来描述 </p>
+</li>
+<li><p>优点： 点视差 及时差异</p>
+<p>Les contours 等高线</p>
+</li>
+<li><p>Arête (segment, courbe) 棱边（段，曲线）</p>
+</li>
+<li><p>优点： 强大的形态学标准 ； 轮廓上的差异 </p>
+<p>Les régions 地区   </p>
+</li>
+<li><p>Face (facette, carreau) 面</p>
+</li>
+<li>优点：区域邻接图 </li>
+<li>缺点： 毛点差 差异不明显</li>
+</ul>
+<h2 id="Calibration-校准"><a href="#Calibration-校准" class="headerlink" title="Calibration 校准"></a>Calibration 校准</h2><p> 相机参数的估计 </p>
+<ul>
+<li>确定空间点经过的变换以获得图像的点 </li>
+<li>型号： Pin Hole1ou sténopé </li>
+<li>场景参考系=》照相机参考系  外在参数 </li>
+<li>照相机参考系=》图像参考系  内在参数 </li>
+</ul>
+<h2 id="Calibration-Parametres-intrinseques-校准：内在参数"><a href="#Calibration-Parametres-intrinseques-校准：内在参数" class="headerlink" title="Calibration : Paramètres intrinsèques 校准：内在参数"></a>Calibration : Paramètres intrinsèques 校准：内在参数</h2><p><img src="../img/未分类/1572346340641.png" alt="1572346340641"></p>
+<h2 id="Distorsions-扭曲"><a href="#Distorsions-扭曲" class="headerlink" title="Distorsions 扭曲"></a>Distorsions 扭曲</h2><p> 发生在投影线性模型和与图像相关的点之间 </p>
+<p>来源：</p>
+<ul>
+<li>镜片瑕疵 </li>
+<li>镜头/矩阵未对准 </li>
+</ul>
+<p>形式：</p>
+<ul>
+<li>在径向变形中&gt;&gt;切向变形 </li>
+<li><p>如果考虑到径向和切向变形，（Du，Dv）可能是高度非线性的 </p>
+<p>考虑到 ：</p>
+</li>
+<li><p>K1拒绝相机模型的参数并破坏模型的线性 </p>
+</li>
+<li><p>独立于模型的失真估计和图像校正 </p>
+</li>
+<li>我们将处理校正后的像素（u’，v’）： </li>
+</ul>
+<p><img src="../img/未分类/1572346567239.png" alt="1572346567239"></p>
+<h2 id="Parametres-extrinseques-外部参数"><a href="#Parametres-extrinseques-外部参数" class="headerlink" title="Paramètres extrinsèques 外部参数"></a>Paramètres extrinsèques 外部参数</h2><ul>
+<li>场景标记和相机标记之间的刚性移动 </li>
+<li>由包含已知3D点的校准图案表示的场景标记 </li>
+<li>通过记录图像中的特定点来估计瞄准器和摄像机之间的刚性位移 </li>
+</ul>
+<p><img src="../img/未分类/1572346673746.png" alt="1572346673746"></p>
+<h2 id="Calibration-avec-OpenCV"><a href="#Calibration-avec-OpenCV" class="headerlink" title="Calibration avec OpenCV"></a>Calibration avec OpenCV</h2><p><img src="../img/未分类/1572346699130.png" alt="1572346699130"></p>
+<h2 id="Calibration-stereo"><a href="#Calibration-stereo" class="headerlink" title="Calibration stéréo"></a>Calibration stéréo</h2><p>…</p>
+<h2 id="Feature-points"><a href="#Feature-points" class="headerlink" title="Feature points"></a>Feature points</h2><p> 目的：检测同一对象的其他图像中易于识别的兴趣点（特征点） </p>
+<p> 点检测：</p>
+<ul>
+<li><p>例子：SIFT：标度空间中的高斯差（DoG）的最小值和最大值 </p>
+<p>点上的特征映射： </p>
+</li>
+<li><p>描述符向量之间的欧式距离（通常为32、64或128个分量） </p>
+<p>不变性 ：</p>
+</li>
+<li><p>位移：位置不干预匹配 </p>
+</li>
+<li>旋转：特征点沿渐变方向定向 </li>
+<li>尺度： 使用比例空间（ScaleSpace）可为检测到的特征点提供比例因子 </li>
+</ul>
+<p>局部不变性：</p>
+<ul>
+<li>光照</li>
+<li>仿射变换或投影 </li>
+</ul>
+<h2 id="Descripteurs-et-Matching-描述符和匹配"><a href="#Descripteurs-et-Matching-描述符和匹配" class="headerlink" title="Descripteurs et Matching  描述符和匹配"></a>Descripteurs et Matching  描述符和匹配</h2><p> Descripteurs </p>
+<p> 根据检测点的方向在附近的尺度上对邻域中的梯度方向描绘局部直方图 </p>
+<p> <img src="../img/未分类/1572347247108.png" alt="1572347247108"></p>
+<p> Matching </p>
+<p> Entre points （点之间）：</p>
+<ul>
+<li>描述符之间的欧式距离 </li>
+<li><p>在k-d tree中寻找最优点 </p>
+<p>Entre ensembles de points （点集之间）: </p>
+</li>
+<li><p>在mmc的意义上进行调整 </p>
+</li>
+<li>de l’homographiecorrespondante (si nb pts &gt;= 4 </li>
+<li><p>de la matrice essentielle (si nb pts &gt;= 8) </p>
+<h2 id="分解为奇异值（SVD）"><a href="#分解为奇异值（SVD）" class="headerlink" title="分解为奇异值（SVD）"></a>分解为奇异值（SVD）</h2></li>
+</ul>
+<h2 id="Etude-de-cas-Recalage-cible-pour-augmentation"><a href="#Etude-de-cas-Recalage-cible-pour-augmentation" class="headerlink" title="Etude de cas : Recalage / cible pour augmentation"></a>Etude de cas : Recalage / cible pour augmentation</h2><p>TP1</p>
+<h1 id="SLAM"><a href="#SLAM" class="headerlink" title="SLAM"></a>SLAM</h1><h2 id="SLAM定义"><a href="#SLAM定义" class="headerlink" title="SLAM定义"></a>SLAM定义</h2><p>主要任务：</p>
+<ul>
+<li><p>跟踪：估计摄像机的姿势 </p>
+<ul>
+<li>特征匹配 </li>
+<li>Optical Flow 光流</li>
+</ul>
+</li>
+<li><p>制图：环境重建 </p>
+<ul>
+<li>三角测量 </li>
+<li>深度参数化 </li>
+</ul>
+</li>
+<li><p>其他任务 </p>
+<ul>
+<li><p>重新定位 （ 失去追踪后 ）</p>
+</li>
+<li><p>闭环 </p>
+</li>
+<li><p>地图初始化 ： 深度参数化 &amp; 延迟初始化/特定运动 </p>
+<p><img src="../img/未分类/1572356949825.png" alt="1572356949825"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>定位：</p>
+<ul>
+<li>同义词： 视觉里程表  Visual Odometry </li>
+<li><p>根据…确定姿势 </p>
+<ul>
+<li>2D / 3D映射：图像点 <-->3D点 =》 透视点（PnP） </--></li>
+<li>3D（或2.5D）/ 3D匹配 ： 深度点↔3D点 =》 ICP：迭代最近点 </li>
+</ul>
+<p>制图 /映射：</p>
+<p>确定环境图 </p>
+</li>
+<li><p>同义词： Reconstruction, Structure fromMotion (SfM)  重构，运动构造（SfM） </p>
+</li>
+<li>Mapping Local局部映射：<ul>
+<li>2D相机：了解两个图像之间的相对姿势 =》三角剖分=》3D点</li>
+<li>Cameras2D :  了解相机之间的bases=》三角剖分=》3D点</li>
+<li>Camera 3D :   carte de profondeur （深度图）⟹points 3D </li>
+</ul>
+</li>
+<li>Mapping Global <ul>
+<li>Pose + carte locale ⟹carte globale 姿势+本地地图⟹全球地图 </li>
+</ul>
+</li>
+</ul>
+<h2 id="SLAM：架构"><a href="#SLAM：架构" class="headerlink" title="SLAM：架构"></a>SLAM：架构</h2><p> Graph-BasedSLAM </p>
+<p><img src="../img/未分类/1572357373749.png" alt="1572357373749"></p>
+<p>…</p>
+<h2 id="Feature-Base-vs-Direct"><a href="#Feature-Base-vs-Direct" class="headerlink" title="Feature-Base vs Direct"></a>Feature-Base vs Direct</h2><p>…</p>
+<h2 id="Visual-SLAM-Methodes-sparses-稀疏的"><a href="#Visual-SLAM-Methodes-sparses-稀疏的" class="headerlink" title="Visual SLAM : Méthodes sparses 稀疏的"></a>Visual SLAM : Méthodes sparses 稀疏的</h2><p> 基于特征 </p>
+<ul>
+<li>优势：<ul>
+<li>基本要素加大要素(特征描述的容忍度和光照强度) </li>
+<li>通过捆绑调整同时优化姿势和贴图 </li>
+<li>计算更轻 </li>
+</ul>
+</li>
+<li>劣势：<ul>
+<li>缺少纹理⇒没有points </li>
+</ul>
+</li>
+<li>例子：<ul>
+<li>PTAM </li>
+<li>ORB-SLAM </li>
+</ul>
+</li>
+</ul>
+<h2 id="VisualSLAM-Methodes-denses-密集的"><a href="#VisualSLAM-Methodes-denses-密集的" class="headerlink" title="VisualSLAM : Méthodes denses 密集的"></a>VisualSLAM : Méthodes denses 密集的</h2><p> 基于像素 </p>
+<ul>
+<li>优势：<ul>
+<li>没有特征提取（在处理时间上花费更多） </li>
+<li>毛状体，无纹理，或纹理重复(沥青质) </li>
+<li>重建密集 </li>
+</ul>
+</li>
+<li>劣势：<ul>
+<li>光度一致性限制了视点/特征匹配之间的基线：对需要大量“基线”的重建精度的影响 </li>
+<li>对卷帘快门，自动增益和自动曝光敏感，因为它们对图像的影响需要光度学校准（在DSO中执行） </li>
+<li>计算较重 </li>
+</ul>
+</li>
+<li>例子：<ul>
+<li>DTAM </li>
+<li>LSD-SLAM </li>
+<li>DSO </li>
+</ul>
+</li>
+</ul>
+<h2 id="Visual-SLAM-Autres-methodes"><a href="#Visual-SLAM-Autres-methodes" class="headerlink" title="Visual SLAM : Autres méthodes"></a>Visual SLAM : Autres méthodes</h2><ul>
+<li>优势：<ul>
+<li>混合方法（深度图像）+特征点（RGB图像） </li>
+<li>重建（非常）密集 </li>
+</ul>
+</li>
+<li>劣势：<ul>
+<li>3D地图尺寸 </li>
+<li>传感器（Kinect）在大空间中的局限性 </li>
+</ul>
+</li>
+<li>例子：<ul>
+<li>RGB-D SLAM </li>
+</ul>
+</li>
+</ul>
+<h2 id="Ajustement-de-faisceaux-Bundle-Adjustment-捆绑调整"><a href="#Ajustement-de-faisceaux-Bundle-Adjustment-捆绑调整" class="headerlink" title="Ajustement de faisceaux (Bundle Adjustment) 捆绑调整"></a>Ajustement de faisceaux (Bundle Adjustment) 捆绑调整</h2><p>…</p>
+<h2 id="ORB-SLAM：功能"><a href="#ORB-SLAM：功能" class="headerlink" title="ORB-SLAM：功能"></a>ORB-SLAM：功能</h2><p><img src="../img/未分类/1572357935417.png" alt="1572357935417"></p>
+<ul>
+<li>所有阶段的ORB点和ORB描述符 <ul>
+<li>跟踪，映射，重定位和闭环。 </li>
+</ul>
+</li>
+<li>大型环境中的实时跟踪和映射 <ul>
+<li>可测图:跟踪和地图绘制的唯一关于“可测区域”独立和“全球地图”的地图 </li>
+</ul>
+</li>
+<li>Loop closinget relocalisatonen Temps Réel  <ul>
+<li>Essential Graph  <ul>
+<li>生成树“按权重链接“可见性图”的节点（nb映射公共点） </li>
+<li>和与基本图的关键帧相关的词袋。 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于两个平行假设的评估进行稳健的初始化 <ul>
+<li>平面摄影场景 </li>
+<li>或用于非平面场景的基本矩阵 </li>
+</ul>
+</li>
+<li>用于点映射（3D）和关键帧选择的“适者生存”方法 <ul>
+<li>Suppression des keyframes redondantes 删除冗余的关键帧</li>
+<li>删除冗余映射点 </li>
+</ul>
+</li>
+</ul>
+<h2 id="ORB-SLAM-Architecture"><a href="#ORB-SLAM-Architecture" class="headerlink" title="ORB-SLAM : Architecture"></a>ORB-SLAM : Architecture</h2><p><img src="../img/未分类/1572358251810.png" alt="1572358251810"></p>
+<h2 id="ORB-SLAM：数据"><a href="#ORB-SLAM：数据" class="headerlink" title="ORB-SLAM：数据"></a>ORB-SLAM：数据</h2><ul>
+<li><p>Map Points : pi</p>
+<ul>
+<li>Position : Xw,i</li>
+<li>视角方向 Viewing direction  :ni</li>
+<li>最佳影像描述符 Best image descriptor  :Di</li>
+<li>Viewing distance range [dmin..dmax]/ Best Descriptor </li>
+</ul>
+</li>
+<li><p>Keyframes </p>
+<ul>
+<li>Camera parameters <ul>
+<li>Tiw:Camera extrinsics(Pose) </li>
+<li>[Camera intrinsics] </li>
+</ul>
+</li>
+<li>Featurepoints (2D points + descriptors )<ul>
+<li>是否与Mappoint相关联（3D点） </li>
+</ul>
+</li>
+<li>Bag of Wordsdes features <ul>
+<li>用于在失去跟踪器的情况下进行重定位和闭环 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Organisation des Keyframes 关键帧的组织 </p>
+<ul>
+<li><p>图：邻居关键帧图  Graphe : Graphe des Keyframesvoisines </p>
+<ul>
+<li>Covisibility graph可视图：通过观察到的map points将关键帧链接在一起。</li>
+<li>Essential graph 基本图:   关键帧通过它们共同观察到的映射点数链接在一起 </li>
+<li>Spanning tree 生成树 </li>
+</ul>
+<p><img src="../img/未分类/1572358707559.png" alt="1572358707559"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ORB-SLAM-Tracking-追踪"><a href="#ORB-SLAM-Tracking-追踪" class="headerlink" title="ORB-SLAM : Tracking 追踪"></a>ORB-SLAM : Tracking 追踪</h2><ol>
+<li>ORB提取 </li>
+<li>Tracking OK : Initial pose estimation from previous frame 追踪成功代表成功通过前一帧初始化相机位置预测<ul>
+<li>Match Mappoints from previous frame 通过比对前一帧的map points</li>
+<li>Pose optimisation from correspondences 通过对应关系优化pose</li>
+</ul>
+</li>
+<li>Tracking Lost: Convert frame to Bow and query Keyframes 追踪丢失，把当前帧转换为bow并查询关键帧<ul>
+<li>Match map points from Keyframes Loop candidates 通过比对可能构成环路的关键帧和map points</li>
+<li>If enough inliers: Pose optimisation 如果是正常值，优化pose</li>
+</ul>
+</li>
+<li>Track Local Map from Init. Pose Est. &amp; Feature Matches 从初始化位置和匹配特征追踪local map<ul>
+<li>Project local map points into frame 将本地map points映射到frame<ul>
+<li>k1：Keyframes sharing map points with current frame </li>
+<li>k2: Neighbors of  k1 in visibility graph </li>
+<li>kref ∈ k1: Keyframe sharing most map points with current frame </li>
+<li>Match map {K1，K2} points with current frame keypoints 上面三步获取map points，比较k1，k2点和当前帧关键点</li>
+<li>Pose optimisation 优化姿势</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>New Keyframe decision 新的关键帧的选择：<ul>
+<li>Spawn new Keyframe if: More than 20 frames have passed and local mapping is idle and current frames tracks at least 50 points and current frame tracks less than 90% point of kref 当超过20帧已经通过且local mapping是闲置状态且当前帧已经追踪到至少50个点且当前帧追踪少于kref中90%的点，则产生新的关键帧</li>
+</ul>
+</li>
+</ol>
+<h2 id="ORB-SLAM-Local-Mapping"><a href="#ORB-SLAM-Local-Mapping" class="headerlink" title="ORB-SLAM : Local Mapping"></a>ORB-SLAM : Local Mapping</h2><ol>
+<li>Keyframe insertion Ki 插入关键帧Ki<ul>
+<li>Update visibility graph and spanning tree 更新可见图和生成树</li>
+<li>Compute BoW for keyframe 为关键帧计算Bow</li>
+</ul>
+</li>
+<li>Recent map points culling  最近map points删减<ul>
+<li>~ Prune map points not visible in more than 3 connected keyframes in visibility graph 删除可见图中3个以上相连的关键帧中不可见的map points</li>
+</ul>
+</li>
+<li>New map points creation 生成新的map points<ul>
+<li>Triangulate Ki matched ORBs from connected Keyframes (Kc) in visibility graph 从可见图中相连的关键帧中对应上ORB的点做三角化处理</li>
+<li>Match ki unmatched ORBs in kc with epipolar constraint and triangulate them </li>
+</ul>
+</li>
+<li>Local Bundle Adjustment  本地捆绑包调整 <ul>
+<li>Optimize ki，kc all map points seen in these frames =》all keyframes containing these points 优化ki，kc所有帧中可见map points=》确保所有关键帧都包含这些点</li>
+</ul>
+</li>
+<li>Local Keyframes culling 关键帧删减<ul>
+<li>Discard keyframes in Kc whose 90% points are seen in 3 other keyframes 丢弃掉在其他三个关键帧中90%的点都可见的关键帧</li>
+</ul>
+</li>
+</ol>
+<h2 id="ORB-SLAM-Loop-Closing"><a href="#ORB-SLAM-Loop-Closing" class="headerlink" title="ORB-SLAM: Loop Closing"></a>ORB-SLAM: Loop Closing</h2><ol>
+<li>Loop candidates detection 闭环可能性检测<ul>
+<li>Query DBoW for loop candidates keyframes withKi(except Kc):{kl}</li>
+</ul>
+</li>
+<li>Compute Similarity transformations between Ki and {kl}: Sil=[dx,dy,dz,rx,ry,rz,s]计算相似度转化<ul>
+<li>Retain loop closure candidate with most inliers in 3D/3D correspondences : Kl</li>
+</ul>
+</li>
+<li>Loop fusion 闭环融合<ul>
+<li>Correct Tiw with Sil and propagate to all neighbors of ki -&gt; Align both sides of the loop 用Sil矫正Tiw并应用与所有临近点</li>
+<li>Fuse map points of kl and ki +kc合并点</li>
+<li>Update keyframes edges of the loop in the visibility graph  更新可见性图表中循环的关键帧边缘 </li>
+</ul>
+</li>
+<li>Essential graph optimization 基本图优化<ul>
+<li>Pose graph optimization on the Essential graph to distribute the loop closing error along the graph  对基本图进行位姿图优化，使闭环误差沿图分布 </li>
+</ul>
+</li>
+</ol>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Network Programming（三） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Network-Programming（三）"><span class="toc-text">Network Programming（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-一"><span class="toc-text">实例 一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例二"><span class="toc-text">实例二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主机名和地址转换功能"><span class="toc-text">主机名和地址转换功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他一些有用函数"><span class="toc-text">其他一些有用函数</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Network Programming（三）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:30:14</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Network Programming" title="Network Programming">Network Programming</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#笔记" title="笔记">笔记</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Network-Programming（三）"><a href="#Network-Programming（三）" class="headerlink" title="Network Programming（三）"></a>Network Programming（三）</h1><p><img src="../img/network programming/socket function.png" alt=" " title="socket function"></p>
+<h2 id="实例-一"><a href="#实例-一" class="headerlink" title="实例 一"></a>实例 一</h2><p>Application client/serveur TCP<br>A和B通信，A向B发送message，B收到后，将这个msg在print出来<br>A是客户端，B是serveur</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">程序A</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">#define MYMSGLEN 2000</span><br><span class="line"></span><br><span class="line">int main(int argc,char* argv[])</span><br><span class="line">&#123;</span><br><span class="line">	int sock;</span><br><span class="line">	struct sockaddr_in server;</span><br><span class="line">	char message[MYMSGLEN],server_reply[MYMSGLEN];</span><br><span class="line"></span><br><span class="line">	sock=socket(AF_INET,SOCK_STREAM,0);</span><br><span class="line">	/*int socket(int domain,int type,int protocol);</span><br><span class="line">	 * 创建一个通信endpoint，返回一个描述符（descriptor）</span><br><span class="line">	 * 创建成功，一个对应新的socket的文件描述符（file descriptor）</span><br><span class="line">	 * 错误，-1</span><br><span class="line">	 *</span><br><span class="line">	 * domain描述ptotocol family。这些families定义在&lt;sys/socket.h&gt;</span><br><span class="line">	 * l例如：AF_INET：IPv4协议</span><br><span class="line">	 *</span><br><span class="line">	 * type指定服务类型：SOCK_StREAM：点对点控制流通信</span><br><span class="line">	 * SOCK_DGRAM：未连接的通信</span><br><span class="line">	 * SOCK_RAW：直接连间到协议（需要超级用户权限）</span><br><span class="line">	 *</span><br><span class="line">	 * protocol描述socket使用哪种协议，通常只有一种协议来支持socket类型，对应给协议簇</span><br><span class="line">	 * 0：default</span><br><span class="line">	 */</span><br><span class="line">	if(sock==-1)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;Could not create socket\n&quot;);</span><br><span class="line">		return(-1);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;socket created\n&quot;);</span><br><span class="line"></span><br><span class="line">/*int connect(int sockfd,const struct sockaddr* addr,socklen_t addrlen);</span><br><span class="line">*服务器通过connect和server建立连接</span><br><span class="line">*将client的socket-&gt;sockfd和server的地址-&gt;addr相关联。</span><br><span class="line">*</span><br><span class="line">*sockfd:用于连接的socket</span><br><span class="line">*addr:被动参与者的地址（server的地址）</span><br><span class="line">*addrlen:size of addr</span><br><span class="line">*</span><br><span class="line">*0,成功连接，否则-1</span><br><span class="line">*/</span><br><span class="line">	</span><br><span class="line">	server.sin_addr.s_addr=inet_addr(&quot;127.0.0.1&quot;);</span><br><span class="line">	server.sin_family=AF_INET;</span><br><span class="line">	server.sin_port=htons(8888);</span><br><span class="line"></span><br><span class="line">	int res;</span><br><span class="line">	if((res=connect(sock,(struct sockaddr*)&amp;server,sizeof(server)))&lt;0)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(&quot;Connect failed error\n&quot;);</span><br><span class="line">		close(sock);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;Returned value,%d\n&quot;,res);</span><br><span class="line">	printf(&quot;connection established, waiting to be accepted ......&quot;);</span><br><span class="line"></span><br><span class="line">	while(1)</span><br><span class="line">	&#123;</span><br><span class="line">		//void* memset(void* ptr,int value,size_t num);</span><br><span class="line">		//将ptr指的内存区域的前num个字节值都设置为value，然后返回指向ptr的指针</span><br><span class="line">		memset(message,0,MYMSGLEN);</span><br><span class="line">		printf(&quot;\nPlease type a message to transfer for processing:&quot;);</span><br><span class="line">		scanf(&quot;%s&quot;,message);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		/*ssize_t send(int sockfd,const void *buf,size_t len,int flags)</span><br><span class="line">		 * 将一个message传到另一个socket</span><br><span class="line">		 * flags，特殊选项，通常都是0</span><br><span class="line">		 * 成功，返回传送的字节数</span><br><span class="line">		 * 失败 -1</span><br><span class="line">		 */</span><br><span class="line">		if(send(sock,message,strlen(message),0)&lt;0)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;send failed\n&quot;);</span><br><span class="line">			close(sock);</span><br><span class="line">			return -1;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		memset(server_reply,0,MYMSGLEN);</span><br><span class="line">		/*ssize_t recv(int sockfd,void* buf,size_t len,int flags);</span><br><span class="line">		 * 和send差不多</span><br><span class="line">		 */</span><br><span class="line">		if(recv(sock,server_reply,MYMSGLEN,0)&lt;0)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;recv failed\n&quot;);</span><br><span class="line">			close(sock);</span><br><span class="line">			return -1;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		printf(&quot;Server reply:%s&quot;,server_reply);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">程序B</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">#define MYMSGLEN 2000</span><br><span class="line"></span><br><span class="line">int main(int argc,char** argv)</span><br><span class="line">&#123;</span><br><span class="line">	int socket_desc,client_sock;</span><br><span class="line">	int socket_size,read_size;</span><br><span class="line">	struct sockaddr_in server,client;</span><br><span class="line">	char client_message[MYMSGLEN];</span><br><span class="line"></span><br><span class="line">	socket_desc=socket(AF_INET,SOCK_STREAM,0);</span><br><span class="line">	if(socket_desc==-1)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(&quot;Could not create socket&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;Socket created\n&quot;);</span><br><span class="line"></span><br><span class="line">	/*socket options</span><br><span class="line">	 * int setsockopt(int socket,int level,int option_name,const void* option_value,socklen_toption_len);</span><br><span class="line">	 * sock：将要被设置或者获取选项的套接字。</span><br><span class="line">	 * level：选项所在的协议层。</span><br><span class="line">	 * optname：需要访问的选项名。</span><br><span class="line">	 * optval：对于getsockopt()，指向返回选项值的缓冲。对于setsockopt()，指向包含新选项值的缓冲。</span><br><span class="line">	 * optlen：对于getsockopt()，作为入口参数时，选项值的最大长度。作为出口参数时，选项值的实际长度。对于setsockopt()，现选项的长度。</span><br><span class="line">	 * level指定控制套接字的层次.可以取三种值:</span><br><span class="line">	 * 1)SOL_SOCKET:通用套接字选项.</span><br><span class="line">	 * 2)IPPROTO_IP:IP选项.</span><br><span class="line">	 * 3)IPPROTO_TCP:TCP选项.　</span><br><span class="line">	 * optname指定控制的方式(选项的名称),我们下面详细解释　</span><br><span class="line">	 *  SO_REUSERADDR　　　　　 允许重用本地地址和端口　　　　　　　　　int</span><br><span class="line">	 */</span><br><span class="line">	int code,enable=1;</span><br><span class="line">	code = setsockopt(socket_desc,SOL_SOCKET,SO_REUSEADDR,&amp;enable,sizeof(int));</span><br><span class="line">	if(code==-1)&#123;</span><br><span class="line">		perror(&quot;setsockopr&quot;);</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	server.sin_family=AF_INET;</span><br><span class="line">	server.sin_addr.s_addr=INADDR_ANY;</span><br><span class="line">	server.sin_port=htons(8888);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*当一个socket创建后，我们需要将一个本地地址绑定到他</span><br><span class="line">	 * TCP/IP协议需要一个IP地址和一个端口号对应每个端点地址</span><br><span class="line">	 * </span><br><span class="line">	 * int bind(int sock,struct sockaddr* addr,socklen_t len)</span><br><span class="line">	 * sock:socket descriptor</span><br><span class="line">	 * addr:用来指定的地址</span><br><span class="line">	 * len:指定addr数据结构的size</span><br><span class="line">	 * 返回0,success</span><br><span class="line">	 * 返回-1,error</span><br><span class="line">	 *</span><br><span class="line">	 * addr是一个整体的数据类型，根据address family由不同</span><br><span class="line">	 * 对于IPv4：</span><br><span class="line">	 * struct sockaddr_in&#123;</span><br><span class="line">	 * sa_family_t sin_family; address family:AF_INET</span><br><span class="line">	 * in_port_t sin_port; port</span><br><span class="line">	 * struct in_addr sin_addr; internet address</span><br><span class="line">	 * &#125;</span><br><span class="line">	 *</span><br><span class="line">	 * struct in_addr&#123;</span><br><span class="line">	 * unit32_t s_addr;</span><br><span class="line">	 * &#125;;</span><br><span class="line">	 *</span><br><span class="line">	 */</span><br><span class="line">	 </span><br><span class="line">	if(bind(socket_desc,(struct sockaddr*)&amp;server,sizeof(server))&lt;0)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(&quot;bind failed. Error&quot;);</span><br><span class="line">		close(socket_desc);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;bind done\n&quot;);</span><br><span class="line"></span><br><span class="line">	/*int listen(int sockfd,int backlog)</span><br><span class="line">	 * sockfd:整数，是一个文件描述符指向类型为SOCK_STREAM的socket</span><br><span class="line">	 * backlog：整数，主动参与者的数量</span><br><span class="line">	 * listening 0</span><br><span class="line">	 * error -1</span><br><span class="line">	 */</span><br><span class="line">	code=listen(socket_desc,2);</span><br><span class="line">	</span><br><span class="line">	if(code==-1)&#123;</span><br><span class="line">		perror(&quot;listen&quot;);</span><br><span class="line">		exit;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;Waiting for incoming connections...\n&quot;);</span><br><span class="line">	socket_size=sizeof(struct sockaddr_in);</span><br><span class="line"></span><br><span class="line">	/* int accept(int sockfd,struct sockaddr* addr,socklent_t* addrlen)</span><br><span class="line">	 * sockfd:整数，正在被监听的socket</span><br><span class="line">	 * addr：struct sockaddr，主动参与者的地址</span><br><span class="line">	 */</span><br><span class="line">	client_sock=accept(socket_desc,(struct sockaddr*)&amp;client,(socklen_t*)&amp;socket_size);</span><br><span class="line">	if(client_sock&lt;0)</span><br><span class="line">	&#123;</span><br><span class="line">		close(socket_desc);</span><br><span class="line">		perror(&quot;accept failed&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;Connection accepted\n&quot;);</span><br><span class="line"></span><br><span class="line">	while((read_size=recv(client_sock,client_message,MYMSGLEN,0))&gt;0)</span><br><span class="line">	&#123;</span><br><span class="line">		client_message[read_size]=&apos;\0&apos;;</span><br><span class="line">		printf(&quot;MSG received: %s,size of the message received %d\n&quot;,client_message,read_size);</span><br><span class="line">		write(client_sock,client_message,read_size);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if(read_size==0)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;client disconnected\n&quot;);</span><br><span class="line">		fflush(stdout);</span><br><span class="line">	&#125;</span><br><span class="line">	else if(read_size==-1)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;recv failed\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	close(socket_desc);</span><br><span class="line">	close(client_sock);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端编程思路：</p>
+<ol>
+<li>创建socket：int socket(int 协议簇,int 服务类型,int 协议 ), 返回对应该socket的文件描述符，失败，返回-1</li>
+<li>建立连接：int connect(int 用于连接的socket ,struct sockaddr* 服务器的地址结构, socklen_t addr的大小)，返回0,成功连接，否则-1</li>
+<li>在循环中本地通过scanf输入msg，再发送msg：ssize_t send(int 已经连接的socket和connect中的一样,const void* 待发送的信息这里是字符串指针,size_t strlen(message), int 特殊选项一般为0 )，成功，返回传送的字节数，失败，-1</li>
+<li>同样在这个循环中，跟在send后，接受server的回复：ssize_t recv()和send差不多</li>
+<li>断开连接：close(socket);</li>
+</ol>
+<p>服务器编程思路：</p>
+<ol>
+<li>创建socket：int socket(int 协议簇,int 服务类型,int 协议 ), 返回对应该socket的文件描述符，失败，返回-1<br>1.5 设置socket：int setsockopt(int 要设置的socket,int 选项所在协议层,int 需要访问的选项名,const void* 指向选项值的指针,socklen_t 选项的长度); 返回-1,设置失败</li>
+<li>绑定地址：int bind(int 创建出来的socket,struct sockaddr* 自己设定好的地址,socklen_t len，地址长度sizeof)返回0,success。返回-1,error</li>
+<li>开始监听：int listen(int 用于监听的socket,int 主动参与者数量)。0正在监听，-1 error</li>
+<li>接受连接：int accept(int 用于监听的socket,struct sockaddr<em> 主动参与者的地址通过应用传递在return语句之后被填充,socklent_t</em> 地址长度)，返回客户端的socket，-1 error</li>
+<li>在循环中不停接受来自客户端的message，recv()同客户端一样</li>
+<li>处理接收到的数据，这里就是输出</li>
+<li>把message送回给client write(client_sock,client_message,read_size);</li>
+<li>断开连接：close(socket);</li>
+</ol>
+<h2 id="实例二"><a href="#实例二" class="headerlink" title="实例二"></a>实例二</h2><p>Programme client HTTP<br>编写一个客户端程序，向指定网站发送请求并获取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;netdb.h&gt;</span><br><span class="line"></span><br><span class="line">#define MYMSGLEN 2000</span><br><span class="line"></span><br><span class="line">int main(int argc,char** argv)</span><br><span class="line">&#123;</span><br><span class="line">	int socket_desc;</span><br><span class="line">	struct sockaddr_in server;</span><br><span class="line">	char *message,server_reply[MYMSGLEN];</span><br><span class="line"></span><br><span class="line">	struct hostent *he;</span><br><span class="line"></span><br><span class="line">	struct in_addr inaddr;</span><br><span class="line"></span><br><span class="line">	socket_desc=socket(AF_INET,SOCK_STREAM,0);</span><br><span class="line">	if(socket_desc==-1)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(&quot;Could not create socket&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;Socket created\n&quot;);</span><br><span class="line"></span><br><span class="line">	//把DNS主机名变成IP地址（使用DNS）</span><br><span class="line">	if((he=gethostbyname(&quot;httpd.apache.org&quot;))==NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(&quot;gethostbyname&quot;);</span><br><span class="line">		return 2;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	memcpy((char*)&amp;inaddr,he-&gt;h_addr,sizeof(struct in_addr));</span><br><span class="line">	printf(&quot;IP address for httpd.apache.org is %s \n&quot;,inet_ntoa(inaddr));</span><br><span class="line"></span><br><span class="line">	server.sin_family=AF_INET;</span><br><span class="line">	server.sin_addr.s_addr=inet_addr(inet_ntoa(inaddr));</span><br><span class="line">	server.sin_port=htons(80);</span><br><span class="line"></span><br><span class="line">	if(connect(socket_desc,(struct sockaddr*)&amp;server,sizeof(server))&lt;0)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;connect error&quot;);</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;Connection\n&quot;);</span><br><span class="line"></span><br><span class="line">	message=&quot;GET / HTTP/1.1\r\nhost: httpd.apache.org \r\n\r\n&quot;;</span><br><span class="line"></span><br><span class="line">	if(send(socket_desc,message,strlen(message),0)&lt;0)</span><br><span class="line">	&#123;</span><br><span class="line">		puts(&quot;Send failed&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	puts(&quot;message request sent&quot;);</span><br><span class="line"></span><br><span class="line">	int res;</span><br><span class="line">	memset(server_reply,0,MYMSGLEN);</span><br><span class="line"></span><br><span class="line">	while((res=recv(socket_desc,server_reply,MYMSGLEN,0))!=0)</span><br><span class="line">	&#123;</span><br><span class="line">		if(res &lt;0)</span><br><span class="line">		&#123;</span><br><span class="line">			puts(&quot;recv failed&quot;);</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;%s&quot;,server_reply);</span><br><span class="line">			memset(server_reply,0,MYMSGLEN);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	close(socket_desc);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="主机名和地址转换功能"><a href="#主机名和地址转换功能" class="headerlink" title="主机名和地址转换功能"></a>主机名和地址转换功能</h3><ul>
+<li>struct hostent<em> gethostbyname(const char</em> hostname);<br>把DNS主机名变成IP地址（使用DNS）</li>
+<li>strcut hostent<em> gethostbyaddr(const char</em> addr,size_t len,int family);<br>把IP地址变成DNS主机名</li>
+<li>char* inet_ntoa(struct in_addr invader);<br>将IP地址转换为ASCII点十进制符号</li>
+<li>in_addr_t inet_addr(const char* strptr);<br>将点分十进制变成IP地址，-1 failure，不能用于广播（255.255.255.2555）</li>
+<li>int inet_aton(const char* sttrptr,struct in_addr inaddr);<br>将点十进制表示法转换为IP地址;成功返回1，失败返回0</li>
+<li>int inet_pton(int af,const char<em> src, void</em> dst);<br>将IPv4和IPv6地址从文本转换为二进制形式</li>
+<li>const char<em> inet_ntop(int af,const void</em> src,char* dst,socklen_t size);<br>将IPv4和IPv6地址从二进制转换为文本形式</li>
+</ul>
+<h3 id="其他一些有用函数"><a href="#其他一些有用函数" class="headerlink" title="其他一些有用函数"></a>其他一些有用函数</h3><ul>
+<li>void bzero(void* s,size_t n);<br>将区域的前n个字节设置为从零开始</li>
+<li>void<em> memset(void</em> s,int c,size_t n);<br>用常量字节c填充指向的存储区的前n个字节<br>返回指向内存区域s的指针</li>
+<li>void<em> memcpy(void</em> dest,const void* src,size_t n);<br>将n个字节从内存区域src复制到内存区域dest。内存区域不能重叠</li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

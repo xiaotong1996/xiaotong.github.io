@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Network Programming（一） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Network-Programming（一）"><span class="toc-text">Network Programming（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP-Generalities（概述）"><span class="toc-text">TCP/IP Generalities（概述）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP和UDP"><span class="toc-text">TCP和UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#端口号Ports-numbers"><span class="toc-text">端口号Ports numbers</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Network Programming（一）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:22:41</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Network Programming" title="Network Programming">Network Programming</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#笔记" title="笔记">笔记</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Network-Programming（一）"><a href="#Network-Programming（一）" class="headerlink" title="Network Programming（一）"></a>Network Programming（一）</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>计算机网络是set of hosts，routers 和 intermediate devices（主机，路由器和中间设备）<br>主机运行通信连接到端到端applications<br>路由relay（转发）数据包（data packets）<br>Packets：一系列字节<br>包含用户数据+控制信息（如：目标主机）<br>一次通信（数据交换）遵循一个预定义的通信协议</p>
+<h2 id="TCP-IP-Generalities（概述）"><a href="#TCP-IP-Generalities（概述）" class="headerlink" title="TCP/IP Generalities（概述）"></a>TCP/IP Generalities（概述）</h2><p>针对不同问题的几个协议：协议簇：TCP/IP<br>TCP/IP提供点到点连接并指定数据应该如何格式化、寻址、传输、路由和在目的地接收<br>可用于互联网和独立的专用网络<br>它被组织成层</p>
+<p><img src="../img/network programming/OSI model.png" alt=" " title="OSI模型和TCP/IP模型"><br><img src="../img/network programming/数据包封装.png" alt=" " title="数据包封装"></p>
+<p>IP地址：是分配给网络接口以标识自身的唯一地址。用于与他人通信，并找到中继数据包的路由。长度：4bytes。类型：unicast单播，broadcast广播，multicast多播</p>
+<h2 id="TCP和UDP"><a href="#TCP和UDP" class="headerlink" title="TCP和UDP"></a>TCP和UDP</h2><p>TCP：Transmission Control Protocol传输控制协议</p>
+<ul>
+<li>可靠的字节流通道(有序，全部到达，无重复)，类似于文件输入/输出</li>
+<li>流量控制</li>
+<li>面向连接的</li>
+<li>双指向性</li>
+</ul>
+<p>TCP用于具有大数据容量和持久连接的服务。</p>
+<p>UDP：User Datagram Protocol用户数据报协议</p>
+<ul>
+<li>no acknowledgements没有确认</li>
+<li>no retransmissions没有重传</li>
+<li>out of order乱序执行</li>
+<li>无连接，即app指示每个数据包的目的地</li>
+</ul>
+<p>UDP更常用于快速查找和一次性查询回复操作。</p>
+<h2 id="端口号Ports-numbers"><a href="#端口号Ports-numbers" class="headerlink" title="端口号Ports numbers"></a>端口号Ports numbers</h2><ul>
+<li><p>TCP和UDP都使用端口号<br>用作通信的特定于应用的构造。<br>端点16位无符号整数，范围从0到65535。<br>提供端到端传输。</p>
+</li>
+<li><p>端口分为三类<br>所有已知端口( 0到1023 )用于基本服务(系统使用，需要超级用户权限)。<br>参考端口( 1024至49151 )由IANA根据请求实体的申请为特定服务关联(在大多数系统中，注册端口可由普通用户使用)<br>动态或私有或短暂端口( 49152至65535 )用于其他目的。</p>
+</li>
+<li><p>TCP和UDP的一些常见示例以及它们的默认端口：<br>DNS查阅 UDP 53<br>FTP TCP 21<br>HTTP TCP 80<br>POP3 TCP 110<br>Telnet TCP 23</p>
+</li>
+<li><p>保留端口的详细信息：<br>列在/ etc / services文件中的大多数系统上<br> 能通过 <a href="http://www.iana.org/assignments/port-numbers" target="_blank" rel="noopener">http://www.iana.org/assignments/port-numbers</a>  找到</p>
+</li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

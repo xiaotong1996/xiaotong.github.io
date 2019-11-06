@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        ORB-SLAM学习 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ORB-SLAM"><span class="toc-text">ORB-SLAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译环境"><span class="toc-text">编译环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行ORB-SLAM"><span class="toc-text">运行ORB-SLAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#摄像机校准"><span class="toc-text">摄像机校准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问答："><span class="toc-text">问答：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关文章"><span class="toc-text">相关文章</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        ORB-SLAM学习
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:43:53</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#计算机图形学" title="计算机图形学">计算机图形学</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#SLAM" title="SLAM">SLAM</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="ORB-SLAM"><a href="#ORB-SLAM" class="headerlink" title="ORB-SLAM"></a>ORB-SLAM</h1><h2 id="编译环境"><a href="#编译环境" class="headerlink" title="编译环境"></a>编译环境</h2><p>win10+CMake+Visual Studio2017</p>
+<ol>
+<li>使用vcpkg下载Eigen3，OpenCV，Pangolin包</li>
+<li>下载ORB-SLAM.zip，解压，并用cmake编译</li>
+</ol>
+<h2 id="运行ORB-SLAM"><a href="#运行ORB-SLAM" class="headerlink" title="运行ORB-SLAM"></a>运行ORB-SLAM</h2><ol>
+<li>下载数据集</li>
+<li>在windows命令行执行.\mono_euroc <chemin fichier="" vocabulaire=""> <chemin vers="" le="" fichier="" de="" paramètres=""> <chemin vers="" le="" répertoire="" contenant="" les="" images=""> <chemin vers="" le="" fichier="" de="" timestamps=""> </chemin></chemin></chemin></chemin></li>
+</ol>
+<h2 id="摄像机校准"><a href="#摄像机校准" class="headerlink" title="摄像机校准"></a>摄像机校准</h2><p>每个摄像机有一下投影参数：</p>
+<ul>
+<li>longueurs focales焦距（fx，fy）（单位：像素pixels）</li>
+<li>centre optique (cx,cy)</li>
+<li>paramètres de distorsions radiale 辐射失真参数（k1,k2,[k3])</li>
+<li>paramètres de distorsions tangentielle 切向失真参数（p1,p2)</li>
+</ul>
+<p>用于校准照相机</p>
+<p>校准需要比较已知3D点坐标（(les points de la mire : le damier qui vous est fourni，视点，棋盘坐标）和一系列由此棋盘得到的照片上对应的点</p>
+<p>步骤：</p>
+<ol>
+<li>解压缩OpenCV_Calibration文件夹，cmake编译</li>
+<li>使用棋盘来校准，此棋盘格的横向包含8个内部角（双曲线点），纵向包含6个角（如果需要，反之亦然）。 每个棋盘格盒宽30毫米。 </li>
+<li>运行calibration程序，不加任何参数，来获得参考文件/用help（）也行</li>
+<li>然后，使用计划要在工作空间中散布的至少10张照片来校准相机。 在“良好”校准期间，您的重新投影误差应小于0.5像素。 如果不是这种情况，请重复校准。 </li>
+<li>通过calibration程序，您可以将相机矩阵（包含相机的固有参数（以像素为单位的焦距（fx，fy）和主要点（cx，cy））保存为.yml或.yaml类型的文件。 </li>
+</ol>
+<h2 id="问答："><a href="#问答：" class="headerlink" title="问答："></a>问答：</h2><ol>
+<li><p>为什么对同样的数据执行ORB-SLAM从来不会得到同样的结果？</p>
+<p>随机数和多线程</p>
+</li>
+</ol>
+<ol>
+<li><p>KeyFrames的作用是什么？包含了什么？</p>
+<ul>
+<li>Camera parameters <ul>
+<li>Tiw:Camera extrinsics(Pose) </li>
+<li>[Camera intrinsics] </li>
+</ul>
+</li>
+<li>Featurepoints (2D points + descriptors )<ul>
+<li>是否与Mappoint相关联（3D点） </li>
+</ul>
+</li>
+<li>Bag of Wordsdes features <ul>
+<li>用于在失去跟踪器的情况下进行重定位和闭环 </li>
+</ul>
+</li>
+</ul>
+<p>关键帧Ki (Key Frame) 存贮下列信息：<br>1， 相机的位姿 Tiw， 这是一个刚体转换， 用于转换世界坐标系中的点到相机坐标系。<br>2， 相机的内参， 包括焦距(focal length) 和主点 (principal point)<br>3， 帧中提取的ORB特征， 与一个地图点关联或者不关联， 如果畸变模型提供的话， 这个地图点的坐标是经过矫正没有畸变的。 </p>
+</li>
+</ol>
+<ol start="2">
+<li><p>ORB-SLAM的地图包含KeyFrames和MapPoints。解释在什么条件下：</p>
+<ol>
+<li>一个新的KeyFrame会被创建</li>
+</ol>
+<p>Spawn new Keyframe if: More than 20 frames have passed and local mapping is idle and current frames tracks at least 50 points and current frame tracks less than 90% point of kref 当超过20帧已经通过且local mapping是闲置状态且当前帧已经追踪到至少50个点且当前帧追踪少于kref中90%的点，则产生新的关键帧</p>
+</li>
+</ol>
+<ol>
+<li><p>一个KeyFrame会被销毁</p>
+<p>Local Keyframes culling 关键帧删减</p>
+</li>
+</ol>
+<ul>
+<li>Discard keyframes in Kc whose 90% points are seen in 3 other keyframes 丢弃掉在其他三个关键帧中90%的点都可见的关键帧</li>
+</ul>
+<ol>
+<li>一个新的MapPoint会被创建</li>
+</ol>
+<p>   New map points creation 生成新的map points</p>
+<ul>
+<li>Triangulate Ki matched ORBs from connected Keyframes (Kc) in visibility graph 从可见图中相连的关键帧中对应上ORB的点做三角化处理</li>
+<li>Match ki unmatched ORBs in kc with epipolar constraint and triangulate them </li>
+</ul>
+<ol>
+<li><p>一个MapPoint会被删除</p>
+<p>Recent map points culling  最近map points删减</p>
+</li>
+</ol>
+<ul>
+<li>~ Prune map points not visible in more than 3 connected keyframes in visibility graph 删除可见图中3个以上相连的关键帧中不可见的map points</li>
+</ul>
+<ol>
+<li>此外，KeyFrames和MapPoints是否真的被销毁？</li>
+</ol>
+<ol>
+<li><p>ORB-SLAM的Essential Graph（关键图）是什么？它的作用是什么？</p>
+<p><strong>Essential Graph</strong>：基于位置优化的实时闭环控制。它通过生成树构建，生成树由系统、闭环控制链接和视图内容关联强边缘进行维护。</p>
+<p>Essential Graph  </p>
+<ul>
+<li>生成树“按权重链接“可见性图”的节点（nb映射公共点） </li>
+<li>和与基本图的关键帧相关的词袋。 </li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>什么时候，是出于什么原因以及在哪些数据上进行ORB-SLAM中的光束调整les ajustements de faisceaux？ </p>
+<p><strong>Bundle Adjustment</strong>（<strong>BA</strong>）：光束平差法，就是利用非线性最小二乘法来求取相机位姿，三维点坐标。在仅给定相机内部矩阵的条件下，对四周物体进行高精度重建。</p>
+<p>Bundle Adjustment 可以将所观测的图像位置和预测的图像位置点进行最小 error 的映射（匹配），由很多非线性函数的平方和表示（error）。因此，最小化 error 由非线性最小二乘法实现。</p>
+</li>
+</ol>
+<ol>
+<li><p>在闭环过程中，由于哪种算法确定了当前镜头的姿势，我们确定了哪个KeyFrame最接近摄像机所看到的姿势。 </p>
+<p>Essential graph optimization 基本图优化</p>
+<ul>
+<li>Pose graph optimization on the Essential graph to distribute the loop closing error along the graph  对基本图进行位姿图优化，使闭环误差沿图分布 </li>
+</ul>
+</li>
+</ol>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ol>
+<li><p>什么是ORB？<a href="https://www.jianshu.com/p/420f8211d1cb" target="_blank" rel="noopener">https://www.jianshu.com/p/420f8211d1cb</a></p>
+</li>
+<li><p>ORB是怎么工作的？<a href="https://www.jianshu.com/p/9ee6b2145eaa" target="_blank" rel="noopener">https://www.jianshu.com/p/9ee6b2145eaa</a></p>
+</li>
+<li><p>ORB-SLAM中的ORB特征 <a href="https://zhuanlan.zhihu.com/p/61738607" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61738607</a></p>
+</li>
+<li><p><strong>Bag-of-words</strong>：词袋算法 ，它是主要用来判断同一个地点是不是被重新访问过，它的算式在实现的原理上可以认为是对每一帧或者叫每一幅图用了很多单词来进行描述。</p>
+<p>在实际应用中在这个词袋中使用的单词量会非常大，并且这些词在现实中并没有一个非常明确的物理含义；词袋方案现在主流所采取的方案之一，它做得最好的一方案叫 DBOW2，也是一个开源的方案。</p>
+<p><strong>Bundle Adjustment</strong>（<strong>BA</strong>）：光束平差法，就是利用非线性最小二乘法来求取相机位姿，三维点坐标。在仅给定相机内部矩阵的条件下，对四周物体进行高精度重建。</p>
+<p>Bundle Adjustment 可以将所观测的图像位置和预测的图像位置点进行最小 error 的映射（匹配），由很多非线性函数的平方和表示（error）。因此，最小化 error 由非线性最小二乘法实现。</p>
+<p><strong>Essential Graph</strong>：基于位置优化的实时闭环控制。它通过生成树构建，生成树由系统、闭环控制链接和视图内容关联强边缘进行维护。</p>
+</li>
+<li><p>关于SLAM学习 <a href="https://github.com/GeekLiB/Lee-SLAM-source" target="_blank" rel="noopener">https://github.com/GeekLiB/Lee-SLAM-source</a></p>
+</li>
+<li><p>重要概念：<a href="https://blog.csdn.net/fang_liu_yang/article/details/53488765" target="_blank" rel="noopener">https://blog.csdn.net/fang_liu_yang/article/details/53488765</a></p>
+</li>
+<li><p>原文翻译1：<a href="https://blog.csdn.net/u011344545/article/details/78836717#commentBox" target="_blank" rel="noopener">https://blog.csdn.net/u011344545/article/details/78836717#commentBox</a></p>
+</li>
+<li><p>原文翻译2：<a href="https://blog.csdn.net/u012525173/article/details/70332125" target="_blank" rel="noopener">https://blog.csdn.net/u012525173/article/details/70332125</a></p>
+</li>
+<li><p>项目源码：<a href="https://github.com/raulmur/ORB_SLAM" target="_blank" rel="noopener">https://github.com/raulmur/ORB_SLAM</a></p>
+</li>
+</ol>
+<p>ORB_SLAM PATH_TO_VOCABULARY：是一种树型数据结构模型，<code>ORB-SLAM</code>里面主要用来做<code>回访(loop-closure)</code>检 测，对于不同数据集严格来说需要离线单独处理生成，但一般成像条件都差不多所以对于不同图像数据集可以使用相同的词汇数据文件（相当于一个数据库文件，方 便快速保存和查询视觉特征信息）。虽然是TXT文件，打开就是许多数字而已。 </p>
+<p><a href="http://blog.leanote.com/post/gaunthan/ORB-SLAM-A-Versatile-and-Accurate-Monocular-SLAM-System-2" target="_blank" rel="noopener">http://blog.leanote.com/post/gaunthan/ORB-SLAM-A-Versatile-and-Accurate-Monocular-SLAM-System-2</a></p>
+<p><a href="https://blog.csdn.net/fuxingyin/article/details/53511439" target="_blank" rel="noopener">https://blog.csdn.net/fuxingyin/article/details/53511439</a></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

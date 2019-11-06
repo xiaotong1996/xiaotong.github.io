@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C++刷题实战（Array) - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-刷题实战（Array"><span class="toc-text">C++刷题实战（Array)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2D-Array-DS"><span class="toc-text">2D Array - DS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays-Left-Rotation"><span class="toc-text">Arrays: Left Rotation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#New-Year-Chaos"><span class="toc-text">New Year Chaos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Minimum-Swaps-2"><span class="toc-text">Minimum Swaps 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Array-Manipulation"><span class="toc-text">Array Manipulation</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C++刷题实战（Array)
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:54:19</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#C++" title="C++">C++</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#HackerRank" title="HackerRank">HackerRank</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="C-刷题实战（Array"><a href="#C-刷题实战（Array" class="headerlink" title="C++刷题实战（Array)"></a>C++刷题实战（Array)</h1><h2 id="2D-Array-DS"><a href="#2D-Array-DS" class="headerlink" title="2D Array - DS"></a>2D Array - DS</h2><p>思路：不断求和比较更新最大值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">int hourglassSum(vector&lt;vector&lt;int&gt;&gt; arr) &#123;</span><br><span class="line">    </span><br><span class="line">    int sumMax=arr[0][0]+arr[0][1]+arr[0][2]</span><br><span class="line">            +arr[1][1]</span><br><span class="line">            +arr[2][0]+arr[2][1]+arr[2][2];;</span><br><span class="line">    int lNum=arr.size();</span><br><span class="line">    int vNum=arr[0].size();</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;lNum-2;++i)&#123;</span><br><span class="line">        for(int j=0;j&lt;vNum-2;++j)&#123;</span><br><span class="line">            int tem=arr[i][j]+arr[i][j+1]+arr[i][j+2]</span><br><span class="line">            +arr[i+1][j+1]</span><br><span class="line">            +arr[i+2][j]+arr[i+2][j+1]+arr[i+2][j+2];</span><br><span class="line">            if(tem&gt;sumMax)&#123;</span><br><span class="line">                sumMax=tem;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return sumMax;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>vector operator[]</strong></p>
+<h2 id="Arrays-Left-Rotation"><a href="#Arrays-Left-Rotation" class="headerlink" title="Arrays: Left Rotation"></a>Arrays: Left Rotation</h2><p>思路：先计算出实际偏移值，因为左移5次是一个循环，然后根据偏移值构建新的int数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; rotLeft(vector&lt;int&gt; a, int d) &#123;</span><br><span class="line">    int aSize=a.size();</span><br><span class="line">    int usefulRotationTime=d%aSize;</span><br><span class="line">    vector&lt;int&gt; b(aSize,0);</span><br><span class="line">    for(int i=0;i&lt;aSize;i++)&#123;</span><br><span class="line">        if(i-usefulRotationTime&lt;0)&#123;</span><br><span class="line">            b[i-usefulRotationTime+aSize]=a[i];</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            b[i-usefulRotationTime]=a[i];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="New-Year-Chaos"><a href="#New-Year-Chaos" class="headerlink" title="New Year Chaos"></a>New Year Chaos</h2><p>思路：只需要计算本来应该在前面但跑到后面的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">void minimumBribes(vector&lt;int&gt; q) &#123;</span><br><span class="line">    int n = A.size();</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    for(int i = n - 1; i &gt;= 0; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        if(A[i] != (i + 1))</span><br><span class="line">        &#123;</span><br><span class="line">            if(((i - 1) &gt;= 0) &amp;&amp; A[i - 1] == (i + 1))</span><br><span class="line">            &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">                swap(A[i], A[i-1]);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(((i - 2) &gt;= 0) &amp;&amp; A[i - 2] == (i + 1))</span><br><span class="line">            &#123;</span><br><span class="line">                cnt += 2;</span><br><span class="line">                A[i - 2] = A[i - 1];</span><br><span class="line">                A[i - 1] = A[i];</span><br><span class="line">                A[i] = i + 1;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;Too chaotic\n&quot;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;      </span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,cnt);</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Minimum-Swaps-2"><a href="#Minimum-Swaps-2" class="headerlink" title="Minimum Swaps 2"></a>Minimum Swaps 2</h2><p>思路1：从第一位开始：如果该位不是他本身（不在正确的位置上）就找到他本身并交换，以此类推。有时候会超时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void swap(vector&lt;int&gt;&amp; arr,int x,int y)&#123;</span><br><span class="line">    int tem=arr[x];</span><br><span class="line">    arr[x]=arr[y];</span><br><span class="line">    arr[y]=tem;</span><br><span class="line">&#125;</span><br><span class="line">// Complete the minimumSwaps function below.</span><br><span class="line">int minimumSwaps(vector&lt;int&gt; arr) &#123;</span><br><span class="line">    </span><br><span class="line">    int count =0;</span><br><span class="line">    for(int i=0;i&lt;arr.size();++i)&#123;</span><br><span class="line">        if(arr[i]!=i+1)&#123;</span><br><span class="line">            for(int j=i;j&lt;arr.size();++j)&#123;</span><br><span class="line">                if(arr[j]==i+1)&#123;</span><br><span class="line">                    swap(arr,i,j);</span><br><span class="line">                    count++;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>思路2：将问题图形化，利用闭环，寻找闭环节点数</p>
+<p><a href="https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">int minSwaps(int arr[], int n) </span><br><span class="line">&#123; </span><br><span class="line">    // Create an array of pairs where first </span><br><span class="line">    // element is array element and second element </span><br><span class="line">    // is position of first element </span><br><span class="line">    pair&lt;int, int&gt; arrPos[n]; </span><br><span class="line">    for (int i = 0; i &lt; n; i++) </span><br><span class="line">    &#123; </span><br><span class="line">        arrPos[i].first = arr[i]; </span><br><span class="line">        arrPos[i].second = i; </span><br><span class="line">    &#125; </span><br><span class="line">  </span><br><span class="line">    // Sort the array by array element values to </span><br><span class="line">    // get right position of every element as second </span><br><span class="line">    // element of pair. </span><br><span class="line">    sort(arrPos, arrPos + n); </span><br><span class="line">  </span><br><span class="line">    // To keep track of visited elements. Initialize </span><br><span class="line">    // all elements as not visited or false. </span><br><span class="line">    vector&lt;bool&gt; vis(n, false); </span><br><span class="line">  </span><br><span class="line">    // Initialize result </span><br><span class="line">    int ans = 0; </span><br><span class="line">  </span><br><span class="line">    // Traverse array elements </span><br><span class="line">    for (int i = 0; i &lt; n; i++) </span><br><span class="line">    &#123; </span><br><span class="line">        // already swapped and corrected or </span><br><span class="line">        // already present at correct pos </span><br><span class="line">        if (vis[i] || arrPos[i].second == i) </span><br><span class="line">            continue; </span><br><span class="line">  </span><br><span class="line">        // find out the number of  node in </span><br><span class="line">        // this cycle and add in ans </span><br><span class="line">        int cycle_size = 0; </span><br><span class="line">        int j = i; </span><br><span class="line">        while (!vis[j]) </span><br><span class="line">        &#123; </span><br><span class="line">            vis[j] = 1; </span><br><span class="line">  </span><br><span class="line">            // move to next node </span><br><span class="line">            j = arrPos[j].second; </span><br><span class="line">            cycle_size++; </span><br><span class="line">        &#125; </span><br><span class="line">  </span><br><span class="line">        // Update answer by adding current cycle.  </span><br><span class="line">        if (cycle_size &gt; 0) </span><br><span class="line">        &#123; </span><br><span class="line">            ans += (cycle_size - 1); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">  </span><br><span class="line">    // Return result </span><br><span class="line">    return ans; </span><br><span class="line">&#125; </span><br><span class="line">  </span><br><span class="line">// Driver program to test the above function </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">    int arr[] = &#123;1, 5, 4, 3, 2&#125;; </span><br><span class="line">    int n = (sizeof(arr) / sizeof(int)); </span><br><span class="line">    cout &lt;&lt; minSwaps(arr, n); </span><br><span class="line">    return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Array-Manipulation"><a href="#Array-Manipulation" class="headerlink" title="Array Manipulation"></a>Array Manipulation</h2><p>硬算：超时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">long arrayManipulation(int n, vector&lt;vector&lt;int&gt;&gt; queries) &#123;</span><br><span class="line">    vector&lt;long&gt; indexs(n,0);</span><br><span class="line">    for(auto&amp; q : queries)&#123;</span><br><span class="line">        for(int i=q[0]-1;i&lt;=q[1]-1;++i)&#123;</span><br><span class="line">            indexs[i]=indexs[i]+q[2];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    long it = *max_element(std::begin(indexs), std::end(indexs)); </span><br><span class="line">    return it;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用差分数组： 对于序列a{}，取a[i]-a[i-1]为其差分数组b[i]的值，可以发现，a[i]=∑bj（1≤j≤i） </p>
+<p><a href="https://www.cnblogs.com/COLIN-LIGHTNING/p/8436624.html" target="_blank" rel="noopener">https://www.cnblogs.com/COLIN-LIGHTNING/p/8436624.html</a></p>
+<p>1.定义：</p>
+<p>对于已知有n个元素的离线数列d，我们可以建立记录它每项与前一项差值的差分数组f：显然，f[1]=d[1]-0=d[1];对于整数i∈[2,n]，我们让f[i]=d[i]-d[i-1]。</p>
+<p>2.简单性质：</p>
+<p>(1)计算数列各项的值：观察d[2]=f[1]+f[2]=d[1]+d[2]-d[1]=d[2]可知，数列第i项的值是可以用差分数组的前i项的和计算的，即d[i]=f[i]的前缀和。<br> (2)计算数列每一项的前缀和：第i项的前缀和即为数列前i项的和，那么推导可知<br> <img src="https://images2017.cnblogs.com/blog/1296534/201802/1296534-20180209192534420-1693228814.png" alt="img"><br> 即可用差分数组求出数列前缀和；</p>
+<p>3.用途：</p>
+<p>(1)快速处理区间加减操作：</p>
+<p>假如现在对数列中区间[L,R]上的数加上x，我们通过性质(1)知道，第一个受影响的差分数组中的元素为f[L],即令f[L]+=x，那么后面数列元素在计算过程中都会加上x；最后一个受影响的差分数组中的元素为f[R],所以令f[R+1]-=x，即可保证不会影响到R以后数列元素的计算。这样我们不必对区间内每一个数进行处理，只需处理两个差分后的数即可；</p>
+<p>(2)询问区间和问题：</p>
+<p>由性质(2)我们可以计算出数列各项的前缀和数组sum各项的值；那么显然，区间[L,R]的和即为ans=sum[R]-sum[L-1];</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">long arrayManipulation(int n, vector&lt;vector&lt;int&gt;&gt; queries) &#123;</span><br><span class="line">    vector&lt;long&gt; cf(n+1,0);//构建下标从1到n+1的N长的差分数组</span><br><span class="line">    for(auto&amp; q : queries)&#123;</span><br><span class="line">        cf[q[0]]+=q[2];//根据差分数组性质</span><br><span class="line">        if(q[1]+1&lt;=n)</span><br><span class="line">        cf[q[1]+1]-=q[2];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    long x=0;</span><br><span class="line">    long max=0;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        x+=cf[i];//根据差分数组性质每加一位就是取最终list中后一位的值，记录最大值</span><br><span class="line">        if(max&lt;x) max=x;</span><br><span class="line">    &#125;</span><br><span class="line">    return max;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 若将(x，y)区间整体加val，我们就可以对差分数组的b[x]加val，b[y+1]减val。 </p>
+<p><strong>差分数组</strong></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

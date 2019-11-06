@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Network Programming（六） - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Network-Programming（六）"><span class="toc-text">Network Programming（六）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Network-services网络服务"><span class="toc-text">Network services网络服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与服务相关文件"><span class="toc-text">与服务相关文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#servant-数据结构"><span class="toc-text">servant 数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取服务信息（函数）"><span class="toc-text">获取服务信息（函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协议文件"><span class="toc-text">协议文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协议数据结构"><span class="toc-text">协议数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取协议信息的函数"><span class="toc-text">获取协议信息的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主机文件"><span class="toc-text">主机文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#host数据结构"><span class="toc-text">host数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取主机信息"><span class="toc-text">获取主机信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP-sockets的multicast多播和broadcast广播"><span class="toc-text">UDP sockets的multicast多播和broadcast广播</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Network Programming（六）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-11-06 22:35:09</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Network Programming" title="Network Programming">Network Programming</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#笔记" title="笔记">笔记</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Network-Programming（六）"><a href="#Network-Programming（六）" class="headerlink" title="Network Programming（六）"></a>Network Programming（六）</h1><p><strong>网络编程进阶</strong></p>
+<h2 id="Network-services网络服务"><a href="#Network-services网络服务" class="headerlink" title="Network services网络服务"></a>Network services网络服务</h2><p>服务与端口相关联<br>ports分三类：</p>
+<ul>
+<li>well-known ports (0到1023)是基本服务(系统使用，需要超级用户特权)</li>
+<li>referenced ports 参考端口(1024至49151)由IANA根据请求实体的申请为特定服务关联(在大多数系统上，普通用户可以使用注册端口)。</li>
+<li>Dynamic or private or ephemeral ports   动态或私有或短暂端口(49152至65535)用于其他目的。</li>
+</ul>
+<h2 id="与服务相关文件"><a href="#与服务相关文件" class="headerlink" title="与服务相关文件"></a>与服务相关文件</h2><p>Services databasefile - /etc/services</p>
+<h2 id="servant-数据结构"><a href="#servant-数据结构" class="headerlink" title="servant 数据结构"></a>servant 数据结构</h2><p>有set of functions用于连接服务列表<br>其中两个返回一个指向struct的指针，这个struct包含关于service的信息。<br>定义在&lt;netdb.h&gt;<br>struct servent{<br>char<em> s_name;<br>char** s_aliases;<br>int s_port;<br>char</em> s_proto;<br>}</p>
+<ul>
+<li>s_name:官方服务名称</li>
+<li>s_aliases:以NULL结尾的服务替代名称列表</li>
+<li>s_port:按网络字节顺序给出的服务端口号</li>
+<li>s_proto:与此服务一起使用的协议的名称</li>
+</ul>
+<h2 id="获取服务信息（函数）"><a href="#获取服务信息（函数）" class="headerlink" title="获取服务信息（函数）"></a>获取服务信息（函数）</h2><p>函数一：<br>struct servent<em> getservbyname(const char</em> name,const char* proto)<br>name是服务名，proto是协议名<br>从数据库返回与使用协议原型匹配的服务名称的条目的servents结构的函数。<br>如果protois为NULL，则将匹配任何协议。<br>如有必要，将打开与数据库的连接.<br>定义在 netdb.h</p>
+<p>返回指向静态分配的servents结构的指针，<br>如果发生错误或到达文件末尾，则返回NULL。</p>
+<p>函数二：<br>struct servent<em> getservbyport(int port,const char</em> proto)<br>port是端口号<br>proto是协议<br>和上一个函数相似，不多加说明</p>
+<h2 id="协议文件"><a href="#协议文件" class="headerlink" title="协议文件"></a>协议文件</h2><p>/etc/protocols</p>
+<h2 id="协议数据结构"><a href="#协议数据结构" class="headerlink" title="协议数据结构"></a>协议数据结构</h2><p>同样定义在netdb.h</p>
+<p>struct protoent{<br>char* p_name;<br>char** p_aliases;<br>int p_proto;<br>}</p>
+<p>p_name: 协议的官方名<br>p_aliases: 以NULL结尾的协议其他代替名列表<br>p_proto: 协议号</p>
+<h2 id="获取协议信息的函数"><a href="#获取协议信息的函数" class="headerlink" title="获取协议信息的函数"></a>获取协议信息的函数</h2><p>struct protoent<em> getprotobyname(const char</em> name)<br> name是协议名</p>
+<p> struct protoent* getprotobynumber(int proto)<br> proto是相关数字</p>
+<h2 id="主机文件"><a href="#主机文件" class="headerlink" title="主机文件"></a>主机文件</h2><p> /etc/hosts</p>
+<h2 id="host数据结构"><a href="#host数据结构" class="headerlink" title="host数据结构"></a>host数据结构</h2><p> struct hostent{<br> char* h_name;<br> char<strong> h_aliases;<br> int h_addrtype;<br> int h_length;<br> char</strong> h_addr_list;<br> }</p>
+<p> h_name: host官方名<br> h_aliases: 代替名<br> h_addrtype: 地址类型：AF_INET or AF_INET6<br> h_length: 地址长度 bytes<br> h_addr_list 列表指向主机网络地址的指针数组(按网络字节顺序)，由空指针终止。<br>为了保证向后兼容性，h addr(h addr列表中与主机关联的第一个网络地址)被定义为:# define h_addr h_addr_list[0]</p>
+<h2 id="获取主机信息"><a href="#获取主机信息" class="headerlink" title="获取主机信息"></a>获取主机信息</h2><p>struct hostent<em> gethostbyname(const char</em> name)<br>如果名称是一个IPv4地址，则不执行查找，gethostbyname()只是将名称复制到返回主机结构的h _ name字段中，并将它的结构添加到h _ addr _ list[0]字段中。<br>返回值：hostent structure 出错时，null，h_errno(在netdb.h中定义)变量保存一个错误号。使用herror(char* s)产生相应的错误信息</p>
+<p>struct hostent<em> gethostbyaddr(const void</em> addr, socklen_t len,int type)<br>addr : IP地址<br>len：长度<br>type： AF_INET or AF_INET6  (#include &lt;sys/socket.h&gt;)</p>
+<p>host_address参数是一个指针，指向一个类型取决于地址类型的结构，例如地址类型AF_INET的结构地址<em>(可能是通过调用inet_addr(3))获得的。<br>返回值：hostent structure 出错时，null，出错时，h_errno(在netdb.h中定义)变量保存一个错误号。使用herror(char</em> s)产生相应的错误信息</p>
+<h2 id="UDP-sockets的multicast多播和broadcast广播"><a href="#UDP-sockets的multicast多播和broadcast广播" class="headerlink" title="UDP sockets的multicast多播和broadcast广播"></a>UDP sockets的multicast多播和broadcast广播</h2><p>怎么发送data给多个接收者？<br>法一：unicast data的copy到每个接收者（没有效率）<br>法二：使用network support<br>Broadcasting:发送一个datagram所有在到达的子网上的主机都会接受<br>子网中的每台主机都必须通过UDP层处理数据报，以防万一，即使主机不参与应用程序。这也可能会造成过多的处理负载<br>Multicasting：一个message仅发送给主机的子集<br>任何人都可以加入多播组<br>任何人都可以发送给多播组</p>
+<p><strong>只有UDP sockets可以广播和多播</strong></p>
+<ul>
+<li>两种广播地址：子定向广播地址(example192.168.66.255 for a subnet192.168.66.0/24）受限的广播地址255.255.255.255</li>
+<li>不应该由路由器转发</li>
+<li>为了使用广播，必须更改套接字的选项</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int breadcastPermission=1;</span><br><span class="line">setsockopt(sock,SOL_SOCKET,SO_BROADCAST,(void*)&amp;broadcastPermission,sizeof(broadcastPermission));</span><br></pre></td></tr></table></figure>
+<p><strong>SO_BROADCAST</strong>很重要</p>
+<ul>
+<li>对于多播，使用D类地址：224.0.0.0 to 239.255.255.255; IPv4地址的前四位设置为1110</li>
+<li>有一些特殊的组播组 - “众所周知的组播组”，由于分配给它们的特殊用途，不应在应用程序中使用：</li>
+<li><p>224.0.0.1是全主机组。<br>–224 . 0 . 0 . 2是全路由器组。<br>–224 . 0 . 0 . 4是全DVMRP路由器，224.0.0.5是全OSPF路由器，224.0.013是全无源互调路由器，等等。<br>–224 . 0 . 0 . 0至224.0.0.255保留用于本地目的(作为管理和维护任务)<br>–239 . 0 . 0 . 0至239.255.255.255也保留用于管理目的。</p>
+</li>
+<li><p>为了发送一个多播UDP数据报：</p>
+<ul>
+<li>打开一个UPDsocket，填充D类地址</li>
+<li>不需要改变socket options</li>
+<li>需要设置TTL（time-to-live），为了限制数据包中继的跳数<ul>
+<li>setsockopt(sock,IPPROTO_IP,IP_MULTICAST_TTL,(void*)&amp;multicastTTL,sizeof(multicastTTL))</li>
+<li>当TTL为0，packet被丢弃</li>
+</ul>
+</li>
+<li>使用setsockopt( )关闭环回，这样可以避免接收正在发送的数据包</li>
+</ul>
+</li>
+<li><p>为了接受一个多播UDP数据报：<br>-创建一个SOCK_DGRAM socket()<br>-bind一个多播地址和port</p>
+<ul>
+<li>使用setsockopt()加入多播组，设置<strong>IP_ADD_MEMBERSHIP</strong><ul>
+<li>这告诉系统在网络上接收目的地是多播组地址的数据包。</li>
+<li>使用ip _ mreq structureto指定多播组地址和要使用的接口(使用0.0.0.0表示任何接口)</li>
+</ul>
+</li>
+<li>使用recvfrom()来接受多播数据报</li>
+</ul>
+</li>
+</ul>
+<p>例子如下<br><img src="../img/network programming/UDP多播例子.png" alt=" " title="UDP多播例子"></p>
+<p>UDP多播设置<br><img src="../img/network programming/UDP多播设置.png" alt=" " title="UDP多播设置"></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
