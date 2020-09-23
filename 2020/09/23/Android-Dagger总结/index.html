@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Android Dagger总结 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dagger"><span class="toc-text">Dagger</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dagger-1"><span class="toc-text">Dagger</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inject"><span class="toc-text">@Inject</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Component"><span class="toc-text">@Component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module"><span class="toc-text">@Module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Provides"><span class="toc-text">@Provides</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scope"><span class="toc-text">@Scope</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Different-context"><span class="toc-text">Different context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Considering-life-cycle"><span class="toc-text">Considering life-cycle</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dependency-Graph"><span class="toc-text">Dependency Graph</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Android Dagger总结
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-09-23 14:47:39</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Dagger"><a href="#Dagger" class="headerlink" title="Dagger"></a>Dagger</h1><p><a href="https://medium.com/@harivigneshjayapalan/dagger-2-for-android-beginners-dagger-2-part-i-f2de5564ab25" target="_blank" rel="noopener">https://medium.com/@harivigneshjayapalan/dagger-2-for-android-beginners-dagger-2-part-i-f2de5564ab25</a></p>
+<p><strong>Dependency injection</strong></p>
+<p>no class should instantiate another class but should get the instances from a configuration class.</p>
+<h2 id="Dagger-1"><a href="#Dagger-1" class="headerlink" title="Dagger"></a>Dagger</h2><h3 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a>@Inject</h3><p>the<code>@Inject</code> annotation will tell the Dagger what all the dependencies needed to be transferred to the dependant. </p>
+<h3 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h3><p>This annotation is used to build the interface which wires everything together.</p>
+<p><code>@Component</code>, in general, is a something like a bridge between <code>@Module</code>(Which we’ll be seeing later) and <code>@Inject</code>.</p>
+<p>Dagger2 will implement functions we defined in interface with Component annotation according to injection associated with this function. Dagger2 use builder pattern to do it.</p>
+<p>It can add module attribute to indicate this component contains which modules.</p>
+<p>*Once we use module attribute, we can’t use  DagggerXXXComponnet.create() cause we need to pass module dependency to dagger. So it becomes DagggerXXXComponnet.builder().xXXmodule(new XXXModule(…)).build()</p>
+<h3 id="Module"><a href="#Module" class="headerlink" title="@Module"></a>@Module</h3><p>mark modules/classes which can provide dependencies  to other classes</p>
+<h3 id="Provides"><a href="#Provides" class="headerlink" title="@Provides"></a>@Provides</h3><p>used in @module marks the methods which provide dependencies.</p>
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h3><p><code>@Scope</code> annotation tells dagger to create single instance. It will make the dependency work as singleton.</p>
+<p>To use it, we need first create a new interface(actually a custom annotation) use @interface to define </p>
+<p>@Retention is used to describe this custom annotation, limit its usage</p>
+<p>How to use it?</p>
+<ol start="0">
+<li><p>create a new interface(actually a custom annotation) use @interface to define </p>
+</li>
+<li><p>add our custom annotation to component</p>
+</li>
+<li>add it to every method we need as singleton</li>
+</ol>
+<h3 id="Different-context"><a href="#Different-context" class="headerlink" title="Different context"></a>Different context</h3><p>we use ApplicationContext and Activity context, if we offer 2 context at same time, there is a problem.</p>
+<p>we need @Named annotation to indicate Dagger choose the correct context for dependency.</p>
+<ol>
+<li><p>add @Named() before context construction</p>
+</li>
+<li><p>we add @Named() too before where we use these contexts</p>
+</li>
+</ol>
+<p>Another way</p>
+<p>@Qualifier annotation</p>
+<ol>
+<li>define a custom annotation with @Qualifier</li>
+<li>add our custom annotation before context construction just like @Named</li>
+<li>add this before where we use like @Named</li>
+</ol>
+<h3 id="Considering-life-cycle"><a href="#Considering-life-cycle" class="headerlink" title="Considering life-cycle"></a>Considering life-cycle</h3><p>The <strong>best practice</strong> here is, when you’re injecting dependencies into clients who have  different life-cycle from where dependencies are coming, it’s better to  create a separate module and component for them.</p>
+<h2 id="Dependency-Graph"><a href="#Dependency-Graph" class="headerlink" title="Dependency Graph"></a>Dependency Graph</h2><p>The best practice of using a component is to expose only the top level  dependency and keep other inner dependency under the hood.</p>
+<p> top level dependencies are those who are not wanted by anyone.</p>
+<hr>
+<ol>
+<li><p>use inject define which dependencies we need to inject to its dependent. ex. if class A needs class B, which means A depends on B(B is A’s dependency), we need to use constructor injection.</p>
+</li>
+<li><p>use inject to indicate these dependencies are used in which part in its dependent class. (To engage)</p>
+</li>
+<li><p>use interface and component annotation to define a upper level provider which associate generated code and the dependencies. In this interface, we define some get function for dependent objects.</p>
+<p>*if we just define function for dependent objects, inject still doesn’t work, we need define corresponding functions for dependencies.</p>
+</li>
+<li><p>click rebuilding, Dagger2 generate DagggerXXXComponnet class which help us inject dependent objects automatically.</p>
+</li>
+<li><p>When we want to use the dependent object, we need first initialize a DagggerXXXComponnet class using create() function, then with the get function we defined in interface(generally it is inject function), we can get dependent instance.</p>
+</li>
+</ol>
+<hr>
+<ol>
+<li>draw a Dependency graph, find top level dependencies in it</li>
+<li>create component and expose these top level dependencies</li>
+<li>separate different functions in different modules, create modules and add provides annotation for functions we need</li>
+<li>between different modules, there are also some dependent relations. So if a module needs another, we need to include it in parameters. Do it as @Module(includes = XXXModule.class) . Now we linked all modules</li>
+<li>we also need to tell component which dependencies it need, using modules attribute. </li>
+</ol>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

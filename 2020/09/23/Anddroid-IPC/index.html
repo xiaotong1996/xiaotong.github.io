@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Anddroid IPC - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-realize-IPC"><span class="toc-text">How to realize IPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-create-Bound-Service"><span class="toc-text">How to create Bound Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-define-an-IBinder"><span class="toc-text">How to define an IBinder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-create-a-bounded-service-using-AIDL"><span class="toc-text">How to create a bounded service using AIDL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#General-Steps"><span class="toc-text">General Steps</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AccountManager"><span class="toc-text">AccountManager</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Work-flow"><span class="toc-text">Work flow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-AccountAuthenticatorResponse-work"><span class="toc-text">How AccountAuthenticatorResponse work ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusion</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Anddroid IPC
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-09-23 14:50:52</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h2 id="How-to-realize-IPC"><a href="#How-to-realize-IPC" class="headerlink" title="How to realize IPC"></a>How to realize IPC</h2><p><strong>Bound services</strong></p>
+<p>A bound service is the server in a client-server interface. It allows components (such as activities) to bind to the service, send requests, receive responses, and <strong>perform interprocess communication (IPC).</strong> </p>
+<h2 id="How-to-create-Bound-Service"><a href="#How-to-create-Bound-Service" class="headerlink" title="How to create Bound Service"></a>How to create Bound Service</h2><p>When creating a service that provides binding, <strong>you must provide an <code>IBinder</code> that provides the programming interface that clients can use to interact with the service.</strong> </p>
+<h2 id="How-to-define-an-IBinder"><a href="#How-to-define-an-IBinder" class="headerlink" title="How to define an IBinder"></a>How to define an IBinder</h2><p><a href="https://developer.android.com/guide/components/aidl" target="_blank" rel="noopener">Using AIDL</a></p>
+<p>Android Interface Definition Language (AIDL) decomposes objects into primitives that the operating system can understand and marshals them across processes to perform IPC.</p>
+<h2 id="How-to-create-a-bounded-service-using-AIDL"><a href="#How-to-create-a-bounded-service-using-AIDL" class="headerlink" title="How to create a bounded service using AIDL"></a>How to create a bounded service using AIDL</h2><ol>
+<li><p><strong>Create the .aidl file</strong></p>
+<p>This file defines the programming interface with method signatures.</p>
+</li>
+<li><p><strong>Implement the interface</strong></p>
+<p>The Android SDK tools generate an interface in the Java programming language, based on your <code>.aidl</code> file. This interface has an inner abstract class named <code>Stub</code> that extends <code>Binder</code> and implements methods from your AIDL interface. You must extend the <code>Stub</code> class and implement the methods.</p>
+</li>
+<li><p><strong>Expose the interface to clients</strong></p>
+<p>Implement a <code>Service</code> and override <code>onBind()</code> to return your implementation of the <code>Stub</code> class.</p>
+</li>
+</ol>
+<h3 id="General-Steps"><a href="#General-Steps" class="headerlink" title="General Steps"></a>General Steps</h3><ol>
+<li>create aidl file</li>
+<li>create service</li>
+<li>implement IBinder for service</li>
+<li>instantiate service in client (activity)  </li>
+</ol>
+<h2 id="AccountManager"><a href="#AccountManager" class="headerlink" title="AccountManager"></a>AccountManager</h2><p><a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/accounts" target="_blank" rel="noopener">https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/accounts</a></p>
+<table>
+<thead>
+<tr>
+<th>Theory</th>
+<th>Example: IPC between service and accountManager</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Define Bound service</td>
+<td>MyAccountTypeService implement onBind</td>
+</tr>
+<tr>
+<td>provide IBinder</td>
+<td>return MyAccountAuthenticator.getIBinder();</td>
+</tr>
+<tr>
+<td>use AIDL define IBinder</td>
+<td></td>
+</tr>
+<tr>
+<td>create the .aidl file</td>
+<td><a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/accounts/IAccountAuthenticator.aidl" target="_blank" rel="noopener">IAccountAuthenticator.aidl</a><br><a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/accounts/IAccountAuthenticatorResponse.aidl" target="_blank" rel="noopener">IAccountAuthenticatorResponse.aidl</a></td>
+</tr>
+<tr>
+<td>Implement the interface</td>
+<td><a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/accounts/AbstractAccountAuthenticator.java" target="_blank" rel="noopener">private class Transport extends IAccountAuthenticator.Stub</a> line:152</td>
+</tr>
+<tr>
+<td>Expose the interface to clients</td>
+<td>return MyAccountAuthenticator.getIBinder();</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Work-flow"><a href="#Work-flow" class="headerlink" title="Work flow"></a>Work flow</h3><p><strong>AccountManager : getAuthToken() -&gt; new AmsTask() -&gt;</strong> </p>
+<p><strong>mService.getAuthToken()</strong> </p>
+<p><em>mService is IAccountManager created by system</em></p>
+<p><em>the real invoke is AccountManagerService (extends IAccountManager.Stub)</em></p>
+<p><strong>AccountManagerService : getAuthToken() -&gt; new Session() -&gt; bind to mAuthenticator related service -&gt; mAuthenticator.getAuthToken()</strong></p>
+<p>*mAuthenticatoir is IAccountAuthenticator assaigned In Session(extend IAccountAuthenticatorResponse.Stub and implement ServiceConnection): onServiceConnected() method</p>
+<p><em>`mAuthenticator = IAccountAuthenticator.Stub.asInterface(service);</em>`</p>
+<p><strong>AbstractAccountAuthenticator : getAuthToken() -&gt; AbstractAccountAuthenticator.this.getAuthToken() </strong></p>
+<p>here invoke our proper method</p>
+<p><strong>AccountAuthenticator : intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response) </strong></p>
+<p><strong>pass AccountAuthenticatorResponse by intent</strong></p>
+<p><strong>return bundle</strong></p>
+<p>AccountAuthenticatorResponse implements Parcelable contains IAccountAuthenticatorResponse</p>
+<p><strong>Session : onResult() -&gt; result contain KEY_INTENT -&gt; response.onResult()</strong></p>
+<p>response is IAccountManagerResponse.Stub declare in AccountManager </p>
+<p><strong>Response : onResult() -&gt; mActivity.startActivity(intent)</strong></p>
+<p><strong>ShareMyAccountActivity : getIntent() -&gt; AccountAuthenticatorResponse.onResult() -&gt; mAccountAuthenticatorResponse.onResult()</strong></p>
+<p>mAccountAuthenticatorResponse is IAccountAuthenticatorResponse is assaigned in AccountManagerService.newRequestAccountAccessIntent()</p>
+<h2 id="How-AccountAuthenticatorResponse-work"><a href="#How-AccountAuthenticatorResponse-work" class="headerlink" title="How AccountAuthenticatorResponse work ?"></a>How AccountAuthenticatorResponse work ?</h2><ul>
+<li>define a IAccountAuthenticatorResponse aidl file</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The interface used to return responses from an &#123;@link IAccountAuthenticator&#125;</span><br><span class="line"> * @hide</span><br><span class="line"> */</span><br><span class="line">oneway interface IAccountAuthenticatorResponse &#123;</span><br><span class="line">    @UnsupportedAppUsage</span><br><span class="line">    void onResult(in Bundle value);</span><br><span class="line">    @UnsupportedAppUsage</span><br><span class="line">    void onRequestContinued();</span><br><span class="line">    @UnsupportedAppUsage</span><br><span class="line">    void onError(int errorCode, String errorMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>implement this interface</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Session</span> <span class="keyword">extends</span> <span class="title">IAccountAuthenticatorResponse</span>.<span class="title">Stub</span></span></span><br><span class="line"><span class="class">            <span class="keyword">implements</span> <span class="title">IBinder</span>.<span class="title">DeathRecipient</span>, <span class="title">ServiceConnection</span> </span>&#123;</span><br><span class="line">        IAccountManagerResponse mResponse;</span><br><span class="line">		...</span><br><span class="line">        IAccountAuthenticator mAuthenticator = <span class="keyword">null</span>;</span><br><span class="line">		...</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">bind</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (Log.isLoggable(TAG, Log.VERBOSE)) &#123;</span><br><span class="line">                Log.v(TAG, <span class="string">"initiating bind to authenticator type "</span> + mAccountType);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!bindToAuthenticator(mAccountType)) &#123;</span><br><span class="line">                Log.d(TAG, <span class="string">"bind attempt failed for "</span> + toDebugString());</span><br><span class="line">                onError(AccountManager.ERROR_CODE_REMOTE_EXCEPTION, <span class="string">"bind failure"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		...</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</span><br><span class="line">            mAuthenticator = IAccountAuthenticator.Stub.asInterface(service);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                run();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</span><br><span class="line">                onError(AccountManager.ERROR_CODE_REMOTE_EXCEPTION,</span><br><span class="line">                        <span class="string">"remote exception"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		...</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(Bundle result)</span> </span>&#123;</span><br><span class="line">            ...</span><br><span class="line">            IAccountManagerResponse response;</span><br><span class="line">            response = mResponse</span><br><span class="line">            response.onResult();</span><br><span class="line">            ...</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>accountManager -&gt; AmTask -&gt; AccountManagerService -&gt; Session( instantiate IAccountAuthenticatorResponse ) -&gt; bind to authenticator service -&gt; call mAuthenticator.getAuthToken(pass IAccountAuthenticatorResponse)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getAuthToken</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        IAccountManagerResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">final</span> Account account,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">final</span> String authTokenType,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">final</span> <span class="keyword">boolean</span> notifyOnAuthFailure,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">final</span> <span class="keyword">boolean</span> expectActivityLaunch,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">final</span> Bundle loginOptions)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">        <span class="keyword">new</span> Session(</span><br><span class="line">                accounts,</span><br><span class="line">                response,</span><br><span class="line">                account.type,</span><br><span class="line">                expectActivityLaunch,</span><br><span class="line">                <span class="keyword">false</span> <span class="comment">/* stripAuthTokenFromResult */</span>,</span><br><span class="line">                account.name,</span><br><span class="line">                <span class="keyword">false</span> <span class="comment">/* authDetailsRequired */</span>) &#123;</span><br><span class="line">          </span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</span><br><span class="line">                <span class="comment">// If the caller doesn't have permission then create and return the</span></span><br><span class="line">                <span class="comment">// "grant permission" intent instead of the "getAuthToken" intent.</span></span><br><span class="line">                <span class="keyword">if</span> (!permissionGranted) &#123;</span><br><span class="line">                    mAuthenticator.getAuthTokenLabel(<span class="keyword">this</span>, authTokenType);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    mAuthenticator.getAuthToken(<span class="keyword">this</span>, account, authTokenType, loginOptions);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">                    ...</span><br><span class="line">        &#125;.bind();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>define an object to get passed IAccountAuthenticatorResponse and use callback send back result </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Object used to communicate responses back to the AccountManager</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountAuthenticatorResponse</span> <span class="keyword">implements</span> <span class="title">Parcelable</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">private</span> IAccountAuthenticatorResponse mAccountAuthenticatorResponse;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(Bundle result)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Log.isLoggable(TAG, Log.VERBOSE)) &#123;</span><br><span class="line">            result.keySet(); <span class="comment">// force it to be unparcelled</span></span><br><span class="line">            Log.v(TAG, <span class="string">"AccountAuthenticatorResponse.onResult: "</span></span><br><span class="line">                    + AccountManager.sanitizeResult(result));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mAccountAuthenticatorResponse.onResult(result);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</span><br><span class="line">            <span class="comment">// this should never happen</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>AbstactAccountAuthenticator get this response and instantiate it again pass to our proper authenticator</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractAccountAuthenticator</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Transport</span> <span class="keyword">extends</span> <span class="title">IAccountAuthenticator</span>.<span class="title">Stub</span> </span>&#123;</span><br><span class="line">       ...</span><br><span class="line">	 <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getAuthToken</span><span class="params">(IAccountAuthenticatorResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">               Account account, String authTokenType, Bundle loginOptions)</span></span></span><br><span class="line"><span class="function">               <span class="keyword">throws</span> RemoteException </span>&#123;</span><br><span class="line">         ...</span><br><span class="line">               <span class="keyword">final</span> Bundle result = AbstractAccountAuthenticator.<span class="keyword">this</span>.getAuthToken(</span><br><span class="line">                       <span class="keyword">new</span> AccountAuthenticatorResponse(response), account,</span><br><span class="line">                       authTokenType, loginOptions);</span><br><span class="line">              ...</span><br><span class="line">               <span class="keyword">if</span> (result != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   response.onResult(result);</span><br><span class="line">               &#125;</span><br><span class="line">           ...</span><br><span class="line">       &#125;</span><br><span class="line">       ...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>MyAccountAuthenticator pass this response to ShareMyAccountActivity by intent</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAccountAuthenticator</span> <span class="keyword">extends</span> <span class="title">AbstractAccountAuthenticator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bundle <span class="title">getAuthToken</span><span class="params">(<span class="keyword">final</span> AccountAuthenticatorResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="keyword">final</span> Account account,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="keyword">final</span> String authTokenType,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="keyword">final</span> Bundle options)</span> </span>&#123;</span><br><span class="line">		...</span><br><span class="line">            <span class="keyword">final</span> Intent intent = ShareMyAccountActivity</span><br><span class="line">                    .getShareMyAccountActivity(context);</span><br><span class="line">            ...</span><br><span class="line">            intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);</span><br><span class="line">            <span class="keyword">final</span> Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">            bundle.putParcelable(AccountManager.KEY_INTENT, intent);</span><br><span class="line">            <span class="keyword">return</span> bundle;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ShareMyAccountActivity after user confirm give back result</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShareMyAccountActivityInteractorImpl</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">ShareMyAccountActivityContract</span>.<span class="title">Interactor</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shareAccess</span><span class="params">(AccountAuthenticatorResponse accountAuthenticatorResponse,</span></span></span><br><span class="line"><span class="function"><span class="params">                            String userName, String accountType, String refreshToken)</span> </span>&#123;</span><br><span class="line">			...</span><br><span class="line">                accountAuthenticatorResponse.onResult(result);</span><br><span class="line">           ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>IAccountAuthenticatorResponse is used in two parts. </p>
+<ol>
+<li>As Session : implement and instantiate and bind in Service, work like Binder for Bound Service</li>
+</ol>
+<p>once service pass it to authenticator by parameter, it will be encapsulated by AccountAuthenticatorResponse</p>
+<ol start="2">
+<li>As AccountAuthenticatorResponse : it can be passed to activity by intent. If its methodes are called, the IAccountAuthenticatorResponse’s callback fonctions also works.</li>
+</ol>
+<p>If we take example by its second usage, even without service, we can pass our custom callback to activity.</p>
+<p>reference: <a href="https://developer.android.com/guide/components/aidl#PassingObjects" target="_blank" rel="noopener">https://developer.android.com/guide/components/aidl#PassingObjects</a></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

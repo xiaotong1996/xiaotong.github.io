@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Git 学习笔记 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git"><span class="toc-text">Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-commit"><span class="toc-text">git commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-branch"><span class="toc-text">git branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-merge"><span class="toc-text">git merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-rebase"><span class="toc-text">git rebase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HEAD"><span class="toc-text">HEAD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分离-HEAD"><span class="toc-text">分离 HEAD</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相对引用"><span class="toc-text">相对引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-reset"><span class="toc-text">git reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Revert"><span class="toc-text">Git Revert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Cherry-pick"><span class="toc-text">Git Cherry-pick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交互式的-rebase"><span class="toc-text">交互式的 rebase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#只提取一个提交记录"><span class="toc-text">只提取一个提交记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交的技巧-1-2"><span class="toc-text">提交的技巧 #1 #2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Tags"><span class="toc-text">Git Tags</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-Describe"><span class="toc-text">Git Describe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多分支-rebase"><span class="toc-text">多分支 rebase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择父提交记录"><span class="toc-text">选择父提交记录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-text">远程仓库</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Git 学习笔记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-09-23 14:44:37</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Git" title="Git">Git</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><p><a href="https://learngitbranching.js.org/?locale=zh_CN" target="_blank" rel="noopener">https://learngitbranching.js.org/?locale=zh_CN</a> 学习笔记</p>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><p>store a version</p>
+<p>现在你可以把提交记录看作是项目的快照</p>
+<h2 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h2><p>它们只是简单地指向某个提交纪录 —— 仅此而已</p>
+<p>现在只要记住使用分支其实就相当于在说：“我想基于这个提交以及它所有的父提交进行新的工作。”</p>
+<h2 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h2><p>在 Git 中合并两个分支时会产生一个特殊的提交记录，它有两个父节点。翻译成自然语言相当于：“我要把这两个父节点本身及它们所有的祖先都包含进来。”</p>
+<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。</p>
+<h2 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h2><p>我们首先看一下 “HEAD”。 HEAD 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。</p>
+<p>HEAD 总是指向当前分支上最近一次提交记录</p>
+<h3 id="分离-HEAD"><a href="#分离-HEAD" class="headerlink" title="分离 HEAD"></a>分离 HEAD</h3><p>git checkout C1</p>
+<h2 id="相对引用"><a href="#相对引用" class="headerlink" title="相对引用"></a>相对引用</h2><ul>
+<li>使用 <code>^</code> 向上移动 1 个提交记录</li>
+<li>使用 <code>~</code> 向上移动多个提交记录，如 <code>~3</code></li>
+</ul>
+<p>git checkout master^</p>
+<p>git checkout HEAD~4</p>
+<p>我使用相对引用最多的就是移动分支。可以直接使用 <code>-f</code> 选项让分支指向另一个提交。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -f master HEAD~3</span><br></pre></td></tr></table></figure>
+<p>上面的命令会将 master 分支强制指向 HEAD 的第 3 级父提交。</p>
+<p>相对引用为我们提供了一种简洁的引用提交记录 <code>C1</code> 的方式， 而 <code>-f</code> 则容许我们将分支强制移动到那个位置。</p>
+<h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><p><code>git reset</code> 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。<code>git reset</code> 向上移动分支，原来指向的提交记录就跟从来没有提交过一样。</p>
+<p>git reset HEAD~1</p>
+<h2 id="Git-Revert"><a href="#Git-Revert" class="headerlink" title="Git Revert"></a>Git Revert</h2><p>虽然在你的本地分支中使用 <code>git reset</code> 很方便，但是这种“改写历史”的方法对大家一起使用的远程分支是无效的哦！</p>
+<p>为了撤销更改并<strong>分享</strong>给别人，我们需要使用 <code>git revert</code></p>
+<p>git revert HEAD</p>
+<h2 id="Git-Cherry-pick"><a href="#Git-Cherry-pick" class="headerlink" title="Git Cherry-pick"></a>Git Cherry-pick</h2><p>本系列的第一个命令是 <code>git cherry-pick</code>, 命令形式为: </p>
+<ul>
+<li><code>git cherry-pick &lt;提交号&gt;...</code></li>
+</ul>
+<p>如果你想将一些提交复制到当前所在的位置（<code>HEAD</code>）下面的话, Cherry-pick 是最直接的方式了。</p>
+<h2 id="交互式的-rebase"><a href="#交互式的-rebase" class="headerlink" title="交互式的 rebase"></a>交互式的 rebase</h2><p>交互式 rebase 指的是使用带参数 <code>--interactive</code> 的 rebase 命令, 简写为 <code>-i</code></p>
+<p>如果你在命令后增加了这个选项, Git 会打开一个 UI 界面并列出将要被复制到目标分支的备选提交记录，它还会显示每个提交记录的哈希值和提交说明，提交说明有助于你理解这个提交进行了哪些更改。</p>
+<p>git rebase -i HEAD~4</p>
+<h2 id="只提取一个提交记录"><a href="#只提取一个提交记录" class="headerlink" title="只提取一个提交记录"></a>只提取一个提交记录</h2><ul>
+<li><code>git rebase -i</code></li>
+<li><code>git cherry-pick</code></li>
+</ul>
+<h2 id="提交的技巧-1-2"><a href="#提交的技巧-1-2" class="headerlink" title="提交的技巧 #1 #2"></a>提交的技巧 #1 #2</h2><p>你之前在 <code>newImage</code> 分支上进行了一次提交，然后又基于它创建了 <code>caption</code> 分支，然后又提交了一次。</p>
+<p>此时你想对的某个以前的提交记录进行一些小小的调整。比如设计师想修改一下 <code>newImage</code> 中图片的分辨率，尽管那个提交记录并不是最新的了。</p>
+<p>我们可以通过下面的方法来克服困难：</p>
+<ul>
+<li>先用 <code>git rebase -i</code> 将提交重新排序，然后把我们想要修改的提交记录挪到最前</li>
+<li>然后用 <code>commit --amend</code> 来进行一些小修改</li>
+<li>接着再用 <code>git rebase -i</code> 来将他们调回原来的顺序</li>
+<li>最后我们把 master 移到修改的最前端（用你自己喜欢的方法），就大功告成啦！</li>
+</ul>
+<p>git commit amend</p>
+<p>当我们想要对上一次的提交进行修改时，我们可以使用git commit –amend命令。git commit –amend既可以对上次提交的内容进行修改，也可以修改提交说明。</p>
+<p>git使用amend选项提供了最后一次commit的反悔。但是对于历史提交呢，就必须使用rebase了。</p>
+<p>​    git rebase -i HEAD~3</p>
+<p>​    表示要修改当前版本的倒数第三次状态。</p>
+<p>​    这个命令出来之后，会出来三行东东：</p>
+<p>​    pick:<strong>***</strong></p>
+<p>​    pick:<strong>***</strong></p>
+<p>​    pick:<strong>***</strong></p>
+<p>​    如果你要修改哪个，就把那行的pick改成edit，然后退出。</p>
+<p>​    这时通过git log你可以发现，git的最后一次提交已经变成你选的那个了，这时再使用：</p>
+<p>​    git commit –amend</p>
+<p>​    来对commit进行修改。</p>
+<p>​    修改完了之后，要回来对不对？</p>
+<p>​    使用git rebase –continue</p>
+<p>​    OK，一切都搞定了。</p>
+<h2 id="Git-Tags"><a href="#Git-Tags" class="headerlink" title="Git Tags"></a>Git Tags</h2><p>Git 的 tag 就是干这个用的啊，它们可以（在某种程度上 —— 因为标签可以被删除后重新在另外一个位置创建同名的标签）永久地将某个特定的提交命名为里程碑，然后就可以像分支一样引用了。</p>
+<p>git tag v1 C1</p>
+<p>我们将这个标签命名为 <code>v1</code>，并且明确地让它指向提交记录 <code>C1</code>，如果你不指定提交记录，Git 会用 <code>HEAD</code> 所指向的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git tag v0 c1</span><br><span class="line">git tag v1 c2</span><br><span class="line">git checkout c2</span><br></pre></td></tr></table></figure>
+<h3 id="Git-Describe"><a href="#Git-Describe" class="headerlink" title="Git Describe"></a>Git Describe</h3><p>由于标签在代码库中起着“锚点”的作用，Git 还为此专门设计了一个命令用来<strong>描述</strong>离你最近的锚点（也就是标签），它就是 <code>git describe</code>！</p>
+<p>Git Describe 能帮你在提交历史中移动了多次以后找到方向；当你用 <code>git bisect</code>（一个查找产生 Bug 的提交记录的指令）找到某个提交记录时，或者是当你坐在你那刚刚度假回来的同事的电脑前时， 可能会用到这个命令。</p>
+<p><code>git describe</code> 的语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git describe ref</span><br></pre></td></tr></table></figure>
+<p>ref 可以是任何能被 Git 识别成提交记录的引用，如果你没有指定的话，Git 会以你目前所检出的位置（<code>HEAD</code>）。</p>
+<p>它输出的结果是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tag&gt;_&lt;numCommits&gt;_g&lt;hash&gt;</span><br></pre></td></tr></table></figure>
+<p><code>tag</code> 表示的是离 <code>ref</code> 最近的标签， <code>numCommits</code> 是表示这个 <code>ref</code> 与 <code>tag</code> 相差有多少个提交记录， <code>hash</code> 表示的是你所给定的 <code>ref</code> 所表示的提交记录哈希值的前几位。</p>
+<p>当 <code>ref</code> 提交记录上有某个标签时，则只输出标签名称              </p>
+<h3 id="多分支-rebase"><a href="#多分支-rebase" class="headerlink" title="多分支 rebase"></a>多分支 rebase</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git rebase master bugFix</span><br><span class="line">git rebase bugFix side</span><br><span class="line">git rebase side another</span><br><span class="line">git branch -f master another</span><br></pre></td></tr></table></figure>
+<p>git rebase master bugFix</p>
+<p><strong>get all commits bugFix indique and put them under master</strong></p>
+<p>git branch -f master another</p>
+<p><strong>move branch master to where another is</strong></p>
+<h3 id="选择父提交记录"><a href="#选择父提交记录" class="headerlink" title="选择父提交记录"></a>选择父提交记录</h3><p>操作符 <code>^</code> 与 <code>~</code> 符一样，后面也可以跟一个数字。</p>
+<p>但是该操作符后面的数字与 <code>~</code> 后面的不同，并不是用来指定向上返回几代，而是指定合并提交记录的某个父提交。还记得前面提到过的一个合并提交有两个父提交吧，所以遇到这样的节点时该选择哪条路径就不是很清晰了。</p>
+<p>Git 默认选择合并提交的“第一个”父提交，在操作符 <code>^</code> 后跟一个数字可以改变这一默认行为。</p>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>// TODO</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

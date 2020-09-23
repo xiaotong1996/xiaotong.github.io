@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Android Dagger与MVP - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RESUME-for-Dagger2-and-MVI"><span class="toc-text">RESUME for Dagger2 and MVI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Important-Thing"><span class="toc-text">Important Thing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GO-BACK-TO-Dagger"><span class="toc-text">GO BACK TO Dagger</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Here-explains-why-we-need-another-way-for-injection"><span class="toc-text">Here explains why we need another way for injection.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-we-need-auto-Injection-framework"><span class="toc-text">Why we need auto Injection framework?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Another-way-to-improve-decoupling-of-classes"><span class="toc-text">Another way to improve decoupling of classes</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Android Dagger与MVP
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-09-23 14:57:29</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="RESUME-for-Dagger2-and-MVI"><a href="#RESUME-for-Dagger2-and-MVI" class="headerlink" title="RESUME for Dagger2 and MVI"></a>RESUME for Dagger2 and MVI</h1><ol start="0">
+<li>prepare dagger for application and activity</li>
+<li>define a contract which includes interactor and view</li>
+<li>define needed functions in these interfaces</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * mainActivity contract</span><br><span class="line"> */</span><br><span class="line">public interface MainActivityContract &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * interactor for mainActivity</span><br><span class="line">     */</span><br><span class="line">    interface Interactor &#123;</span><br><span class="line">        /**</span><br><span class="line">         * attach view to mainActivity</span><br><span class="line">         *</span><br><span class="line">         * @param view</span><br><span class="line">         */</span><br><span class="line">        void onAttachView(View view);</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * detach view form mainActivity</span><br><span class="line">         */</span><br><span class="line">        void onDetachView();</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * user login</span><br><span class="line">         *</span><br><span class="line">         * @param userName</span><br><span class="line">         * @param password</span><br><span class="line">         */</span><br><span class="line">        void login(String userName, String password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * view for mainActivity</span><br><span class="line">     */</span><br><span class="line">    interface View &#123;</span><br><span class="line">        /**</span><br><span class="line">         * execute if login success</span><br><span class="line">         */</span><br><span class="line">        void loginSuccess();</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * execute if login fail</span><br><span class="line">         */</span><br><span class="line">        void loginFail();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>create a new class to implement interactor, override functions</li>
+<li>implement view in MainActivity; override functions</li>
+<li>add interactor dependecy for MainActivity by adding @Inject</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Inject</span><br><span class="line">MainActivityContract.Interactor interactor;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>implement interactor injector by creating a interactor module</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * interactor module</span><br><span class="line"> */</span><br><span class="line">@Module</span><br><span class="line">public class InteractorModule &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * provide mainActivity&apos;s interactor implementation</span><br><span class="line">     * @param authManager get instance from authManagerModule injection</span><br><span class="line">     * @return return instance implementation</span><br><span class="line">     */</span><br><span class="line">    @Provides</span><br><span class="line">    public MainActivityContract.Interactor getMainActivityContract()&#123;</span><br><span class="line">        return new MainActivityInteractorImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>associate this module and dependent class here is MainActivity by adding this module to a component </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * application dagger component</span><br><span class="line"> */</span><br><span class="line">@Singleton</span><br><span class="line">@Component(modules = &#123;</span><br><span class="line">        AndroidInjectionModule.class</span><br><span class="line">        , AppWidgetModule.class</span><br><span class="line">        , ApplicationModule.class</span><br><span class="line">        , InteractorModule.class</span><br><span class="line">        , AuthManagerModule.class</span><br><span class="line">&#125;)</span><br><span class="line">public interface AppComponent &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * provide custom builder for dagger component</span><br><span class="line">     */</span><br><span class="line">    @Component.Builder</span><br><span class="line">    interface Builder &#123;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * provide app context</span><br><span class="line">         *</span><br><span class="line">         * @param authApplication auth application</span><br><span class="line">         * @return instance</span><br><span class="line">         */</span><br><span class="line">        @BindsInstance</span><br><span class="line">        Builder application(AuthApplication authApplication);</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * builder</span><br><span class="line">         *</span><br><span class="line">         * @return app component</span><br><span class="line">         */</span><br><span class="line">        AppComponent build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * method to inject app</span><br><span class="line">     *</span><br><span class="line">     * @param authApplication auth app instance</span><br><span class="line">     */</span><br><span class="line">    void inject(AuthApplication authApplication);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>implement detail functions in interactor and mainActivity(view)</li>
+<li>if during step 8 we need some ohter  modules/libraries ex, here we need a authManager to get token from backend, </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * mainActivity interactor implementation</span><br><span class="line"> */</span><br><span class="line">public class MainActivityInteractorImpl implements MainActivityContract.Interactor &#123;</span><br><span class="line"></span><br><span class="line">    @Nullable</span><br><span class="line">    MainActivityContract.View view;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    final AuthManager authManager;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAttachView(MainActivityContract.View view) &#123;</span><br><span class="line">        this.view = view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onDetachView() &#123;</span><br><span class="line">        this.view = null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void login(String userName, String password) &#123;</span><br><span class="line">        authManager.login(userName, password, EnumSet.noneOf(AuthScope.class), new Listener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSuccess() &#123;</span><br><span class="line">                view.loginSuccess();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public boolean onFailure(@NonNull RequestError error, boolean alreadyHandled) &#123;</span><br><span class="line">                view.loginFail();</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>we can encapsulate its functions in a dagger module don’t forget add it to component to associate it with Interactor class</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * authManager module</span><br><span class="line"> */</span><br><span class="line">@Module()</span><br><span class="line">public class AuthManagerModule &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * provide authManager implementation</span><br><span class="line">     * @param applicationContext get instance from ApplicationModule injection</span><br><span class="line">     * @return instance</span><br><span class="line">     */</span><br><span class="line">    @Provides</span><br><span class="line">    AuthManager getAuthManagerProvider(Context applicationContext)&#123;</span><br><span class="line">        return new DebugAuthManagerProvider(applicationContext).get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>but we still can’t get its instance cause it hasn’t been associated with interactor module. We need to add authManager in Paramater</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * interactor module</span><br><span class="line"> */</span><br><span class="line">@Module</span><br><span class="line">public class InteractorModule &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * provide mainActivity&apos;s interactor implementation</span><br><span class="line">     * @param authManager get instance from authManagerModule injection</span><br><span class="line">     * @return return instance implementation</span><br><span class="line">     */</span><br><span class="line">    @Provides</span><br><span class="line">    public MainActivityContract.Interactor getMainActivityContract(AuthManager authManager)&#123;</span><br><span class="line">        return new MainActivityInteractorImpl(authManager);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>Then create a new interactor construction function which takes authManager as parameter</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * mainActivity interactor implementation</span><br><span class="line"> */</span><br><span class="line">public class MainActivityInteractorImpl implements MainActivityContract.Interactor &#123;</span><br><span class="line"></span><br><span class="line">    @Nullable</span><br><span class="line">    MainActivityContract.View view;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    final AuthManager authManager;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * constructor</span><br><span class="line">     *</span><br><span class="line">     * @param authManager used to get token</span><br><span class="line">     */</span><br><span class="line">    public MainActivityInteractorImpl(AuthManager authManager) &#123;</span><br><span class="line">        this.authManager = authManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAttachView(MainActivityContract.View view) &#123;</span><br><span class="line">        this.view = view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onDetachView() &#123;</span><br><span class="line">        this.view = null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void login(String userName, String password) &#123;</span><br><span class="line">        authManager.login(userName, password, EnumSet.noneOf(AuthScope.class), new Listener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSuccess() &#123;</span><br><span class="line">                view.loginSuccess();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public boolean onFailure(@NonNull RequestError error, boolean alreadyHandled) &#123;</span><br><span class="line">                view.loginFail();</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Important-Thing"><a href="#Important-Thing" class="headerlink" title="Important Thing"></a>Important Thing</h2><p>Dagger Inject for android component(ex. activity, fragment, application etc ) and for java class(or interface) is different. Cause for android, with FSM activity’s construction function is implicit.  So we use @inject or @module and some dagger 2 Android annotation to realise injection. It seems simple and easy. But for other our custom classes, we need to do in common ways, like  add dependencies as parameters in construction functions.</p>
+<h2 id="GO-BACK-TO-Dagger"><a href="#GO-BACK-TO-Dagger" class="headerlink" title="GO BACK TO Dagger"></a>GO BACK TO Dagger</h2><p>The simplest concept:</p>
+<p>First we need to know the importance and usage of DI and <strong>Constructor Injection</strong>. You pass the dependencies of a class to its constructor.</p>
+<h3 id="Here-explains-why-we-need-another-way-for-injection"><a href="#Here-explains-why-we-need-another-way-for-injection" class="headerlink" title="Here explains why we need another way for injection."></a>Here explains why we need another way for injection.</h3><ul>
+<li><strong>Constructor Injection</strong>. This is the way described above. You pass the dependencies of a class to its constructor.</li>
+<li><strong>Field Injection (or Setter Injection)</strong>. Certain Android framework classes such as activities and fragments are instantiated by the system, so constructor injection is not possible. With field injection, dependencies are instantiated after the class is created. The code would look like this:</li>
+</ul>
+<h3 id="Why-we-need-auto-Injection-framework"><a href="#Why-we-need-auto-Injection-framework" class="headerlink" title="Why we need auto Injection framework?"></a>Why we need auto Injection framework?</h3><ul>
+<li>For big apps, taking all the dependencies and connecting them correctly can require a large amount of boilerplate code. In a multi-layered architecture, in order to create an object for a top layer, you have to provide all the dependencies of the layers below it. As a concrete example, to build a real car you might need an engine, a transmission, a chassis, and other parts; and an engine in turn needs cylinders and spark plugs.</li>
+<li>When you’re not able to construct dependencies before passing them in — for example when using lazy initializations or scoping objects to flows of your app — you need to write and maintain a custom container (or graph of dependencies) that manages the lifetimes of your dependencies in memory.</li>
+</ul>
+<h3 id="Another-way-to-improve-decoupling-of-classes"><a href="#Another-way-to-improve-decoupling-of-classes" class="headerlink" title="Another way to improve decoupling of classes"></a>Another way to improve decoupling of classes</h3><p><a href="https://en.wikipedia.org/wiki/Service_locator_pattern" target="_blank" rel="noopener">service locator</a></p>
+<p>You create a class known as the <em>service locator</em> that creates and stores dependencies and then provides those dependencies on demand.</p>
+<p>Compare</p>
+<ul>
+<li>The collection of dependencies required by a service locator makes code harder to test because all the tests have to interact with the same global service locator.</li>
+<li>Dependencies are encoded in the class implementation, not in the API surface. As a result, it’s harder to know what a class needs from the outside. As a result, changes to <code>Car</code> or the dependencies available in the service locator might result in runtime or test failures by causing references to fail.</li>
+<li>Managing lifetimes of objects is more difficult if you want to scope to anything other than the lifetime of the entire app.</li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

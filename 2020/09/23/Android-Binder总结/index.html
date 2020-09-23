@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Android Binder总结 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Binder"><span class="toc-text">Binder</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#what-is-it"><span class="toc-text">what is it</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ibinder-organization"><span class="toc-text">Ibinder organization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ibinder-and-Parcelable"><span class="toc-text">Ibinder and Parcelable</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Usability-patterns"><span class="toc-text">Usability patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ibinder-and-inter-process"><span class="toc-text">Ibinder and inter process</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ibinder-inside-of-service"><span class="toc-text">Ibinder inside of service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ResultReceiver-Ibinder-as-simplified"><span class="toc-text">ResultReceiver Ibinder as simplified</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Messenger-Ibinder-as-callback-channel"><span class="toc-text">Messenger(Ibinder) as callback channel</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Android Binder总结
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-09-23 14:46:38</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h1><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="what-is-it"><a href="#what-is-it" class="headerlink" title="what is it"></a>what is it</h1><p>[1]Binder is an Android-specific interprocess communication mechanism, and remote method invocation system. It is one of the kernel modules of Android.</p>
+<p>[2] IBinder is the base interface for a remotable object, the core part of a lightweight RPC (remote procedure call) mechanism designed for high performance when performing in-process and cross-process calls.</p>
+<p>Shortly, Android offer an unique IPC mechanism which is Binder, Ibinder is the interface describes the abstract protocol for interacting with a remotable object.</p>
+<h2 id="Ibinder-organization"><a href="#Ibinder-organization" class="headerlink" title="Ibinder organization"></a>Ibinder organization</h2><p>[3] The following figure shows the Java layer of the Binder framework which contains main classes and their dependencies</p>
+<h2 id="Ibinder-and-Parcelable"><a href="#Ibinder-and-Parcelable" class="headerlink" title="Ibinder and Parcelable"></a>Ibinder and Parcelable</h2><p>[4] Parcel is a container for a message (data and object references) that can be sent through an IBinder.</p>
+<p>[5] Parcelable is the Interface for classes whose instances can be written to and restored from a Parcel.</p>
+<p>That means any class implements Parcelable can be passed through Ibinder, for example Intent. </p>
+<h1 id="Usability-patterns"><a href="#Usability-patterns" class="headerlink" title="Usability patterns"></a>Usability patterns</h1><p>Implement IBinder allows you to perform in-process and cross-process calls.</p>
+<h2 id="Ibinder-and-inter-process"><a href="#Ibinder-and-inter-process" class="headerlink" title="Ibinder and inter process"></a>Ibinder and inter process</h2><p>The most flexible way to implement IBinder is using AIDL (Android Interface Definition Language).</p>
+<p>AIDL generates code that takes care of writing the values into the parcels (marshalling) , sending them via Binder IPC, receiving them, reading the values (unmarshalling)  and calling the methods of service and writing and sending the result back.</p>
+<p>It is widely used in Android SDK, but it should be used carefully. [6] Using AIDL is necessary only if you allow clients from different applications to access your service for IPC and want to handle multithreading in your service.</p>
+<p>Here is an example how to use AIDL pass callback to activity</p>
+<ol>
+<li>define an AIDL file</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface ICallback &#123;</span><br><span class="line">    void onSuccess(in Account account);</span><br><span class="line">    void onError(int errorCode, String errorMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>\2. create a custom object class that supports the Parcelable which will be used for communication</p>
+<ul>
+<li>Make your class implement the Parcelable interface.</li>
+<li>Implement writeToParcel, which takes the current state of the object and writes it to a Parcel.</li>
+<li>Add a static field called CREATOR to your class which is an object implementing the Parcelable.Creator interface.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class CallBack implements Parcelable &#123;</span><br><span class="line">    </span><br><span class="line">    public static final Creator&lt;CallBack&gt; CREATOR</span><br><span class="line">            = new Creator&lt;CallBack&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public CallBack createFromParcel(Parcel in) &#123;</span><br><span class="line">            return new CallBack(in);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public CallBack[] newArray(int size) &#123;</span><br><span class="line">            return new CallBack[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    private ICallBack mCallBack;</span><br><span class="line">    </span><br><span class="line">    public CallBack(Parcel parcel) &#123;</span><br><span class="line">        mCallBack = ICallBack.Stub.asInterface(parcel.readStrongBinder());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void onSucess(Account account) &#123;</span><br><span class="line">        mCallBack.onSuccess(account);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void onError(int errorCode, String errorMessage) &#123;       </span><br><span class="line">        mCallBack.onError(errorCode, errorMessage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void writeToParcel(Parcel dest, int flags) &#123;</span><br><span class="line">        dest.writeStrongBinder(mMyAccountRequestResponse.asBinder());</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>\3. start activity and pass this callback through intent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Callback callback = new CallBack(new ICallBack.Stub()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onSuccess(Account account)&#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line">intent.putExtra(CALL_BACK, callback);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h2 id="Ibinder-inside-of-service"><a href="#Ibinder-inside-of-service" class="headerlink" title="Ibinder inside of service"></a>Ibinder inside of service</h2><p>Using Bound Service is the most common situation you need to implement Ibinder.</p>
+<p>[7]  Bound Service allows components (such as activities) to bind to the service, send requests, receive responses, and perform interprocess communication (IPC).</p>
+<p>To provide binding for a service, you must implement the onBind() callback method. This method returns an IBinder object that defines the programming interface that clients can use to interact with the service.</p>
+<p>According to different situations, you can choose different ways to implement this interface.</p>
+<ol>
+<li>If your service is private to your own application and runs in the same process as the client (which is common), you should create your interface by extending the Binder class and returning an instance of it from onBind().</li>
+<li>If you need your interface to work across different processes, you can create an interface for the service with a Messenger. (which is based on AIDL)</li>
+<li>If you want your service to handle multiple requests simultaneously, then you can use AIDL directly. In this case, your service must be thread-safe and capable of multi-threading.</li>
+</ol>
+<p>Here is an example how to use bound service and extend binder to pass callback to activity</p>
+<ol>
+<li>create a custom service and define a binder which helps you get its instance</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class CustomService extends Service &#123;</span><br><span class="line">    @NonNull</span><br><span class="line">    private final IBinder binder = new LocalBinder();</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    private Callback callback;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return binder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void setCallback(Callback callback)&#123;</span><br><span class="line">      this.callback=callback;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    class LocalBinder extends Binder &#123;</span><br><span class="line">    </span><br><span class="line">        CustomService getService() &#123;</span><br><span class="line">            return CustomService.this;</span><br><span class="line">        &#125;</span><br><span class="line">      </span><br><span class="line">        Callback getCallback()&#123;</span><br><span class="line">            return this.callback;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>\2. implemen ServiceConnection and the onServiceConnected() callback.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private ServiceConnection connection = new ServiceConnection() &#123;</span><br><span class="line">       @Override</span><br><span class="line">       public void onServiceConnected(ComponentName className,</span><br><span class="line">                                      IBinder service) &#123;</span><br><span class="line">           CustomService.LocalBinder binder</span><br><span class="line">                   = (CustomService.LocalBinder) service;</span><br><span class="line">           final CustomService mService = binder.getService();</span><br><span class="line">           if (mService != null) &#123;</span><br><span class="line">               mService.setCallback(callback);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<p>\3. bind this service in your client (activity or ApplicationContext etc)       </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final Intent intent = new Intent(context, CustomService.class); </span><br><span class="line">context.bindService(intent, connection, Context.BIND_AUTO_CREATE);</span><br></pre></td></tr></table></figure>
+<p>\4. you can use the same way to bind another client to this service and pass callback to this new client.</p>
+<h2 id="ResultReceiver-Ibinder-as-simplified"><a href="#ResultReceiver-Ibinder-as-simplified" class="headerlink" title="ResultReceiver Ibinder as simplified"></a>ResultReceiver Ibinder as simplified</h2><p>If you just want to receive a callback result you can use ResultReceiver.</p>
+<p>[8] ResultReceiver is a generic interface for receiving a callback result from someone. Use this by creating a subclass and implement onReceiveResult(int, Bundle), which you can then pass to others and send through IPC, and receive results they supply with send(int, Bundle).</p>
+<p>It is also implemented by wrapping around Binder</p>
+<p>Here is an example how to use ResultReceiver to receive a callback result, no need to pass callback to activity</p>
+<ol>
+<li>implement a ResultReceiver and its onReceiveResult callback and pass it by intent</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">intent.putExtra(RESULT_RECEIVER, new ResultReceiver(null) &#123;</span><br><span class="line">      @Override</span><br><span class="line">      protected void onReceiveResult(final int resultCode, final Bundle resultData) &#123;</span><br><span class="line">          super.onReceiveResult(resultCode, resultData);</span><br><span class="line">          if (resultCode == RESULTOK) &#123;</span><br><span class="line">              Account account = resultData.getParcelable(REQUESTEDACCOUNT);</span><br><span class="line">              if (account != null) &#123;</span><br><span class="line">                  listener.onSuccess(account);</span><br><span class="line">              &#125; else &#123;</span><br><span class="line">                  listener.onFailure();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">              listener.onFailure();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  context.startActivity(intent);</span><br></pre></td></tr></table></figure>
+<p>\2.  in activity get this resultReceiver and call its send method</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">resultReceiver = intent.getParcelableExtra(RESULT_RECEIVER);</span><br><span class="line">...</span><br><span class="line">Bundle bundle = new Bundle();</span><br><span class="line">bundle.putParcelable(REQUESTEDACCOUNT, account);</span><br><span class="line">resultReceiver.send(RESULTOK, bundle);</span><br></pre></td></tr></table></figure>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Binder is Android IPC mechanism, it has a low level implementation, work as an important module in Android.</p>
+<p>Android provides IBinder interface and Binder class as high level abstraction.</p>
+<p>If you want to perform custom in-process call, you just need to implement IBinder interface.</p>
+<p>If you want to define custom programming interface to realize your own IPC logic, you need to implement IBinder interface or extend Binder class and work with service.</p>
+<p>For some simple situations, like receive a callback result, you can choose resultReceiver class which has already wrapped around a Binder.</p>
+<h2 id="Messenger-Ibinder-as-callback-channel"><a href="#Messenger-Ibinder-as-callback-channel" class="headerlink" title="Messenger(Ibinder) as callback channel"></a>Messenger(Ibinder) as callback channel</h2><p>You can use Messenger with service like AIDL. Little difference is you need to implement a handler to handle message callback</p>
+<ul>
+<li>server side</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class MessengerService extends Service &#123;</span><br><span class="line">    static final int MSG_USE_ACCOUNT = 1;</span><br><span class="line"></span><br><span class="line">    static class IncomingHandler extends Handler &#123;</span><br><span class="line">        private Context applicationContext;</span><br><span class="line"></span><br><span class="line">        private Callback callback;</span><br><span class="line">        IncomingHandler(Context context, Callback callback) &#123;</span><br><span class="line">            applicationContext = context.getApplicationContext();</span><br><span class="line">            this.callback = callback;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            switch (msg.what) &#123;</span><br><span class="line">                case MSG_USE_ACCOUNT:</span><br><span class="line">                   callback.success((Account)msg.obg);</span><br><span class="line">                   break;</span><br><span class="line">                default:</span><br><span class="line">                    super.handleMessage(msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Messenger mMessenger;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        mMessenger = new Messenger(new IncomingHandler(this,callback));</span><br><span class="line">        return mMessenger.getBinder();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>client side</li>
+</ul>
+<p>Since messenger impements Parcelable and also provides implementation for Ibinder, you can also use it similar to ResultReceiver without service.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] <a href="https://elinux.org/Android_Binder" target="_blank" rel="noopener">https://elinux.org/Android_Binder</a></p>
+<p>[2] <a href="https://developer.android.com/reference/android/os/IBinder" target="_blank" rel="noopener">https://developer.android.com/reference/android/os/IBinder</a></p>
+<p>[3] <a href="https://www.nds.ruhr-uni-bochum.de/media/attachments/files/2012/03/binder.pdf" target="_blank" rel="noopener">https://www.nds.ruhr-uni-bochum.de/media/attachments/files/2012/03/binder.pdf</a></p>
+<p>[4] <a href="https://developer.android.com/reference/android/os/Parcel" target="_blank" rel="noopener">https://developer.android.com/reference/android/os/Parcel</a></p>
+<p>[5] <a href="https://developer.android.com/reference/android/os/Parcelable" target="_blank" rel="noopener">https://developer.android.com/reference/android/os/Parcelable</a></p>
+<p>[6] <a href="https://developer.android.com/guide/components/aidl" target="_blank" rel="noopener">https://developer.android.com/guide/components/aidl</a></p>
+<p>[7] <a href="https://developer.android.com/guide/components/bound-services" target="_blank" rel="noopener">https://developer.android.com/guide/components/bound-services</a></p>
+<p>[8] <a href="https://developer.android.com/reference/android/os/ResultReceiver" target="_blank" rel="noopener">https://developer.android.com/reference/android/os/ResultReceiver</a></p>
+<p><a href="http://gityuan.com/2015/11/28/binder-summary/" target="_blank" rel="noopener">http://gityuan.com/2015/11/28/binder-summary/</a></p>
+<p><a href="https://www.jianshu.com/p/2e6936e2de3d" target="_blank" rel="noopener">https://www.jianshu.com/p/2e6936e2de3d</a></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
