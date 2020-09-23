@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Docker学习 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>Xiaotong CHEN</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#container（容器）"><span class="toc-text">container（容器）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#container-image-（镜像）"><span class="toc-text">container image （镜像）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Container和Image-的-Steps"><span class="toc-text">使用Container和Image 的 Steps</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分享image"><span class="toc-text">分享image</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个repo（仓库）"><span class="toc-text">创建一个repo（仓库）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Publish-Image"><span class="toc-text">Publish Image</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Persisting-our-DB"><span class="toc-text">Persisting our DB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器的文件系统"><span class="toc-text">容器的文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Container-Volumes"><span class="toc-text">Container Volumes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Bind-Mounts"><span class="toc-text">Using Bind Mounts</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#例子：开始一个开发模式容器"><span class="toc-text">例子：开始一个开发模式容器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Container-Apps-多容器应用"><span class="toc-text">Multi-Container Apps 多容器应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Container-Networking"><span class="toc-text">Container Networking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启MySQL"><span class="toc-text">开启MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接到MySQL"><span class="toc-text">连接到MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用MySQL运行app"><span class="toc-text">使用MySQL运行app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Docker-Compose"><span class="toc-text">使用Docker Compose</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看version"><span class="toc-text">查看version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Compose文件"><span class="toc-text">创建Compose文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义app-service"><span class="toc-text">定义app service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义MySQL-service"><span class="toc-text">定义MySQL service</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-compose-yml-例子"><span class="toc-text">docker-compose.yml 例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行app-stack"><span class="toc-text">运行app stack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image-Building-Practices"><span class="toc-text">Image Building Practices</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-Layering"><span class="toc-text">Image Layering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Layer-Caching"><span class="toc-text">Layer Caching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multi-Stage-Builds"><span class="toc-text">Multi-Stage Builds</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Maven-Tomcat-例子"><span class="toc-text">Maven/Tomcat 例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#React-例子"><span class="toc-text">React 例子</span></a></li></ol></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Docker学习
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-09-23 15:05:15</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="container（容器）"><a href="#container（容器）" class="headerlink" title="container（容器）"></a>container（容器）</h2><p>Simply put, a container is simply another process on your machine that has been isolated from all other processes on the host machine.</p>
+<p>容器就是一个独立于其他所有主机上的进程的进程</p>
+<h2 id="container-image-（镜像）"><a href="#container-image-（镜像）" class="headerlink" title="container image （镜像）"></a>container image （镜像）</h2><p> This custom filesystem is provided by a <strong>container image</strong>. Since the image contains the container’s filesystem, it must contain everything needed to run an application - all dependencies, configuration, scripts, binaries, etc. The image also contains other configuration for the container, such as environment variables, a default command to run, and other metadata</p>
+<p>镜像是容器的文件系统，提供运行程序的所有文件和容器的配置文件</p>
+<h2 id="使用Container和Image-的-Steps"><a href="#使用Container和Image-的-Steps" class="headerlink" title="使用Container和Image 的 Steps"></a>使用Container和Image 的 Steps</h2><ol>
+<li><p>将源代码置入Docker（clone）</p>
+</li>
+<li><p>构建app的container image</p>
+<ul>
+<li>创建一个Dockerfile 文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM node:10-alpine</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY . .</span><br><span class="line">RUN yarn install --production</span><br><span class="line">CMD [&quot;node&quot;, &quot;/app/src/index.js&quot;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用docker build构建container image</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t docker-101 .</span><br></pre></td></tr></table></figure>
+<p>说明：docker-101是这个container image的名字 . 代表本地目录（其中包含Dockerfile）</p>
+<p>FROM 从node：10-alpine镜像开始构建</p>
+<p>复制到本地</p>
+<p>用yarn安装应用依赖</p>
+<p>CMD指示从image开启container的默认命令</p>
+</li>
+<li><p>开启app容器</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dp 3000:3000 docker-101</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>-d 表示 detached模式（后台运行）-p创建主机端口3000到容器端口3000的映射</p>
+<p>主机端口只能有一个进程占用。</p>
+<p>想要映射之前的端口，需要替换掉旧的容器</p>
+<ul>
+<li>docker ps 查询容器信息</li>
+<li>docker stop <container-id> 杀死容器</container-id></li>
+<li>docker rm  <container-id> 移除容器</container-id></li>
+<li>docker rm -f <container-id> 杀死并移除容器</container-id></li>
+</ul>
+<h2 id="分享image"><a href="#分享image" class="headerlink" title="分享image"></a>分享image</h2><p>分享image需要使用docker registry注册器，默认的registry是Docker HUB</p>
+<h3 id="创建一个repo（仓库）"><a href="#创建一个repo（仓库）" class="headerlink" title="创建一个repo（仓库）"></a>创建一个repo（仓库）</h3><ol>
+<li>前往 <a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a></li>
+<li>创建仓库</li>
+<li>设置名字和visibility</li>
+<li>创建</li>
+</ol>
+<h3 id="Publish-Image"><a href="#Publish-Image" class="headerlink" title="Publish Image"></a>Publish Image</h3><p>docker image ls 显示image信息</p>
+<ul>
+<li>登录到dockerhub<code>docker login -u YOUR-USER-NAME</code>.</li>
+<li>tag image<code>docker tag docker-101 YOUR-USER-NAME/101-todo-app</code></li>
+<li>发布到dockerHUb<code>docker push YOUR-USER-NAME/101-todo-app</code></li>
+</ul>
+<h2 id="Persisting-our-DB"><a href="#Persisting-our-DB" class="headerlink" title="Persisting our DB"></a>Persisting our DB</h2><h3 id="容器的文件系统"><a href="#容器的文件系统" class="headerlink" title="容器的文件系统"></a>容器的文件系统</h3><p>当容器运行时，使用多个layer从image到文件系统，每个容器也有自己的scratch space来创建/更新/删除 文件。所以容器上的修改对于其他容器是不可见的，即使使用同样的image</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d ubuntu bash -c &quot;shuf -i 1-10000 -n 1 -o /data.txt &amp;&amp; tail -f /dev/null&quot;</span><br></pre></td></tr></table></figure>
+<p>Validate we can see the output by <code>exec</code>‘ing into the container. To do so, you need to get the container’s ID (use <code>docker ps</code> to get it).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec &lt;container-id&gt; cat /data.txt</span><br></pre></td></tr></table></figure>
+<h3 id="Container-Volumes"><a href="#Container-Volumes" class="headerlink" title="Container Volumes"></a>Container Volumes</h3><p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Volumes</a> provide the ability to connect specific filesystem paths of the container back to the host machine. If a directory in the container is mounted, changes in that directory are also seen on the host machine. If we mount that same directory across container restarts, we’d see the same files.</p>
+<p>卷提供了将容器的特定文件系统路径连接回主机的功能。 如果装入了容器中的目录，则在主机上也会看到该目录中的更改。 如果在重新启动容器时安装相同的目录，则会看到相同的文件。</p>
+<ol>
+<li>使用docker volume create来创建一个卷</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create todo-db</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>开启容器，加上-v表明挂载一个卷</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dp 3000:3000 -v todo-db:/etc/todos docker-101</span><br></pre></td></tr></table></figure>
+<p>docker volume inspect </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker volume inspect todo-db</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2019-09-26T02:18:36Z&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/todo-db/_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;todo-db&quot;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="Using-Bind-Mounts"><a href="#Using-Bind-Mounts" class="headerlink" title="Using Bind Mounts"></a>Using Bind Mounts</h3><p>With <strong>bind mounts</strong>, we control the exact mountpoint on the host. We can use this to persist data, but is often used to provide additional data into containers. When working on an application, we can use a bind mount to mount our source code into the container to let it see code changes, respond, and let us see the changes right away.</p>
+<h4 id="例子：开始一个开发模式容器"><a href="#例子：开始一个开发模式容器" class="headerlink" title="例子：开始一个开发模式容器"></a>例子：开始一个开发模式容器</h4><ol>
+<li>把源代码挂载到容器</li>
+<li>安装所有依赖，包含开发依赖</li>
+<li>开启nodemon（类似工具）来检测文件变化</li>
+<li>修改代码</li>
+<li>刷新网页来查看变化</li>
+<li>一旦结束修改，stop容器并就构建自己的新的镜像<code>docker build -t getting-started .</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -dp 3000:3000 \</span><br><span class="line">    -w /app -v $PWD:/app \</span><br><span class="line">    node:10-alpine \</span><br><span class="line">    sh -c &quot;yarn install &amp;&amp; yarn run dev&quot;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-dp 3000:3000</td>
+<td>用后台模式运行，并且创建一个端口映射</td>
+</tr>
+<tr>
+<td>-w /app</td>
+<td>设置工作目录，指令从此处开始</td>
+</tr>
+<tr>
+<td>-v ${PWD}:/app</td>
+<td>绑定挂载容器中的主机当前目录到/app中</td>
+</tr>
+<tr>
+<td>node:12-alpine</td>
+<td>使用的镜像</td>
+</tr>
+<tr>
+<td>sh -c “yarn install &amp;&amp; yarn run dev”</td>
+<td>指令。运行一个shell指令，运行yarn install来安装所有依赖，运行yarn run dev开始开发环境</td>
+</tr>
+</tbody>
+</table>
+<p>docker logs -f <container-id> 查看log</container-id></p>
+<h2 id="Multi-Container-Apps-多容器应用"><a href="#Multi-Container-Apps-多容器应用" class="headerlink" title="Multi-Container Apps 多容器应用"></a>Multi-Container Apps 多容器应用</h2><p>每个容器只做一件事</p>
+<h3 id="Container-Networking"><a href="#Container-Networking" class="headerlink" title="Container Networking"></a>Container Networking</h3><p>默认情况，容器独立运行。如何实现容器间的通信，需要使用网络。当两个容器在同一网络中，他们能互相通信。</p>
+<h3 id="开启MySQL"><a href="#开启MySQL" class="headerlink" title="开启MySQL"></a>开启MySQL</h3><p>有两种方式能把容器放在网路中：1）在开始的时候声明。2）连接到一个已经存在的容器</p>
+<ol>
+<li>创建网络</li>
+</ol>
+<p><code>docker network create todo-app</code></p>
+<ol start="2">
+<li>开启一个MySQL容器并把它连接到网络</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --network todo-app --network-alias mysql \</span><br><span class="line">    -v todo-mysql-data:/var/lib/mysql \</span><br><span class="line">    -e MYSQL_ROOT_PASSWORD=secret \</span><br><span class="line">    -e MYSQL_DATABASE=todos \</span><br><span class="line">    mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>这里创建了一个volume名叫todo-mysql-data并挂载到/var/lib/mysql上，不需要使用docker volume create， Docker会检测并自动为我们创建</p>
+<ol start="3">
+<li>连接到mysql</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it &lt;mysql-container-id&gt; mysql -p</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>使用mysql</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+<h3 id="连接到MySQL"><a href="#连接到MySQL" class="headerlink" title="连接到MySQL"></a>连接到MySQL</h3><p>如果我们在同一个网络运行另一个容器，如何找到这个容器？</p>
+<p>使用nicolaka/netshoot容器，这是一个搭载很多用于troubleshooting和网络问题debugging的工具镜像</p>
+<ol>
+<li>开启一个使用这个工具镜像的容器</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --network todo-app nicolaka/netshoot</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在这个容器中，使用dig命令，DNS工具用于查询ip地址</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">; &lt;&lt;&gt;&gt; DiG 9.14.1 &lt;&lt;&gt;&gt; mysql</span><br><span class="line">;; global options: +cmd</span><br><span class="line">;; Got answer:</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 32162</span><br><span class="line">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0</span><br><span class="line"></span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;mysql.             IN  A</span><br><span class="line"></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">mysql.          600 IN  A   172.23.0.2</span><br><span class="line"></span><br><span class="line">;; Query time: 0 msec</span><br><span class="line">;; SERVER: 127.0.0.11#53(127.0.0.11)</span><br><span class="line">;; WHEN: Tue Oct 01 23:47:24 UTC 2019</span><br><span class="line">;; MSG SIZE  rcvd: 44</span><br></pre></td></tr></table></figure>
+<p>ANSWER SECTION</p>
+<p>A 记录了mysql ip地址 172.18.0.2</p>
+<h3 id="使用MySQL运行app"><a href="#使用MySQL运行app" class="headerlink" title="使用MySQL运行app"></a>使用MySQL运行app</h3><p>The todo app supports the setting of a few environment variables to specify MySQL connection settings. They are:</p>
+<ul>
+<li><code>MYSQL_HOST</code> - the hostname for the running MySQL server</li>
+<li><code>MYSQL_USER</code> - the username to use for the connection</li>
+<li><code>MYSQL_PASSWORD</code> - the password to use for the connection</li>
+<li><code>MYSQL_DB</code> - the database to use once connected</li>
+</ul>
+<ol>
+<li>定义环境变量，连接容器到app network</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -dp 3000:3000 \</span><br><span class="line">  -w /app -v $&#123;PWD&#125;:/app \</span><br><span class="line">  --network todo-app \</span><br><span class="line">  -e MYSQL_HOST=mysql \</span><br><span class="line">  -e MYSQL_USER=root \</span><br><span class="line">  -e MYSQL_PASSWORD=secret \</span><br><span class="line">  -e MYSQL_DB=todos \</span><br><span class="line">  node:12-alpine \</span><br><span class="line">  sh -c &quot;yarn install &amp;&amp; yarn run dev&quot;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>用docker logs container-id查看</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Previous log messages omitted</span><br><span class="line">$ nodemon src/index.js</span><br><span class="line">[nodemon] 1.19.2</span><br><span class="line">[nodemon] to restart at any time, enter `rs`</span><br><span class="line">[nodemon] watching dir(s): *.*</span><br><span class="line">[nodemon] starting `node src/index.js`</span><br><span class="line">Connected to mysql db at host mysql</span><br><span class="line">Listening on port 3000</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在网页app中修改</li>
+<li>连接到mysql 查看</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -ti &lt;mysql-container-id&gt; mysql -p todos</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from todo_items;</span><br><span class="line">+--------------------------------------+--------------------+-----------+</span><br><span class="line">| id                                   | name               | completed |</span><br><span class="line">+--------------------------------------+--------------------+-----------+</span><br><span class="line">| c906ff08-60e6-44e6-8f49-ed56a0853e85 | Do amazing things! |         0 |</span><br><span class="line">| 2912a79e-8486-4bc3-a4c5-460793a575ab | Be awesome!        |         0 |</span><br><span class="line">+--------------------------------------+--------------------+-----------+</span><br></pre></td></tr></table></figure>
+<h2 id="使用Docker-Compose"><a href="#使用Docker-Compose" class="headerlink" title="使用Docker Compose"></a>使用Docker Compose</h2><p><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker Compose</a> is a tool  that was developed to help define and share multi-container  applications. With Compose, we can create a YAML file to define the  services and with a single command, can spin everything up or tear it  all down. </p>
+<h3 id="查看version"><a href="#查看version" class="headerlink" title="查看version"></a>查看version</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose version</span><br></pre></td></tr></table></figure>
+<h3 id="创建Compose文件"><a href="#创建Compose文件" class="headerlink" title="创建Compose文件"></a>创建Compose文件</h3><ol>
+<li>在app项目root中，创建一个名为docker-compose.yml的文件</li>
+<li>在compose文件中，先定义version，可通过<a href="https://docs.docker.com/compose/compose-file/" target="_blank" rel="noopener">Compose file reference</a>查看最新版本</li>
+<li>接下来，定义需要的service或容器列表</li>
+</ol>
+<h3 id="定义app-service"><a href="#定义app-service" class="headerlink" title="定义app service"></a>定义app service</h3><ol>
+<li>首先为容器定义service entry和image，可以为其选择任意名字，这个名字会自动成为network alias</li>
+<li>接下来定义command</li>
+<li>通过ports定义接口映射</li>
+<li>使用working_dir定义工作路径，volumes定义volume mapping</li>
+<li>使用environment定义环境变量</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3.7&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: node:12-alpine</span><br><span class="line">    command: sh -c &quot;yarn install &amp;&amp; yarn run dev&quot;</span><br><span class="line">    ports:</span><br><span class="line">      - 3000:3000</span><br><span class="line">    working_dir: /app</span><br><span class="line">    volumes:</span><br><span class="line">      - ./:/app</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_HOST: mysql</span><br><span class="line">      MYSQL_USER: root</span><br><span class="line">      MYSQL_PASSWORD: secret</span><br><span class="line">      MYSQL_DB: todos</span><br></pre></td></tr></table></figure>
+<h3 id="定义MySQL-service"><a href="#定义MySQL-service" class="headerlink" title="定义MySQL service"></a>定义MySQL service</h3><ol>
+<li>定义新服务，并命名为mysql来自动创建network alias，定义image</li>
+<li>接下来，定义volume mapping，用docker run运行时，命名的volume会自动创建，但是用compose不会，需要使用volumes来定义</li>
+<li>定义环境变量</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3.7&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    # The app service definition</span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    volumes:</span><br><span class="line">      - todo-mysql-data:/var/lib/mysql</span><br><span class="line">    environment: </span><br><span class="line">      MYSQL_ROOT_PASSWORD: secret</span><br><span class="line">      MYSQL_DATABASE: todos</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  todo-mysql-data:</span><br></pre></td></tr></table></figure>
+<h2 id="docker-compose-yml-例子"><a href="#docker-compose-yml-例子" class="headerlink" title="docker-compose.yml 例子"></a>docker-compose.yml 例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3.7&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: node:12-alpine</span><br><span class="line">    command: sh -c &quot;yarn install &amp;&amp; yarn run dev&quot;</span><br><span class="line">    ports:</span><br><span class="line">      - 3000:3000</span><br><span class="line">    working_dir: /app</span><br><span class="line">    volumes:</span><br><span class="line">      - ./:/app</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_HOST: mysql</span><br><span class="line">      MYSQL_USER: root</span><br><span class="line">      MYSQL_PASSWORD: secret</span><br><span class="line">      MYSQL_DB: todos</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    volumes:</span><br><span class="line">      - todo-mysql-data:/var/lib/mysql</span><br><span class="line">    environment: </span><br><span class="line">      MYSQL_ROOT_PASSWORD: secret</span><br><span class="line">      MYSQL_DATABASE: todos</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  todo-mysql-data:</span><br></pre></td></tr></table></figure>
+<h2 id="运行app-stack"><a href="#运行app-stack" class="headerlink" title="运行app stack"></a>运行app stack</h2><p>使用docker-compose up 来开启app stack，-d 后台</p>
+<p>使用docker-compose logs -f来查看logs -f follow，可以查看即时输出</p>
+<p>使用docker-compose down 来拆除容器</p>
+<h2 id="Image-Building-Practices"><a href="#Image-Building-Practices" class="headerlink" title="Image Building Practices"></a>Image Building Practices</h2><h3 id="Image-Layering"><a href="#Image-Layering" class="headerlink" title="Image Layering"></a>Image Layering</h3><p>使用docker image history来查看layers</p>
+<h3 id="Layer-Caching"><a href="#Layer-Caching" class="headerlink" title="Layer Caching"></a>Layer Caching</h3><p>一旦一个层被修改了，它的下游层都要修改</p>
+<p>回到映像历史记录输出，我们看到Dockerfile中的每个命令都成为映像中的新层。 您可能还记得，当我们对映像进行更改时，必须重新安装yarn依赖项。 有没有办法来解决这个问题？ 每次我们构建时都带着相同的依赖关系是没有意义的，对吧？</p>
+<p>要解决此问题，我们需要重组Dockerfile来帮助支持依赖项的缓存。 对于基于节点的应用程序，那些依赖项在package.json文件中定义。  因此，如果我们仅先复制该文件，安装依赖项，然后再复制其他所有内容，那该怎么办？  然后，仅当package.json发生更改时，我们才重新创建yarn依赖项。 合理？</p>
+<p>更新Dockerfile以首先复制到package.json中，安装依赖项，然后再复制其他所有内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FROM node:12-alpine</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY package.json yarn.lock ./</span><br><span class="line">RUN yarn install --production</span><br><span class="line">COPY . .</span><br><span class="line">CMD [&quot;node&quot;, &quot;/app/src/index.js&quot;]</span><br></pre></td></tr></table></figure>
+<h3 id="Multi-Stage-Builds"><a href="#Multi-Stage-Builds" class="headerlink" title="Multi-Stage Builds"></a>Multi-Stage Builds</h3><p>好处：</p>
+<ul>
+<li>Separate build-time dependencies from runtime dependencies</li>
+<li>Reduce overall image size by shipping <em>only</em> what your app needs to run</li>
+</ul>
+<h4 id="Maven-Tomcat-例子"><a href="#Maven-Tomcat-例子" class="headerlink" title="Maven/Tomcat 例子"></a>Maven/Tomcat 例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM maven AS build</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY . .</span><br><span class="line">RUN mvn package</span><br><span class="line"></span><br><span class="line">FROM tomcat</span><br><span class="line">COPY --from=build /app/target/file.war /usr/local/tomcat/webapps</span><br></pre></td></tr></table></figure>
+<p>In this example, we use one stage (called <code>build</code>) to perform the actual Java build using Maven. In the second stage (starting at <code>FROM tomcat</code>), we copy in files from the <code>build</code> stage. The final image is only the last stage being created (which can be overridden using the <code>--target</code> flag).</p>
+<h4 id="React-例子"><a href="#React-例子" class="headerlink" title="React 例子"></a>React 例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FROM node:12 AS build</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY package* yarn.lock ./</span><br><span class="line">RUN yarn install</span><br><span class="line">COPY public ./public</span><br><span class="line">COPY src ./src</span><br><span class="line">RUN yarn run build</span><br><span class="line"></span><br><span class="line">FROM nginx:alpine</span><br><span class="line">COPY --from=build /app/build /usr/share/nginx/html</span><br></pre></td></tr></table></figure>
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotong.chen.luan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/xiaotong1996">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.linkedin.com/in/xiaotong-chen-6b08ba178">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
